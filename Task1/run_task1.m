@@ -24,3 +24,17 @@ time = (1:length(data_pp))';
 data_pp = [time, data_pp];
 save('data_pp.mat', 'data_pp', 'raw_data');
 %clear;
+%% Evaluation
+clear;
+load('data_pp.mat')
+
+% means and 10 min means
+means = nanmean(data_pp);
+stds = nanstd(data_pp);
+
+
+% Wind directions
+u90 = sind(data_pp(:,2));
+u33 = sind(data_pp(:,3));
+v90 = cosd(data_pp(:,2));
+v33 = cosd(data_pp(:,3));
