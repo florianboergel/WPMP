@@ -24,23 +24,44 @@ for i = 1:length(raw_data(:,1))
 end
 time = (1:length(data_pp))';
 data_pp = [time, data_pp];
-save('data_pp.mat', 'data_pp', 'raw_data');
-    
+    save('data_pp.mat', 'data_pp', 'raw_data');
+
 %% Evaluation
-load('data_pp.mat')
+load('data_pp.mat');
 
 % means and 10 min means
-disp('Computing 10min means and stddev')
+disp('Computing 10min means and stddev');
 means_interval10 = zeros(round(n/600),20);
 for i = 1:n/600
-   for j=1:10  
+   %treat wind vanes
+   radians=data_pp((i-1)*600+1:i*600,2)/180*pi;
+   meanSin = nanmean(sin(radians));
+   meanCos = nanmean(cos(radians));
+   tanVal = atan2(meanSin,meanCos);
+   means_interval10(i,1) = tanVal*180/pi;
+   
+   radiansPrime = radians - tanVal;
+   primeUnwrapped = unwrap(radiansPrime);
+   unwrappedStddev = nanstd(primeUnwrapped);
+   means_interval10(i,2) = unwrappedStddev*180/pi;
+
+   radians=data_pp((i-1)*600+1:i*600,3)/180*pi;
+   meanSin = nanmean(sin(radians));
+   meanCos = nanmean(cos(radians));
+   tanVal = atan2(meanSin,meanCos);
+   means_interval10(i,3) = tanVal*180/pi;
+   
+   radiansPrime = radians - tanVal;
+   primeUnwrapped = unwrap(radiansPrime);
+   unwrappedStddev = nanstd(primeUnwrapped);
+   means_interval10(i,4) = unwrappedStddev*180/pi;
+   %treat windspeeds u 
+   for j=3:10  
        means_interval10(i,j*2-1) = nanmean(data_pp((i-1)*600+1:i*600,j+1));
        means_interval10(i,j*2) = nanstd(data_pp((i-1)*600+1:i*600,j+1));
    end
 end
 
-% Wind directions
-u90 = sind(data_pp(:,2));
-u33 = sind(data_pp(:,3));
-v90 = cosd(data_pp(:,2));
-v33 = cosd(data_pp(:,3));
+start30thJan = 29*24*6;
+errorbar(1:24*6, means_interval10(start30thJan+1:start30thJan+24*6,5),means_interval10(start30thJan+1:start30thJan+24*6,6));
+save('meansAndStddev.mat', 'means_interval10');
