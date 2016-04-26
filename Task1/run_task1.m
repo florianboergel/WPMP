@@ -34,7 +34,7 @@ disp('Computing 10min means and stddev');
 means_interval10 = zeros(round(n/600),20);
 for i = 1:n/600
    %treat wind vanes
-   radians=data_pp((i-1)*600+1:i*600,2)/180*pi;
+   radians = data_pp((i-1)*600+1:i*600,2)/180*pi;
    meanSin = nanmean(sin(radians));
    meanCos = nanmean(cos(radians));
    tanVal = atan2(meanSin,meanCos);
@@ -62,6 +62,19 @@ for i = 1:n/600
    end
 end
 
-start30thJan = 29*24*6;
-errorbar(1:24*6, means_interval10(start30thJan+1:start30thJan+24*6,5),means_interval10(start30thJan+1:start30thJan+24*6,6));
 save('meansAndStddev.mat', 'means_interval10');
+%% plot for January 30th
+load('meansAndStddev.mat');
+start30thJan = 29*24*6;
+figure();
+plot(means_interval10(start30thJan+1:start30thJan+24*6,5), '-r');
+hold on;
+plot(means_interval10(start30thJan+1:start30thJan+24*6,5)+means_interval10(start30thJan+1:start30thJan+24*6,6), '--b');
+plot(means_interval10(start30thJan+1:start30thJan+24*6,5)-means_interval10(start30thJan+1:start30thJan+24*6,6), '--b');
+xlabel('time in [s]');
+ylabel('windspeed in [m/s]');
+legend('Mean windspeed','Standard Deviation','Location','northwest');
+disp('saving plot to Plots/mean_intervall_withstd.png');
+saveas(gcf,'Plots/mean_intervall_withstd.png');
+hold off;
+
