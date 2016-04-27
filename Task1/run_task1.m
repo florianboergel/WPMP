@@ -63,5 +63,5 @@ for i = 1:n/600
 end
 
 start30thJan = 29*24*6;
-errorbar(1:24*6, means_interval10(start30thJan+1:start30thJan+24*6,5),means_interval10(start30thJan+1:start30thJan+24*6,6));
+plot(1:24*6, means_interval10(start30thJan+1:start30thJan+24*6,5),1:24*6,means_interval10(start30thJan+1:start30thJan+24*6,5)-means_interval10(start30thJan+1:start30thJan+24*6,6)/2,1:24*6,means_interval10(start30thJan+1:start30thJan+24*6,5) + means_interval10(start30thJan+1:start30thJan+24*6,6)/2);
 save('meansAndStddev.mat', 'means_interval10');
