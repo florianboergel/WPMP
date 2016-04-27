@@ -77,5 +77,3 @@ legend('Mean windspeed','Standard Deviation','Location','northwest');
 disp('saving plot to Plots/mean_intervall_withstd.png');
 saveas(gcf,'Plots/mean_intervall_withstd.png');
 hold off;
-
->>>>>>> 4009575f46f9eb8cc6a7a5f0db957c3eb3e45244
