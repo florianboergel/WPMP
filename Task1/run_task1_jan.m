@@ -77,6 +77,7 @@ saveas(gcf,'Plots/mean_intervall_withstd.png');
 hold off;
 
 %% Task 5: Finding spike for u100
+disp('Detecting spike interval and plot');
 found = 0;
 for i = 1:n/600
    currentMean = means_interval10(i,5);
@@ -116,5 +117,18 @@ saveas(gcf,'Plots/interval_spike.png');
 hold off;
 
 %% Task 6: Increment PDF
-
-
+disp('Computing increment PDF');
+du_raw = data_pp(2:n,4)-data_pp(1:n-1,4);
+[duyVals,duxVals] = hist(du_raw,100);
+duyVals = duyVals / sum (duyVals);
+pdfMean = nanmean(duyVals);
+pdfStddev = nanstd(duyVals);
+figure();
+semilogy(duxVals, duyVals/pdfStddev);
+std = nanstd(duyVals/pdfStddev);
+hold on;
+fplot(@(x) exp(-(x)^2/(2*1^2))/(1*sqrt(2*pi)),[-5 5]);
+xlabel(texlabel('\delta u_\tau'));
+ylabel(texlabel('p(delta u_tau)','literal'));
+saveas(gcf,'Plots/tau_pdf.png')
+hold off;
