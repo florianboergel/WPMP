@@ -138,7 +138,7 @@ for i = spikes(:,2)'
 end
 %disp('saving plot to Plots/10min_interval_with_lowerspikes.png')
 %saveas(gcf,'Plots/10min_interval_with_lowerspikes.png')
-clearsvars
+clearvars
 %% Task 6
 load('data_pp.mat')
 load('meansAndStddev.mat');
