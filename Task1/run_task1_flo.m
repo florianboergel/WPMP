@@ -32,7 +32,7 @@ for i = 1:length(data_pp(:,1))/600
    meanSin = nanmean(sin(radians));
    meanCos = nanmean(cos(radians));
    tanVal = atan2(meanSin,meanCos);
-   means_interval10(i,1) = tanVal*180/pi;
+   means_interval10(i,1) = tanVal*180/pi
    
    radiansPrime = radians - tanVal;
    primeUnwrapped = unwrap(radiansPrime);
