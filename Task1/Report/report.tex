@@ -9,15 +9,43 @@
 \usepackage{subcaption}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{color}
 
 \begin{document}
 
-\lstset{
-	language=Matlab,
-	basicstyle=\footnotesize,
-	xleftmargin=.2\textwidth,
-	xrightmargin=.2\textwidth
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=tb,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
+
 
 
 \onehalfspacing
@@ -76,13 +104,13 @@ In this task we looked for so called spikes. These are extremely high or low val
 Two such intervals and contained spikes where found by our algorithm and are plotted in Figures \ref{fig:spikeUnphys} and \ref{fig:spikePhys}. The first shows a spike which appears to be of unphysical nature due to a relatively monotonous behaviour with only small fluctuations except one single value. This single value is below the $\mu-5\sigma$ line. So here we could talk of a measurement error. The second plot however exhibits a more physical behaviour. Here we have stronger fluctuations overall and the spike which is below $\mu-5\sigma$ matches the fluctuational pattern because the values before and after the spike also deviate a lot from the mean over a considerable period of time.
 
 
-\begin{figure}[Htb!]
+\begin{figure}[htb!]
   \centering
   \includegraphics[width=0.65\linewidth]{../Plots/spikesintervall440.png}
   \caption{Unphysical cause}
   \label{fig:spikeUnphys}
 \end{figure}
-\begin{figure}[Htb!]
+\begin{figure}[htb!]
   \centering
   \includegraphics[width=0.65\linewidth]{../Plots/spikesintervall942.png}
   \caption{Physical cause}
@@ -100,8 +128,9 @@ In this last task the aim was to compute the increment PDF. This probability den
   \label{fig:incrementPdf}
 \end{figure}
 We note that on this semi-logarithmic scale the relative frequencies of the $1sec$-increments diverge clearly from the normal distribution. Extreme values for the 1s fluctuation are much more likely then a normal distribution suggests. In this case for increments of extreme values $\delta u=\pm10 m/s$ we observe a difference up to an order of magnitude $10^{17}$ between the probabilities according to Gauss and the actual relative frequencies derived from the measurement data. For small absolute values of $\delta u$ the Normal Distribution overestimates the acutal frequencies, but only to a maximal order of magnitude of $10^1$. Considering the IEC standards the assumption of a Gaussian PDF is not conservative and does not take into account the high probability of extreme fluctuations. This should be considered by industry when designing turbines regarding load analysis.
-
-\begin{appendix}
+\newpage
+\appendix
+\section{Appendix}
 \begin{lstlisting}
 %% preprocess data
 disp('Preprocessing Data')
@@ -269,6 +298,5 @@ ylabel('$p(\delta u_\tau)$');
 print('Plots/tau_pdf_gauss10.png','-dpng','-r500')
 clearvars
 \end{lstlisting}
-\end{appendix}
 
 \end{document}
