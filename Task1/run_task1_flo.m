@@ -32,7 +32,7 @@ for i = 1:length(data_pp(:,1))/600
    meanSin = nanmean(sin(radians));
    meanCos = nanmean(cos(radians));
    tanVal = atan2(meanSin,meanCos);
-   means_interval10(i,1) = tanVal*180/pi;
+   means_interval10(i,1) = tanVal*180/pi
    
    radiansPrime = radians - tanVal;
    primeUnwrapped = unwrap(radiansPrime);
@@ -62,10 +62,10 @@ load('meansAndStddev.mat');
 start30thJan = 29*24*6;
 figure();
 print -r1500
-plot(means_interval10(start30thJan+1:start30thJan+24*6,5), '-r');
-hold on;
-plot(means_interval10(start30thJan+1:start30thJan+24*6,5)+means_interval10(start30thJan+1:start30thJan+24*6,6), '--b');
-plot(means_interval10(start30thJan+1:start30thJan+24*6,5)-means_interval10(start30thJan+1:start30thJan+24*6,6), '--b');
+plot(means_interval10(start30thJan+1:start30thJan+24*6,7), '-r');
+hold ongit
+plot(means_interval10(start30thJan+1:start30thJan+24*6,7)+means_interval10(start30thJan+1:start30thJan+24*6,8), '--b');
+plot(means_interval10(start30thJan+1:start30thJan+24*6,7)-means_interval10(start30thJan+1:start30thJan+24*6,8), '--b');
 xlabel('10 minutes interval count [1]');
 ylabel('windspeed in [m/s]');
 legend('Mean windspeed','Standard Deviation','Location','northwest');

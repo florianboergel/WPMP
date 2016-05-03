@@ -11,7 +11,6 @@ t = round(t*24*3600);
 
 %% Task 2: Marking invalid data
 disp('Marking invalid data ...')
-%raw_data(raw_data==-999) = NaN(size(raw_data(raw_data==-999)));
 raw_data(raw_data==-999) = NaN;
 
 %% Task 3: Generate continuous time axis
@@ -30,13 +29,13 @@ data_pp = [time, data_pp];
 %% Task 4: 10 minutes mean, stddev and plotting
 disp('Computing 10min means and stddev');
 load('data_pp.mat');
-means_interval10 = zeros(round(n/600),20);
-for i = 1:n/600
+means_interval10 = NaN(ceil(n/600),20);
+for i = 1:length(means_interval10(:,1));
    %treat wind vanes
    radians = data_pp((i-1)*600+1:i*600,2)/180*pi;
    meanSin = nanmean(sin(radians));
    meanCos = nanmean(cos(radians));
-   tanVal = atan2(meanSin,meanCos);
+   tanVal = atan2(meanCos,meanSin);
    means_interval10(i,1) = tanVal*180/pi;
    
    radiansPrime = radians - tanVal;
@@ -119,16 +118,17 @@ hold off;
 %% Task 6: Increment PDF
 disp('Computing increment PDF');
 du_raw = data_pp(2:n,4)-data_pp(1:n-1,4);
-[duyVals,duxVals] = hist(du_raw,100);
+duMean = nanmean(du_raw);
+duStddev = nanstd(du_raw);
+du_normed = du_raw/duStddev;
+[duyVals,duxVals] = hist(du_normed,100);
 duyVals = duyVals / sum (duyVals);
-pdfMean = nanmean(duyVals);
-pdfStddev = nanstd(duyVals);
 figure();
-semilogy(duxVals, duyVals/pdfStddev);
-std = nanstd(duyVals/pdfStddev);
+semilogy(duxVals, duyVals);
 hold on;
-fplot(@(x) exp(-(x)^2/(2*1^2))/(1*sqrt(2*pi)),[-5 5]);
-xlabel(texlabel('\delta u_\tau'));
-ylabel(texlabel('p(delta u_tau)','literal'));
+fplot(@(x) exp(-(x)^2/(2*1^2))/(1*sqrt(2*pi)),[-10 10]);
+set(0,'DefaultTextInterpreter', 'latex');
+xlabel('$\delta u_\tau$');
+ylabel('$p(\delta u_\tau)$');
 saveas(gcf,'Plots/tau_pdf.png')
 hold off;
