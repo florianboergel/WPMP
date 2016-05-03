@@ -32,7 +32,7 @@ for i = 1:length(data_pp(:,1))/600
    meanSin = nanmean(sin(radians));
    meanCos = nanmean(cos(radians));
    tanVal = atan2(meanSin,meanCos);
-   means_interval10(i,1) = tanVal*180/pi
+   means_interval10(i,1) = tanVal*180/pi;
    
    radiansPrime = radians - tanVal;
    primeUnwrapped = unwrap(radiansPrime);
@@ -63,7 +63,7 @@ start30thJan = 29*24*6;
 figure();
 print -r1500
 plot(means_interval10(start30thJan+1:start30thJan+24*6,7), '-r');
-hold ongit
+hold on;
 plot(means_interval10(start30thJan+1:start30thJan+24*6,7)+means_interval10(start30thJan+1:start30thJan+24*6,8), '--b');
 plot(means_interval10(start30thJan+1:start30thJan+24*6,7)-means_interval10(start30thJan+1:start30thJan+24*6,8), '--b');
 xlabel('10 minutes interval count [1]');
@@ -140,7 +140,7 @@ end
 %saveas(gcf,'Plots/10min_interval_with_lowerspikes.png')
 clearvars
 %% Task 6
-load('data_pp.mat')
+load('data_pp.mat');
 load('meansAndStddev.mat');
 tau = 1;
 for i = 1:length(data_pp(:,4))-1
@@ -148,7 +148,7 @@ for i = 1:length(data_pp(:,4))-1
 end
 
 du = du/nanstd(du);
-[hist_y, hist_x] = hist(du, 100);
+[hist_y, hist_x] = hist(du,60);
 hist_y = hist_y/sum(hist_y);
 gausx = -10:1:10;
 gausy = (1/sqrt(2*pi))*exp(-gausx.^2/2);
@@ -158,5 +158,8 @@ semilogy(hist_x, hist_y);
 hold on;
 semilogy(gausx,gausy);
 hold off;
-print('Plots/pdfplot','-dpng','-r500')
+set(0,'DefaultTextInterpreter', 'latex');
+xlabel('$\delta u_\tau$');
+ylabel('$p(\delta u_\tau)$');
+print('Plots/tau_pdf_gauss10.png','-dpng','-r500')
 clearvars

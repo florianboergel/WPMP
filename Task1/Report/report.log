@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  29 APR 2016 18:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  3 MAY 2016 14:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,37 +551,32 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 \openout3 = `report.toc'.
 
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 31.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 33.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
 
-Overfull \hbox (63.3017pt too wide) in paragraph at lines 32--33
+Overfull \hbox (63.3017pt too wide) in paragraph at lines 34--35
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--46
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
-
- []
-
-<../Plots/mean_interval_withstd.png, id=26, 427.54932pt x 320.01157pt>
+[2] <../Plots/mean_interval_withstd.png, id=26, 427.54932pt x 320.01157pt>
 File: ../Plots/mean_interval_withstd.png Graphic file (type png)
 
 <use ../Plots/mean_interval_withstd.png>
@@ -589,57 +584,200 @@ Package pdftex.def Info: ../Plots/mean_interval_withstd.png used on input line
 66.
 (pdftex.def)             Requested size: 430.00462pt x 321.86143pt.
  [3]
-<../Plots/spikesintervall942.png, id=30, 429.13927pt x 317.69891pt>
-File: ../Plots/spikesintervall942.png Graphic file (type png)
-
-<use ../Plots/spikesintervall942.png>
-Package pdftex.def Info: ../Plots/spikesintervall942.png used on input line 80.
-
-(pdftex.def)             Requested size: 430.00462pt x 318.3477pt.
-
-<../Plots/spikesintervall440.png, id=31, 429.13927pt x 317.69891pt>
+<../Plots/spikesintervall440.png, id=30, 427.54932pt x 320.01157pt>
 File: ../Plots/spikesintervall440.png Graphic file (type png)
 
 <use ../Plots/spikesintervall440.png>
-Package pdftex.def Info: ../Plots/spikesintervall440.png used on input line 86.
+Package pdftex.def Info: ../Plots/spikesintervall440.png used on input line 81.
 
-(pdftex.def)             Requested size: 430.00462pt x 318.3477pt.
+(pdftex.def)             Requested size: 279.50037pt x 209.20627pt.
+
+<../Plots/spikesintervall942.png, id=31, 427.54932pt x 320.01157pt>
+File: ../Plots/spikesintervall942.png Graphic file (type png)
+
+<use ../Plots/spikesintervall942.png>
+Package pdftex.def Info: ../Plots/spikesintervall942.png used on input line 87.
+
+(pdftex.def)             Requested size: 279.50037pt x 209.20627pt.
  [4 <../Plots/mean_interval_withstd.png (PNG copy)>] <../Plots/tau_pdf_gauss10.
-png, id=35, 427.3566pt x 319.9152pt>
+png, id=35, 427.54932pt x 320.01157pt>
 File: ../Plots/tau_pdf_gauss10.png Graphic file (type png)
 
 <use ../Plots/tau_pdf_gauss10.png>
-Package pdftex.def Info: ../Plots/tau_pdf_gauss10.png used on input line 97.
-(pdftex.def)             Requested size: 430.00462pt x 321.90607pt.
- [5 <../Plots/spikesintervall942.png (PNG copy)>] [6 <../Plots/spikesintervall4
-40.png (PNG copy)>] [7 <../Plots/tau_pdf_gauss10.png (PNG copy)>] (./report.aux
-) ) 
+Package pdftex.def Info: ../Plots/tau_pdf_gauss10.png used on input line 98.
+(pdftex.def)             Requested size: 430.00462pt x 321.86143pt.
+ [5 <../Plots/spikesintervall440.png (PNG copy)> <../Plots/spikesintervall942.p
+ng (PNG copy)>] [6 <../Plots/tau_pdf_gauss10.png (PNG copy)>]
+Overfull \hbox (2.10034pt too wide) in paragraph at lines 109--110
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (63.3017pt too wide) in paragraph at lines 111--112
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (17.40068pt too wide) in paragraph at lines 133--134
+[][][][][][][][][][][][] 
+ []
+
+[7]
+Overfull \hbox (124.50305pt too wide) in paragraph at lines 159--160
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (109.20271pt too wide) in paragraph at lines 160--161
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (73.50192pt too wide) in paragraph at lines 170--171
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (348.90802pt too wide) in paragraph at lines 172--173
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (348.90802pt too wide) in paragraph at lines 173--174
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (93.90237pt too wide) in paragraph at lines 176--177
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (22.5008pt too wide) in paragraph at lines 177--178
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (27.6009pt too wide) in paragraph at lines 178--179
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 187.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 187.
+
+Overfull \hbox (211.20497pt too wide) in paragraph at lines 187--188
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (211.20497pt too wide) in paragraph at lines 191--192
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8]
+Overfull \hbox (7.20045pt too wide) in paragraph at lines 203--204
+[][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (129.60316pt too wide) in paragraph at lines 204--205
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (129.60316pt too wide) in paragraph at lines 205--207
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (185.7044pt too wide) in paragraph at lines 214--215
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (27.6009pt too wide) in paragraph at lines 217--218
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (63.3017pt too wide) in paragraph at lines 220--221
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (17.40068pt too wide) in paragraph at lines 221--223
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (7.20045pt too wide) in paragraph at lines 227--228
+[][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (129.60316pt too wide) in paragraph at lines 228--229
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (129.60316pt too wide) in paragraph at lines 229--231
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (185.7044pt too wide) in paragraph at lines 238--239
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (27.6009pt too wide) in paragraph at lines 241--242
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (73.50192pt too wide) in paragraph at lines 244--245
+[][][][][][][][][][][][][][][][][] 
+ []
+
+[9]
+Overfull \hbox (27.6009pt too wide) in paragraph at lines 245--246
+[][][][][][][][][][][][][] 
+ []
+
+[10] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 6656 strings out of 493304
- 92728 string characters out of 6139871
- 186459 words of memory out of 5000000
- 10021 multiletter control sequences out of 15000+600000
- 10390 words of font info for 37 fonts, out of 8000000 for 9000
+ 6714 strings out of 493304
+ 93518 string characters out of 6139871
+ 209439 words of memory out of 5000000
+ 10075 multiletter control sequences out of 15000+600000
+ 10742 words of font info for 38 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 42i,6n,40p,724b,1836s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (8 pages, 698739 bytes).
+ 42i,6n,40p,894b,1822s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on report.pdf (11 pages, 819973 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
