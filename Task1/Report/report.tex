@@ -10,6 +10,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{subcaption}
 
 \begin{document}
 
@@ -53,10 +54,10 @@
 \tableofcontents
 \newpage
 \section*{Introduction}
-The goal of this exercise was to perform some basic processing steps of raw measurement data from a met mast. The data used here originates from the FINO 1 platform in the German Northsea which includes two wind vanes at heights of $33m$ and $90m$ as well as eight anemometers at heights $33m, 40m, 50m, 60m, 70m, 80m, 90m$ and $100m$. The given time period of 1-Hertz data is of one month (January 2013). The six tasks described in the following reach from standard data treatment to a first simple analysis by looking at the increment probability density function in terms of wind speed fluctuations.
+The goal of this exercise was to perform some basic processing steps of raw measurement data from a met mast. The data used here originates from the FINO 1 platform in the German North-Sea which includes two wind vanes at heights of $33m$ and $90m$ as well as eight anemometers at heights $33m, 40m, 50m, 60m, 70m, 80m, 90m$ and $100m$. The given time period of 1-Hertz data is of one month (January 2013). The six tasks described in the following reach from standard data treatment to a first simple analysis by looking at the increment probability density function in terms of wind speed fluctuations.
 
 \section{Importing Data into Matlab}
-The first step was loading the data given as ASCII file into Matlab-readable data structures. For the first task we used the function \textit{readtable()} to import the data with the corresponding delimiter as parameter. The advantage of using a table structure instead of a matrix is that the column headers like 'u100' or 'Time' are stored within the data structure. In this way we can easily separate the actual measurment data from the time stamp by splitting the table up in two matrices. \\
+The first step was loading the data given as ASCII file into Matlab-readable data structures. For the first task we used the function \textit{readtable()} to import the data with the corresponding delimiter as parameter. The advantage of using a table structure instead of a matrix is that the column headers like 'u100' or 'Time' are stored within the data structure. In this way we can easily separate the actual measurement data from the time stamp by splitting the table up in two matrices. \\
 \begin{lstlisting}
 time_stamp = raw_data{:, {'Time'}};
 raw_data = raw_data{:, {'d90', 'd33', 'u100', 'u90', 'u80', ...
@@ -70,24 +71,25 @@ raw_data(raw_data==-999) = NaN;
 \end{lstlisting}
 
 \section{Generating a continuous time axis}
-To avoid gaps in the time axis we first converted our time $t$ with \textit{datenum()} to a numeric value. The numeric values represent elapsed time in units of days. Hence, 1 second corresponds to the fraction of  $\frac{1}{24\cdot60\cdot60}$ of these numeric values. So after multiplication with the inverse value of that and rounding we obtain unique integer IDs for every occuring timestamp. 
+To avoid gaps in the time axis we first converted our time $t$ with \textit{datenum()} to a numeric value. The numeric values represent elapsed time in units of days. Hence, $1$ second corresponds to the fraction of  $\frac{1}{24\cdot60\cdot60}$ of these numeric values. So after multiplication with the inverse value of that and rounding we obtain unique integer IDs for every occurring time-stamp. 
 Afterwards, we created the continuous time axis, by initializing a vector with length equaling exactly the number of seconds in January. 
-Then, we filled the corrected data matrix $data\_pp$ with $NaN$ values and overwrote the file with our existing data at all indices where values are given.\\
+Then, we filled the corrected data matrix $data\_pp$ with $NaN$ values and overwrote this matrix with our existing data at all indexes where values are given.\\
 \begin{lstlisting}
-disp('Creating continous time axis')
-tnew=[t(1):1:t(end)]';
+t = (datenum(time_stamp, 'yyyy-mm-dd HH:MM:SS'));
+clear time_stamp;
+t = round(t*24*3600);
+last_time = 31*24*3600;
+tnew=[1:1:last_time]';
+n = length(tnew);
 data_pp = NaN(length(tnew),10);
-disp('Writing preprocessed Data...')
 for i = 1:length(raw_data(:,1))
     data_pp(t(i)-t(1)+1, :) = raw_data(i, :);
 end
 time = (1:length(data_pp))';
 data_pp = [time, data_pp];
-save('data_pp.mat', 'data_pp', 'raw_data');
-clear;
 \end{lstlisting}
 
-\section{Computing 10min means and standard deviation}
+\section{Computing 10min means and standard deviations}
 This task is a first step of statistical analysis of the given data. We split our time axis into intervals of 600 seconds and for each interval we computed the mean and standard deviation for all ten variables. Invalid data can be ignored by using the commands \textit{nanmean()} and \textit{nanstd()}. Considering the wind directions a special treatment of the angles is required in order to handle the circular data, e.g. the mean value of $350^{\circ}$ and $10^{\circ}$ is not $180^{\circ}$ but $0^{\circ}$. Some trigonometric functions can be employed in order to cope with this. We plotted the ten minute means of the $u90$ anemometer for one specific day and added the standard deviation to it. The outcome is depicted in figure \ref{fig:means}.\\
 \begin{figure}[htb!]
   \centering
@@ -96,25 +98,27 @@ This task is a first step of statistical analysis of the given data. We split ou
   \label{fig:means}
 \end{figure}
 
-For this specific day we observe a very strong fluctuation of the wind over the day. During the early morning the wind is steadily strong with windspeeds greater then $20 m/s$ then drops by almost $60 \%$ untill 8am, then picks up again to reach a maximum of around $24 m/s$ in the evening. Indeed a very stormy day. The mean value and standard deviation are obivously not stationary because then mean is high in the morning and evening and low inbetween. The fluctuations and thus the standard deviation picks up in the evening and therefore is also not stationary.
+For this specific day we observe a very strong fluctuation of the wind over the day. During the early morning the wind is steadily strong with windspeeds greater then $20 m/s$ then drops by almost $60 \%$ until 8 am, then picks up again to reach a maximum of around $24 m/s$ in the evening. Indeed a very stormy day. The mean value and standard deviation are obviously not stationary because then mean is high in the morning and evening and low in between. The fluctuations and thus the standard deviation picks up in the evening and therefore is also not stationary.
 
 \section{Extreme values}
 In this task we looked for so called spikes. These are extremely high or low values within their immediate neighborhood, here 10 minutes intervals. A standard procedure to define spikes is to find values which exceed $[\mu - 5\sigma , \mu+5\sigma]$ in these intervals where $\mu$ is the mean and $\sigma$ is the standard deviation. 
 
-Two such intervals and contained spikes where found by our algorithm and are plotted in Figures \ref{fig:spikeUnphys} and \ref{fig:spikePhys}. The first shows a spike which appears to be of unphysical nature due to a relatively monotonous behaviour with only small fluctuations except one single value. This single value is below the $\mu-5\sigma$ line. So here we could talk of a measurement error. The second plot however exhibits a more physical behaviour. Here we have stronger fluctuations overall and the spike which is below $\mu-5\sigma$ matches the fluctuational pattern because the values before and after the spike also deviate a lot from the mean over a considerable period of time.
-
+Two such intervals and contained spikes where found by our algorithm and are plotted in Figures \ref{fig:spikeUnphys} and \ref{fig:spikePhys}. The first shows a spike which appears to be of unphysical nature due to a relatively monotonous behavior with only small fluctuations except one single value. This single value is below the $\mu-5\sigma$ line. So here we could talk of a measurement error. The second plot however exhibits a more physical behavior. Here we have stronger fluctuations overall and the spike which is below $\mu-5\sigma$ matches the fluctuational pattern because the values before and after the spike also deviate a lot from the mean over a considerable period of time.
+Regarding wind measurements the standard deviations is not a constant attribute but also varies over time. Especially in the field of wind measurement we have high fluctuations in the area of 1 second and less. The magnitude of the standard deviation always depends on the mean value and therefore the $5 \sigma$ criterion provides different quality at different conditions, different sites and different times.
 
 \begin{figure}[htb!]
+\begin{subfigure}{0.5\textwidth}
   \centering
-  \includegraphics[width=0.65\linewidth]{../Plots/spikesintervall440.png}
-  \caption{Unphysical cause}
+  \includegraphics[width=1\linewidth]{../Plots/spikesintervall440.png}
+  \caption{Unphysical cause on January 3rd, 01:20-01:30}
   \label{fig:spikeUnphys}
-\end{figure}
-\begin{figure}[htb!]
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
   \centering
-  \includegraphics[width=0.65\linewidth]{../Plots/spikesintervall942.png}
-  \caption{Physical cause}
+  \includegraphics[width=1\linewidth]{../Plots/spikesintervall942.png}
+  \caption{Physical cause on January 6th, 13:00-13:10}
     \label{fig:spikePhys}
+\end{subfigure}
 \end{figure}
 
 All in all we can say that the $5\sigma$ criterion is only an estimation of unusable values and relies on experience. By fixing the threshold to $5\sigma$ one states that all fluctuation within this interval are statistically significant. It implies reliability of the measurement system and is vulnerable to environmental influences, e.g. weather conditions.
@@ -127,7 +131,7 @@ In this last task the aim was to compute the increment PDF. This probability den
   \caption{Increment PDF for $\tau=1$ and Normal Distribution}
   \label{fig:incrementPdf}
 \end{figure}
-We note that on this semi-logarithmic scale the relative frequencies of the $1sec$-increments diverge clearly from the normal distribution. Extreme values for the 1s fluctuation are much more likely then a normal distribution suggests. In this case for increments of extreme values $\delta u=\pm10 m/s$ we observe a difference up to an order of magnitude $10^{17}$ between the probabilities according to Gauss and the actual relative frequencies derived from the measurement data. For small absolute values of $\delta u$ the Normal Distribution overestimates the acutal frequencies, but only to a maximal order of magnitude of $10^1$. Considering the IEC standards the assumption of a Gaussian PDF is not conservative and does not take into account the high probability of extreme fluctuations. This should be considered by industry when designing turbines regarding load analysis.
+We note that on this semi-logarithmic scale the relative frequencies of the $1sec$-increments diverge clearly from the normal distribution. Extreme values for the 1s fluctuation are much more likely then a normal distribution suggests. In this case for increments of extreme values $\delta u=\pm10 m/s$ we observe a difference up to an order of magnitude $10^{17}$ between the probabilities according to Gauss and the actual relative frequencies derived from the measurement data. For small absolute values of $\delta u$ the Normal Distribution overestimates the actual frequencies, but only to a maximal order of magnitude of $10^1$. Considering the IEC standards the assumption of a Gaussian PDF is not conservative and does not take into account the high probability of extreme fluctuations. This should be considered by industry when designing turbines regarding load analysis.
 \newpage
 \appendix
 \section{Appendix}

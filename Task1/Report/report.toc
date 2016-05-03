@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1}Importing Data into Matlab}{2}
 \contentsline {section}{\numberline {2}Marking invalid data}{2}
 \contentsline {section}{\numberline {3}Generating a continuous time axis}{3}
-\contentsline {section}{\numberline {4}Computing 10min means and standard deviation}{3}
+\contentsline {section}{\numberline {4}Computing 10min means and standard deviations}{3}
 \contentsline {section}{\numberline {5}Extreme values}{4}
-\contentsline {section}{\numberline {6}Increment PDF}{6}
-\contentsline {section}{\numberline {A}Appendix}{8}
+\contentsline {section}{\numberline {6}Increment PDF}{5}
+\contentsline {section}{\numberline {A}Appendix}{7}

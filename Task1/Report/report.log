@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  3 MAY 2016 14:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  3 MAY 2016 15:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -441,18 +441,18 @@ Package color Info: Driver file: pdftex.def on input line 130.
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 \c@lstlisting=\count115
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -558,94 +558,99 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 \openout3 = `report.toc'.
 
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 61.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 62.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 62.
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--76
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
-[2] <../Plots/mean_interval_withstd.png, id=24, 427.54932pt x 320.01157pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--77
+
+ []
+
+[2] <../Plots/mean_interval_withstd.png, id=24, 429.13927pt x 317.69891pt>
 File: ../Plots/mean_interval_withstd.png Graphic file (type png)
 
 <use ../Plots/mean_interval_withstd.png>
 Package pdftex.def Info: ../Plots/mean_interval_withstd.png used on input line 
-94.
-(pdftex.def)             Requested size: 430.00462pt x 321.86143pt.
+96.
+(pdftex.def)             Requested size: 430.00462pt x 318.3477pt.
  [3] [4 <../Plots/mean_interval_withstd.png (PNG copy)>]
 <../Plots/spikesintervall440.png, id=33, 427.54932pt x 320.01157pt>
 File: ../Plots/spikesintervall440.png Graphic file (type png)
 
 <use ../Plots/spikesintervall440.png>
-Package pdftex.def Info: ../Plots/spikesintervall440.png used on input line 109
+Package pdftex.def Info: ../Plots/spikesintervall440.png used on input line 112
 .
-(pdftex.def)             Requested size: 279.50037pt x 209.20627pt.
+(pdftex.def)             Requested size: 215.0023pt x 160.92339pt.
 
 <../Plots/spikesintervall942.png, id=34, 427.54932pt x 320.01157pt>
 File: ../Plots/spikesintervall942.png Graphic file (type png)
 
 <use ../Plots/spikesintervall942.png>
-Package pdftex.def Info: ../Plots/spikesintervall942.png used on input line 115
+Package pdftex.def Info: ../Plots/spikesintervall942.png used on input line 118
 .
-(pdftex.def)             Requested size: 279.50037pt x 209.20627pt.
- [5 <../Plots/spikesintervall440.png (PNG copy)> <../Plots/spikesintervall942.p
-ng (PNG copy)>]
-<../Plots/tau_pdf_gauss10.png, id=38, 427.54932pt x 320.01157pt>
+(pdftex.def)             Requested size: 215.0023pt x 160.92339pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 110--122
+[]$[]$ $[]$ 
+ []
+
+<../Plots/tau_pdf_gauss10.png, id=35, 427.54932pt x 320.01157pt>
 File: ../Plots/tau_pdf_gauss10.png Graphic file (type png)
 
 <use ../Plots/tau_pdf_gauss10.png>
-Package pdftex.def Info: ../Plots/tau_pdf_gauss10.png used on input line 126.
+Package pdftex.def Info: ../Plots/tau_pdf_gauss10.png used on input line 130.
 (pdftex.def)             Requested size: 430.00462pt x 321.86143pt.
- [6 <../Plots/tau_pdf_gauss10.png (PNG copy)>] [7] [8]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 216.
+ [5 <../Plots/spikesintervall440.png (PNG copy)> <../Plots/spikesintervall942.p
+ng (PNG copy)>] [6 <../Plots/tau_pdf_gauss10.png (PNG copy)>] [7]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 220.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 216.
- [9] [10]
-[11] (./report.aux) ) 
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 220.
+
+[8] [9] [10] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 6778 strings out of 493304
- 94427 string characters out of 6139871
- 328629 words of memory out of 5000000
- 10137 multiletter control sequences out of 15000+600000
- 10081 words of font info for 36 fonts, out of 8000000 for 9000
+ 6788 strings out of 493304
+ 94605 string characters out of 6139871
+ 329657 words of memory out of 5000000
+ 10146 multiletter control sequences out of 15000+600000
+ 10380 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 42i,7n,40p,894b,1876s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+ 42i,8n,40p,894b,1876s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (12 pages, 807373 bytes).
+Output written on report.pdf (11 pages, 817120 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 112 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

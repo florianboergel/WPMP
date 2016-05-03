@@ -5,10 +5,10 @@ raw_data = readtable('1301.txt','Delimiter','tab');
 time_stamp = raw_data{:, {'Time'}};
 raw_data = raw_data{:, {'d90', 'd33', 'u100', 'u90', 'u80', ...
 'u70', 'u60', 'u50', 'u40', 'u33'}};
+raw_data(raw_data==-999) = NaN;
 t = (datenum(time_stamp, 'yyyy-mm-dd HH:MM:SS'));
 clear time_stamp;
 t = round(t*24*3600);
-raw_data(raw_data==-999) = NaN;
 last_time = 31*24*3600;
 tnew=[1:1:last_time]';
 n = length(tnew);
