@@ -68,7 +68,7 @@ plot(means_interval10(start30thJan+1:start30thJan+24*6,7)+means_interval10(start
 plot(means_interval10(start30thJan+1:start30thJan+24*6,7)-means_interval10(start30thJan+1:start30thJan+24*6,8), '--b');
 xlabel('10 minutes interval count [1]');
 ylabel('windspeed in [m/s]');
-legend('Mean windspeed','Standard Deviation','Location','northwest');
+legend('mean u_{90}','mean u_{90} \pm \sigma_u','Location','northwest');
 disp('saving plot to Plots/mean_interval_withstd.png');
 print('Plots/mean_interval_withstd.png','-dpng','-r500')
 hold off;
