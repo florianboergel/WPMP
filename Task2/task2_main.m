@@ -6,25 +6,49 @@ v1=Fino1.ws90;
 d1=Fino1.wd90;
 hold on;
 figure();
-wind_rose(d1,v1);
+wind_rose(d1,v1,'labtitle','Fino 1','percBg');
 v2=Fino2.ws92;
 d2=Fino2.wd91;
 figure();
-wind_rose(d2,v2);
-hold off;
+wind_rose(d2,v2,'labtitle','Fino 2','percBg');
 
-direction = 200;
-j=0;
-speeds = zeros(length(v1),1);
+direction = 175;
+j=1;
+speeds = NaN(length(v1),1);
 for i = 1:length(v1)
-    if d1(i) >= 200 && d1(i) <210
-        speeds(j) = v1(1,i);
+    if (d1(i) >= direction && d1(i) <direction+10)
+        speeds(j,1) = v1(1,i);
         j= j+1;
     end
 end
 
-% 
-% 
+count05 = speeds(speeds >0 & speeds <=5);
+count510 = speeds(speeds >5 & speeds <=10);
+count1015 = speeds(speeds >10 & speeds <=15);
+count1520 = speeds(speeds >15 & speeds <=20);
+count2025 = speeds(speeds >20 & speeds <=25);
+count2530 = speeds(speeds >25 & speeds <=30);
+
+freq05 = length(count05)/length(speeds(~isnan(speeds)));
+freq510 = length(count510)/length(speeds(~isnan(speeds)));
+freq1015 = length(count1015)/length(speeds(~isnan(speeds)));
+freq1520 = length(count1520)/length(speeds(~isnan(speeds)));
+freq2025 = length(count2025)/length(speeds(~isnan(speeds)));
+
+%Task 2
+figure();
+histogram(v1);
+mean1 = nanmean(v1);
+dev1 = nanstd(v1);
+
+k=1;
+F = @(k) gamma(1+2/k)-gamma(1+1/k)*(dev1*dev1/mean1+1);
+x = fsolve(F,k);
+disp(x);
+
+figure();
+histogram(v2);
+
 % disp('Loading Data ...')
 % raw_data = readtable('1301.txt','Delimiter','tab');
 % time_stamp = raw_data{:, {'Time'}};
