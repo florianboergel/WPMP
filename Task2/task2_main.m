@@ -2,22 +2,23 @@
 disp('Load Data')
 load('WMP_WEnMet_data.mat');
 
-v1=Fino1.ws90;
-d1=Fino1.wd90;
+fino1_v90=Fino1.ws90;
+fino1_d90=Fino1.wd90;
 hold on;
 figure();
-wind_rose(d1,v1,'labtitle','Fino 1','percBg');
-v2=Fino2.ws92;
-d2=Fino2.wd91;
+wind_rose(fino1_d90,fino1_v90,'labtitle','Fino 1','percBg');
+fino2_v92=Fino2.ws92;
+fino2_d91=Fino2.wd91;
 figure();
-wind_rose(d2,v2,'labtitle','Fino 2','percBg');
+wind_rose(fino2_d91,fino2_v92,'labtitle','Fino 2','percBg');
 
+% Validate wind rose ...
 direction = 175;
 j=1;
-speeds = NaN(length(v1),1);
-for i = 1:length(v1)
-    if (d1(i) >= direction && d1(i) <direction+10)
-        speeds(j,1) = v1(1,i);
+speeds = NaN(length(fino1_v90),1);
+for i = 1:length(fino1_v90)
+    if (fino1_d90(i) >= direction && fino1_d90(i) <direction+10)
+        speeds(j,1) = fino1_v90(1,i);
         j= j+1;
     end
 end
@@ -37,17 +38,29 @@ freq2025 = length(count2025)/length(speeds(~isnan(speeds)));
 
 %Task 2
 figure();
-histogram(v1);
-mean1 = nanmean(v1);
-dev1 = nanstd(v1);
+histogram(fino1_v90);
+mean1 = nanmean(fino1_v90);
+dev1 = nanstd(fino1_v90);
 
 k=1;
 F = @(k) gamma(1+2/k)-gamma(1+1/k)*(dev1*dev1/mean1+1);
-x = fsolve(F,k);
-disp(x);
+k = fsolve(F,k);
+disp(k);
 
 figure();
-histogram(v2);
+histogram(fino2_v92);
+
+% Task 3
+wind_sector = [];
+j = 1
+for i = 1:length(fino1_v90)
+    if (fino1_d90(i) >= 240 && fino1_d90(i) <= 285)
+        wind_sector(j,1) = fino1_v90(1,i);
+        j= j+1;
+    end
+end
+
+wind_sector_mean = nanmean(wind_sector(:))
 
 % disp('Loading Data ...')
 % raw_data = readtable('1301.txt','Delimiter','tab');
