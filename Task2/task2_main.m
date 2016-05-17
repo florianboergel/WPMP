@@ -8,10 +8,10 @@ fino2_v92 = Fino2.ws92;
 fino2_d91 = Fino2.wd91;
 
 % Plot
-figure();
 WindRose(fino1_d90,fino1_v90,'AngleNorth',0,'AngleEast',90);
-figure();
+saveas(gcf,'figures/WindRose_Fino1.png')
 WindRose(fino2_d91,fino2_v92,'AngleNorth',0,'AngleEast',90);
+saveas(gcf,'figures/WindRose_Fino2.png')
 
 
 % Validate wind rose ...
@@ -19,10 +19,12 @@ WindRose(fino2_d91,fino2_v92,'AngleNorth',0,'AngleEast',90);
 figure();
 plot(b,a)
 title('Wind Direction density fino2')
+saveas(gcf,'figures/Validation_WindRose_Fino2.png')
 [c,d] = ksdensity(fino1_d90)
 figure();
 plot(d,c)
 title('Wind Direction density fino1')
+saveas(gcf,'figures/Validation_WindRose_Fino1.png')
 %% Task 2
 mean1 = nanmean(fino1_v90);
 dev1 = nanstd(fino1_v90);
@@ -55,6 +57,7 @@ ylabel('Probability [%]');
 title('Fino 1')
 dim = [.7 .5 .3 .3];
 annotation('textbox',dim,'String',{'k =',num2str(k_Fino1), 'A =' ,num2str(A_Fino1)},'FitBoxToText','on');
+saveas(gcf,'figures/Hist_withfit_Fino1.png')
 hold off;
 
 figure();
@@ -66,6 +69,7 @@ ylabel('Probability [%]');
 title('Fino 2')
 dim = [.7 .5 .3 .3];
 annotation('textbox',dim,'String',{'k =',num2str(k_Fino2), 'A =' ,num2str(A_Fino2)},'FitBoxToText','on');
+saveas(gcf,'figures/Hist_withfit_Fino2.png')
 hold off;
 %% Task 3
 wind_sector = [];
