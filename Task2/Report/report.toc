@@ -1,0 +1,4 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Wind roses}{3}
+\contentsline {section}{\numberline {2}Weighbull distribution}{5}
+\contentsline {section}{\numberline {3}Vertical wind profiles}{5}

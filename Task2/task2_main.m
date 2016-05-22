@@ -83,3 +83,14 @@ for i = 1:length(fino1_v90)
 end
 
 wind_sector_mean = nanmean(wind_sector(:,2))
+wind_prof = [];
+for i = 1:100
+    wind_prof(i,1) = 0.2/0.4 *(log(i/10^-6));
+    wind_prof(i,2) = wind_sector_mean*(i/90)^(0.11);
+end
+figure();
+hold on;
+plot(wind_prof(:,1),1:100)
+plot(wind_prof(:,2),1:100, 'o')
+plot(wind_sector_mean,90)
+
