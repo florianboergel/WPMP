@@ -25,6 +25,7 @@ figure();
 plot(d,c)
 title('Wind Direction density fino1')
 saveas(gcf,'figures/Validation_WindRose_Fino1.png')
+
 %% Task 2
 mean1 = nanmean(fino1_v90);
 dev1 = nanstd(fino1_v90);
@@ -71,18 +72,28 @@ dim = [.7 .5 .3 .3];
 annotation('textbox',dim,'String',{'k =',num2str(k_Fino2), 'A =' ,num2str(A_Fino2)},'FitBoxToText','on');
 saveas(gcf,'figures/Hist_withfit_Fino2.png')
 hold off;
+
 %% Task 3
 wind_sector = [];
+windsOnHeight = [];
 j = 1
 for i = 1:length(fino1_v90)
     if (fino1_d90(i) >= 240 && fino1_d90(i) <= 285)
         wind_sector(j,2) = fino1_v90(1,i);
         wind_sector(j,1) = fino1_d90(1,i);
+        windsOnHeight(j,1) = Fino1.ws33(1,i);
+        windsOnHeight(j,2) = Fino1.ws40(1,i);
+        windsOnHeight(j,3) = Fino1.ws50(1,i);
+        windsOnHeight(j,4) = Fino1.ws60(1,i);
+        windsOnHeight(j,5) = Fino1.ws70(1,i);
+        windsOnHeight(j,6) = Fino1.ws80(1,i);
+        windsOnHeight(j,7) = Fino1.ws90(1,i);
+        windsOnHeight(j,8) = Fino1.ws100(1,i);
         j= j+1;
     end
 end
 
-wind_sector_mean = nanmean(wind_sector(:,2))
+wind_sector_mean = nanmean(wind_sector(:,2));
 wind_prof = [];
 for i = 1:100
     wind_prof(i,1) = 0.2/0.4 *(log(i/10^-6));
@@ -90,7 +101,34 @@ for i = 1:100
 end
 figure();
 hold on;
-plot(wind_prof(:,1),1:100)
-plot(wind_prof(:,2),1:100, 'o')
-plot(wind_sector_mean,90)
+plot(1:100, wind_prof(:,1))
+plot(1:100,wind_prof(:,2), 'o')
+plot(90,wind_sector_mean,'*')
+xlabel('Height in [m]');
+ylabel('windspeed in [m/s]');
+title('Vertical Profile');
+
+avgPerHeight = [8];
+for i=1:8
+   avgPerHeight(i) = nanmean(windsOnHeight(:,i));
+end
+figure();
+hold on;
+plot([33,40,50,60,70,80,90,100],avgPerHeight(:), 'o')
+
+logProfileModel = @(b,z) b(1)/b(2) *(log(z/b(3)));
+empPowerModel = @(c,x) avgPerHeight(8)*((x/90).^c(1));
+opts = statset('nlinfit');
+opts.RobustWgtFun = 'bisquare';
+logProfileCoeffs = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,logProfileModel,[0.2,0.4,10^-6],opts);
+fplot(@(z) logProfileCoeffs(1)/logProfileCoeffs(2) *(log(z/logProfileCoeffs(3))));
+empPowerCoeff = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,empPowerModel,[0.11],opts);
+fplot(@(z) avgPerHeight(8)*(z/90)^(empPowerCoeff));
+
+xlabel('Height in [m]');
+ylabel('windspeed in [m/s]');
+title('Vertical Profile All Heights');
+legend('Data', 'Log Profile','Empirical Power Profile');
+saveas(gcf,'figures/verticalProfileFits.png')
+hold off;
 
