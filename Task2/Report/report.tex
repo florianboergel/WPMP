@@ -201,13 +201,49 @@ Figure \ref{fig:verticalfit} shows the result of our fitting.
 \end{figure}
 
 The figure shows the data points, calculated by the mean wind speed of the different heights and the corresponding logarithmic and empirical power law profile.
-Our results suggest, that the logarithmic profile is more accurate for the given data. The power law profile has a stronger gradient and is especially different for low wind speeds. However we cannot check which method is better for lower wind speeds. As starting values for the non-linear regression. As starting values we chose $$ and $$ for the logarithmic model and $\alpha=0.11$ for the power law model.
+Our results suggest, that the logarithmic profile is more accurate for the given data. The power law profile has a stronger gradient and is especially different for low wind speeds. While the logarithmic model fits most of the data points quite well (except $z=100m$) the power law model fits the extreme values better. In this case we would thus prefer the logarithmic model because we consider the data point at $100m$ as a non-physical measurement error (e.g. defect anemometer at that height during one winter). However we cannot check which method is better for lower wind speeds. As starting values for the non-linear regression. As starting values we chose $u_{*}=0.2$ for the friction velocity and $z_0 = 10^{-6}$ for the roughness length in the logarithmic model and $\alpha=0.11$ for the power law model according to the lecture notes recommending these values in case of water surface.
+The two regressions end with the following values:
+\begin{align*}
+&u_{*}= 0.434\\
+&z_0 = 0.0041\\
+&\alpha = 0.0682
+\end{align*}
 \newpage
+
+\section{Seasonal aspects of the vertical wind profile}
+In the extra task (3b) we were to study seasonal aspects of the vertical wind speed profile by comparing the vertical profile during summer time (May-July) with winter time (November-January). For both seasons we considered western/south-western winds again in the range of $240 - 285$ degrees. For both seasons we performed a non-linear regression again with the logarithmic model and the power law model. Results for this are depicted in Figure~\ref{fig:seasonalProfiles}.
+
+\begin{figure}[H]
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../figures/verticalProfileFitsSommer.png}
+  \caption{May-July}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../figures/verticalProfileFitsWinter.png}
+  \caption{November-January}
+\end{subfigure}
+  \caption{vertical profiles in summer and winter}
+\label{fig:seasonalProfiles}
+\end{figure}
+
+Not surprisingly the overall wind speed is higher in winter. But from this graphic the shape of the curves are very much similar with regard to the vertical profile. In order to detect differences we normalized the model curves to a wind speed of $1$ at height $z=90$. By doing so we can state that the vertical wind speed profile during summer is clearly steeper (red dashed curve in Figure~\ref{fig:verticalProfComp}) than in winter (blue dashed curve) regarding the logarithmic regression model. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/verticalProfilesComparison.png}
+\caption{Vertical profile fits}
+\label{fig:verticalProfComp}
+\end{figure}
+
+This means that the wind shear in summer time is lower compared to the wind shear in winter. In the empirical power law model this difference does not hold (the curves for summer and winter are identical). However, as stated previously we consider the logarithmic model to be more accurate and reason that the seasonal variation in vertical wind shear is due to more turbulent and overall higher winds with higher waves in winter while summer sees more steady and constant wind.
+We can make this observation even more obvious by looking at the final values of the variables in the logarithmic regression model. In summer the regression ends with values of $v_{*}=0.2906$ and $z_0=0.0007$ while in winter we obtain $v_{*}=0.5338$ and $z_0=0.0029$. Thus the friction velocity and the surface roughness are almost doubled in winter which accounts for the higher vertical wind shear.
+
 \appendix
 \section{Appendix}
 \subsection{Task 1}
 \begin{figure}[htb!]
-
 \begin{subfigure}{0.5\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/WindRose_Fino2.png}

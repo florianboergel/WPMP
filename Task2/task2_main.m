@@ -251,7 +251,6 @@ empPowerCoeffWin = nlinfit([33,40,50,60,70,80,90,100],avgPerHeightWinter,empPowe
 [xPowWin,yPowWin]=fplot(@(z) avgPerHeightWinter(8)*(z/90)^(empPowerCoeffWin),[0 100]);
 plot(yPowWin,xPowWin,'Color','r');
 
-
 ylabel('Height in [m]');
 xlabel('windspeed in [m/s]');
 title('Vertical Profile November-January');
