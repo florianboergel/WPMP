@@ -49,6 +49,31 @@ A_Fino2 = mean2/gamma(1+1/k_Fino2);
 weibull_Fino2 = wblpdf(1:30,A_Fino2,k_Fino2);
 
 
+x_vestas = (0:25)';
+y_vestas = [0, 0,0,0,91,200,362,588,889,1255,1604,1769,1798,1800,1800,1800,1800,1800,1800,1800,1800,1800,1800,1800,1800,1800]';
+
+x_enercon = (0:25)';
+y_enercon = [0,0,3,25,82,174,321,532,815,1180,1580,1900,2200,2400,2480,2700,2850,2950,3020,3020,3020,3020,3020,3020,3020,3020]';
+
+for i = 1:25
+    fino1_vestasyield(i,1) = y_vestas(i)*weibull_Fino1(i);
+    fino2_vestasyield(i,1) = y_vestas(i)*weibull_Fino2(i);
+    fino1_enerconyield(i,1) = y_enercon(i)*weibull_Fino1(i);
+    fino2_enerconyield(i,1) = y_enercon(i)*weibull_Fino2(i);
+end
+
+if sum(fino1_vestasyield) > sum(fino2_vestasyield)
+    disp('Fino 1 besser, vestas')
+else
+    disp('Fino 2 besser, vestas')
+end
+
+if sum(fino1_enerconyield) > sum(fino2_enerconyield)
+    disp('Fino 1 besser, enercon')
+else
+    disp('Fino 2 besser, enercon')
+end
+ 
 figure();
 hold on;
 histogram(fino1_v90, 'Normalization', 'pdf');
