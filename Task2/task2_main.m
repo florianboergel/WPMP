@@ -132,3 +132,5 @@ legend('Data', 'Log Profile','Empirical Power Profile');
 saveas(gcf,'figures/verticalProfileFits.png')
 hold off;
 
+%% ExtraTask 3(b)
+
