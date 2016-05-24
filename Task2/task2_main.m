@@ -141,12 +141,12 @@ figure();
 hold on;
 plot(avgPerHeight(:),[33,40,50,60,70,80,90,100], 'o')
 
-logProfileModel = @(b,z) b(1)/b(2) *(log(z/b(3)));
+logProfileModel = @(b,z) b(1)/0.4 *(log(z/b(2)));
 empPowerModel = @(c,x) avgPerHeight(8)*((x/90).^c(1));
 opts = statset('nlinfit');
 opts.RobustWgtFun = 'bisquare';
-logProfileCoeffs = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,logProfileModel,[0.2,0.4,10^-6],opts);
-[x,y]=fplot(@(z) logProfileCoeffs(1)/logProfileCoeffs(2) *(log(z/logProfileCoeffs(3))),[0 100]);
+logProfileCoeffs = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,logProfileModel,[0.2,10^-6],opts);
+[x,y]=fplot(@(z) logProfileCoeffs(1)/0.4 *(log(z/logProfileCoeffs(2))),[0 100]);
 plot(y,x,'Color','b');
 empPowerCoeff = real(nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,empPowerModel,[0.11],opts));
 [x,y]=fplot(@(z) avgPerHeight(8)*(z/90)^(empPowerCoeff),[0 100]);
@@ -213,12 +213,12 @@ figure();
 hold on;
 plot(avgPerHeightSommer(:),[33,40,50,60,70,80,90,100], 'o')
 
-logProfileModel = @(b,z) b(1)/b(2) *(log(z/b(3)));
+logProfileModel = @(b,z) b(1)/0.4 *(log(z/b(2)));
 empPowerModel = @(c,z) avgPerHeightSommer(8)*((z/90).^c(1));
 opts = statset('nlinfit');
 opts.RobustWgtFun = 'bisquare';
-logProfileCoeffsSom = nlinfit([33,40,50,60,70,80,90,100],avgPerHeightSommer,logProfileModel,[0.2,0.4,10^-6],opts);
-[xLogSom,yLogSom]=fplot(@(z) logProfileCoeffsSom(1)/logProfileCoeffsSom(2) *(log(z/logProfileCoeffsSom(3))),[0 100]);
+logProfileCoeffsSom = nlinfit([33,40,50,60,70,80,90,100],avgPerHeightSommer,logProfileModel,[0.2,10^-6],opts);
+[xLogSom,yLogSom]=fplot(@(z) logProfileCoeffsSom(1)/0.4 *(log(z/logProfileCoeffsSom(2))),[0 100]);
 plot(yLogSom,xLogSom,'Color','b');
 empPowerCoeffSom = nlinfit([33,40,50,60,70,80,90,100],avgPerHeightSommer,empPowerModel,[0.11],opts);
 [xPowSom,yPowSom]=fplot(@(z) avgPerHeightSommer(8)*(z/90)^(empPowerCoeffSom),[0 100]);
@@ -240,12 +240,12 @@ figure();
 hold on;
 plot(avgPerHeightWinter(:),[33,40,50,60,70,80,90,100], 'o')
 
-logProfileModelWin = @(b,z) b(1)/b(2) *(log(z/b(3)));
+logProfileModelWin = @(b,z) b(1)/0.4 *(log(z/b(2)));
 empPowerModelWin = @(c,z) avgPerHeightWinter(8)*((z/90).^c(1));
 opts = statset('nlinfit');
 opts.RobustWgtFun = 'bisquare';
-logProfileCoeffsWin = real(nlinfit([33,40,50,60,70,80,90,100],avgPerHeightWinter,logProfileModelWin,[0.1,0.4,10^-5],opts));
-[xLogWin,yLogWin]=fplot(@(z) logProfileCoeffsWin(1)/logProfileCoeffsWin(2) *(log(z/logProfileCoeffsWin(3))),[0 100]);
+logProfileCoeffsWin = real(nlinfit([33,40,50,60,70,80,90,100],avgPerHeightWinter,logProfileModelWin,[0.1,10^-5],opts));
+[xLogWin,yLogWin]=fplot(@(z) logProfileCoeffsWin(1)/0.4 *(log(z/logProfileCoeffsWin(2))),[0 100]);
 plot(yLogWin,xLogWin,'Color','b');
 empPowerCoeffWin = nlinfit([33,40,50,60,70,80,90,100],avgPerHeightWinter,empPowerModelWin,0.063,opts);
 [xPowWin,yPowWin]=fplot(@(z) avgPerHeightWinter(8)*(z/90)^(empPowerCoeffWin),[0 100]);
