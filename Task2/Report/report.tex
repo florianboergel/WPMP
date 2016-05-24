@@ -1,4 +1,5 @@
 \documentclass[10pt]{article}
+\usepackage{float}
 \usepackage{amsmath}
 \usepackage{paralist}
 \usepackage{setspace}
@@ -74,12 +75,12 @@ Before we started to analyze our plots we double checked our wind roses by using
 
 \begin{figure}[htb!]
 
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.42\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/WindRose_Fino1.png}
   \caption{Wind rose of FINO 1}
 \end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\begin{subfigure}{0.58\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/Validation_WindRose_Fino1.png}
   \caption{pdf plot FINO 1}
@@ -106,8 +107,24 @@ After validating our results we now can compare the two windroses. See Figure~\r
 \caption{Conparison of windroses}
   \label{fig:Windroses}
 \end{figure}
-We observe that most of the the measured wind directions at FINO 1 are of south-western direction. For FINO 2, located in the baltic sea, the the wind is less distributed and has almost exclusively western and eastern directions. The difference in wind directions might be due to different pressure fields in the north sea and Baltic sea. Both met mast are located in the Northern Hemisphere. That means high pressure fields rotate clockwise and low pressure fields anti-clockwise. The wind directions are influenced by the isobars of the different pressure fields. Keeping this information in mind and looking at the content provided during the lecture (see. fig warm air advection), we can would the expect that the wind directions in the north sea have a south-west component. This coincides with our measured data. For FINO 2 we'd expect more or less only west and east components. This statement holds also for our measured data.
-Both measurement systems are located in the open sea, so in general there are no obstacles that can create additional turbulence. However the construction of wind farms may influence the measurement.
+We observe that most of the the measured wind directions at FINO 1 are of south-western direction. For FINO 2, located in the baltic sea, the the wind is less distributed and has almost exclusively western and eastern directions. The difference in wind directions might be due to different pressure fields in the north sea and Baltic sea. Both met mast are located in the Northern Hemisphere. That means high pressure fields rotate clockwise and low pressure fields anti-clockwise. The wind directions are influenced by the isobars of the different pressure fields. Keeping this information in mind and looking at the content provided during the lecture (see. fig warm air advection) the measured wind directions have two components. First the large scale wind movements are responsible for the south-western measured by FINO 1 and respectively western direction for FINO 2. The strong fluctuation in the lower wind speeds is due to the movement of the different pressure fields. Most of the time we have a high pressure field in the baltic sea which might explain the additional components measured in eastern direction. For the north sea we observe an additional south western component. (see Figure \ref{fig:weatherpattern})\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{../figures/warm_air_advection.png}
+\caption{Typical weather pattern over Europe}
+\label{fig:weatherpattern}
+\end{figure}
+
+Both measurement systems are located in the open sea, so in general there are no obstacles that can create additional turbulence. However the construction of wind farms may influence the measurement. This holds especially for FINO 1 which is nearly surrounded by wind farms. (see Figure \ref{fig:fino1})\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{../figures/fino1.png}
+\caption{Location of FINO 1}
+\label{fig:fino1}
+\end{figure} 
+ 
 \newpage
 \section{Weighbull distribution}
 In Task 2 we created histograms at around $90m$ height. Next we we calculated the weibull parameters, with the mean and standard deviation of the measured wind speeds. For the further calculation we used the equations provided during the lecture. We implemented the functions in Matlab and solved for the weibull parameters A and k. With the calculated parameters we created our weibull distribution.
@@ -142,7 +159,7 @@ Figure shows the histogram for Fino 1 and Fino 2 with the corresponding weibull 
 
 \begin{subfigure}{0.5\textwidth}
   \centering
-  \includegraphics[width=1\linewidth]{../figures/Hist_withfit_Fino1.png}
+  \includegraphics[width=0.8\linewidth]{../figures/Hist_withfit_Fino1.png}
   \caption{Histogram with weibull fit FINO 1}
   \label{fig:Windrose_Fino1}
 \end{subfigure}
@@ -155,8 +172,52 @@ Figure shows the histogram for Fino 1 and Fino 2 with the corresponding weibull 
 \label{fig:WindRose1_valdidation}
 \end{figure}
 In order to evaluate which region is more favourable for wind power utilization, we implemented two wind turbine power curves and calculated the energy yield.
-The location of FINO 2 seems to be better for wind power utilization. This goes in hand with our first impression, because the curve of FINO 1 is more located at the left hand side.
-
+The location of FINO 2 seems to be better for wind power utilization. This goes in hand with our first impression, because the curve of FINO 1 is more located at the left hand side. However there are some concerns: The measured data might be influenced by the surrounding wind farms. The wind speeds might be higher. In addition we only evaluated one height. We have not included measurements at different heights. We just assume that we have a proportional wind speed distribution for all heights.  
+\newpage
 \section{Vertical wind profiles}
+In the following task we calculated the vertical wind profile for the wind sector in range of 240 - 285 degrees. In the lecture we discussed two common methods for the vertical wind profile: the empirical power profile and the logarithmic wind speed profile. We were asked to fit these methods to our data. The following code snippet shows how we implemented the fitting routine in Matlab:
 
+\begin{lstlisting}
+logProfileModel = @(b,z) b(1)/b(2) *(log(z/b(3)));
+empPowerModel = @(c,x) avgPerHeight(8)*((x/90).^c(1));
+opts = statset('nlinfit');
+opts.RobustWgtFun = 'bisquare';
+logProfileCoeffs = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,logProfileModel,[0.2,0.4,10^-6],opts);
+[x,y]=fplot(@(z) logProfileCoeffs(1)/logProfileCoeffs(2) *(log(z/logProfileCoeffs(3))),[0 100]);
+plot(y,x,'Color','b');
+empPowerCoeff = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,empPowerModel,[0.11],opts);
+[x,y]=fplot(@(z) avgPerHeight(8)*(z/90)^(empPowerCoeff),[0 100]);
+plot(y,x,'Color','r');
+\end{lstlisting}
+
+Figure \ref{fig:verticalfit} shows the result of our fitting.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{../figures/verticalProfileFits.png}
+\caption{Vertical profile fits}
+\label{fig:verticalfit}
+\end{figure}
+
+The figure shows the data points, calculated by the mean wind speed of the different heights and the corresponding logarithmic and empirical power profile.
+Our results suggest, that the logarithmic profile is more accurate for the given data. The empiric profile has a stronger gradient and is especially different for low wind speeds. However we cannot check which method is better for lower wind speeds.
+\newpage
+\appendix
+\section{Appendix}
+\subsection{Task 1}
+\begin{figure}[htb!]
+
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../figures/WindRose_Fino2.png}
+  \caption{Wind rose of FINO 2}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../figures/Validation_WindRose_Fino2.png}
+  \caption{pdf plot FINO 2}
+\end{subfigure}
+  \caption{Validation of Wind Rose 2}
+\label{fig:WindroseValidation}
+\end{figure}
 \end{document}
