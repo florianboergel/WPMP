@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  24 MAY 2016 16:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  24 MAY 2016 21:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -678,38 +678,37 @@ been already used, duplicate ignored
                    \relax 
 l.58 \newpage
               [1]
-Overfull \hbox (34.16756pt too wide) in paragraph at lines 60--65
-\OT1/cmr/m/n/10 33\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 40\OML/cmm/m/it/10 m; \OT
-1/cmr/m/n/10 50\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 60\OML/cmm/m/it/10 m; \OT1/c
-mr/m/n/10 70\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 80\OML/cmm/m/it/10 m; \OT1/cmr/
-m/n/10 90\OML/cmm/m/it/10 m$ \OT1/cmr/m/n/10 and eight anemome-ters at heights 
-$33\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 40\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 50
-\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 60\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 70\OM
-L/cmm/m/it/10 m; \OT1/cmr/m/n/10 80\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 90\OML/c
-mm/m/it/10 m$
+Overfull \hbox (24.44072pt too wide) in paragraph at lines 60--64
+\OT1/cmr/m/n/10 heights $31\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 51\OML/cmm/m/it/
+10 m; \OT1/cmr/m/n/10 71\OML/cmm/m/it/10 m$ \OT1/cmr/m/n/10 and $91\OML/cmm/m/i
+t/10 m$ \OT1/cmr/m/n/10 with anemome-ters at heights $32\OML/cmm/m/it/10 m; \OT
+1/cmr/m/n/10 42\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 52\OML/cmm/m/it/10 m; \OT1/c
+mr/m/n/10 62\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 72\OML/cmm/m/it/10 m; \OT1/cmr/
+m/n/10 82\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 92\OML/cmm/m/it/10 m; \OT1/cmr/m/n
+/10 102\OML/cmm/m/it/10 m$\OT1/cmr/m/n/10 . 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 69--72
+Underfull \hbox (badness 10000) in paragraph at lines 68--71
 
  []
 
-<../figures/WindRose_Fino1.png, id=57, 542.025pt x 542.025pt>
+<../figures/WindRose_Fino1.png, id=62, 542.025pt x 542.025pt>
 File: ../figures/WindRose_Fino1.png Graphic file (type png)
 
 <use ../figures/WindRose_Fino1.png>
-Package pdftex.def Info: ../figures/WindRose_Fino1.png used on input line 82.
+Package pdftex.def Info: ../figures/WindRose_Fino1.png used on input line 81.
 (pdftex.def)             Requested size: 180.60115pt x 180.59735pt.
 
-<../figures/Validation_WindRose_Fino1.png, id=58, 421.575pt x 316.0608pt>
+<../figures/Validation_WindRose_Fino1.png, id=63, 427.3566pt x 319.9152pt>
 File: ../figures/Validation_WindRose_Fino1.png Graphic file (type png)
 
 <use ../figures/Validation_WindRose_Fino1.png>
 Package pdftex.def Info: ../figures/Validation_WindRose_Fino1.png used on input
- line 87.
-(pdftex.def)             Requested size: 249.40346pt x 186.98546pt.
+ line 86.
+(pdftex.def)             Requested size: 249.40346pt x 186.70297pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 80--90
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 79--89
 []$[]$ $[]$ 
  []
 
@@ -717,165 +716,193 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 80--90
 ino1.png (PNG copy)>]
 File: ../figures/WindRose_Fino1.png Graphic file (type png)
  <use ../figures/WindRose_Fino1.png>
-Package pdftex.def Info: ../figures/WindRose_Fino1.png used on input line 101.
+Package pdftex.def Info: ../figures/WindRose_Fino1.png used on input line 100.
 (pdftex.def)             Requested size: 215.0023pt x 215.00316pt.
 
-<../figures/WindRose_Fino2.png, id=70, 542.025pt x 542.025pt>
+<../figures/WindRose_Fino2.png, id=75, 542.025pt x 542.025pt>
 File: ../figures/WindRose_Fino2.png Graphic file (type png)
 
 <use ../figures/WindRose_Fino2.png>
-Package pdftex.def Info: ../figures/WindRose_Fino2.png used on input line 106.
+Package pdftex.def Info: ../figures/WindRose_Fino2.png used on input line 105.
 (pdftex.def)             Requested size: 215.0023pt x 215.00316pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 99--109
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 98--108
 []$[]$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
-<../figures/warm_air_advection.png, id=72, 903.375pt x 642.4pt>
+<../figures/warm_air_advection.png, id=77, 903.375pt x 642.4pt>
 File: ../figures/warm_air_advection.png Graphic file (type png)
 
 <use ../figures/warm_air_advection.png>
 Package pdftex.def Info: ../figures/warm_air_advection.png used on input line 1
-16.
+15.
 (pdftex.def)             Requested size: 215.0023pt x 152.88525pt.
  [4 <../figures/WindRose_Fino2.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
-<../figures/fino1.png, id=81, 1927.2pt x 1084.05pt>
+<../figures/fino1.png, id=86, 1927.2pt x 1084.05pt>
 File: ../figures/fino1.png Graphic file (type png)
  <use ../figures/fino1.png>
-Package pdftex.def Info: ../figures/fino1.png used on input line 125.
+Package pdftex.def Info: ../figures/fino1.png used on input line 124.
 (pdftex.def)             Requested size: 215.0023pt x 120.93307pt.
 
 [5 <../figures/warm_air_advection.png> <../figures/fino1.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 145.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 157.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
-
-<../figures/Hist_withfit_Fino1.png, id=89, 421.575pt x 316.0608pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 157.
+ [6]
+<../figures/Hist_withfit_Fino1.png, id=123, 427.3566pt x 319.9152pt>
 File: ../figures/Hist_withfit_Fino1.png Graphic file (type png)
 
 <use ../figures/Hist_withfit_Fino1.png>
 Package pdftex.def Info: ../figures/Hist_withfit_Fino1.png used on input line 1
-63.
-(pdftex.def)             Requested size: 215.0023pt x 161.1937pt.
+75.
+(pdftex.def)             Requested size: 215.0023pt x 160.95303pt.
 
-<../figures/Hist_withfit_Fino2.png, id=90, 427.3566pt x 319.9152pt>
+<../figures/Hist_withfit_Fino2.png, id=124, 427.3566pt x 319.9152pt>
 File: ../figures/Hist_withfit_Fino2.png Graphic file (type png)
 
 <use ../figures/Hist_withfit_Fino2.png>
 Package pdftex.def Info: ../figures/Hist_withfit_Fino2.png used on input line 1
-68.
+80.
 (pdftex.def)             Requested size: 215.0023pt x 160.95303pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 161--171
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 173--183
 []$[]$ $[]$ 
  []
 
-[6] [7 <../figures/Hist_withfit_Fino1.png (PNG copy)> <../figures/Hist_withfit_
-Fino2.png (PNG copy)>]
-<../figures/verticalProfileFits.png, id=125, 421.575pt x 316.0608pt>
+[7 <../figures/Hist_withfit_Fino1.png (PNG copy)> <../figures/Hist_withfit_Fino
+2.png (PNG copy)>]
+<../figures/verticalProfileFits.png, id=134, 421.575pt x 316.0608pt>
 File: ../figures/verticalProfileFits.png Graphic file (type png)
 
 <use ../figures/verticalProfileFits.png>
 Package pdftex.def Info: ../figures/verticalProfileFits.png used on input line 
-198.
+210.
 (pdftex.def)             Requested size: 301.00192pt x 225.66827pt.
  [8 <../figures/verticalProfileFits.png (PNG copy)>] [9]
-<../figures/verticalProfileFitsSommer.png, id=151, 427.3566pt x 319.9152pt>
+<../figures/verticalProfileFitsSommer.png, id=158, 421.575pt x 316.0608pt>
 File: ../figures/verticalProfileFitsSommer.png Graphic file (type png)
 
 <use ../figures/verticalProfileFitsSommer.png>
 Package pdftex.def Info: ../figures/verticalProfileFitsSommer.png used on input
- line 219.
-(pdftex.def)             Requested size: 215.0023pt x 160.95303pt.
+ line 231.
+(pdftex.def)             Requested size: 215.0023pt x 161.1937pt.
 
-<../figures/verticalProfileFitsWinter.png, id=152, 427.3566pt x 319.9152pt>
+<../figures/verticalProfileFitsWinter.png, id=159, 421.575pt x 316.0608pt>
 File: ../figures/verticalProfileFitsWinter.png Graphic file (type png)
 
 <use ../figures/verticalProfileFitsWinter.png>
 Package pdftex.def Info: ../figures/verticalProfileFitsWinter.png used on input
- line 224.
-(pdftex.def)             Requested size: 215.0023pt x 160.95303pt.
+ line 236.
+(pdftex.def)             Requested size: 215.0023pt x 161.1937pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 217--227
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 229--239
 []$[]$ $[]$ 
  []
 
-<../figures/verticalProfilesComparison.png, id=154, 421.575pt x 316.0608pt>
+<../figures/verticalProfilesComparison.png, id=161, 427.3566pt x 319.9152pt>
 File: ../figures/verticalProfilesComparison.png Graphic file (type png)
 
 <use ../figures/verticalProfilesComparison.png>
 Package pdftex.def Info: ../figures/verticalProfilesComparison.png used on inpu
-t line 235.
-(pdftex.def)             Requested size: 301.00192pt x 225.66827pt.
+t line 247.
+(pdftex.def)             Requested size: 301.00192pt x 225.33034pt.
  [10 <../figures/verticalProfileFitsSommer.png (PNG copy)> <../figures/vertical
 ProfileFitsWinter.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 252--254
+
+ []
+
+[11 <../figures/verticalProfilesComparison.png (PNG copy)>]
 File: ../figures/WindRose_Fino2.png Graphic file (type png)
- <use ../figures/WindRose_Fino2.png>
-Package pdftex.def Info: ../figures/WindRose_Fino2.png used on input line 246.
+
+<use ../figures/WindRose_Fino2.png>
+Package pdftex.def Info: ../figures/WindRose_Fino2.png used on input line 263.
 (pdftex.def)             Requested size: 215.0023pt x 215.00316pt.
 
-<../figures/Validation_WindRose_Fino2.png, id=161, 427.3566pt x 319.9152pt>
+<../figures/Validation_WindRose_Fino2.png, id=172, 427.3566pt x 319.9152pt>
 File: ../figures/Validation_WindRose_Fino2.png Graphic file (type png)
 
 <use ../figures/Validation_WindRose_Fino2.png>
 Package pdftex.def Info: ../figures/Validation_WindRose_Fino2.png used on input
- line 251.
+ line 268.
 (pdftex.def)             Requested size: 215.0023pt x 160.95303pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 244--254
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 261--271
 []$[]$ $[]$ 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 257.
-[11 <../figures/verticalProfilesComparison.png (PNG copy)>] [12 <../figures/Val
-idation_WindRose_Fino2.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 257.
+[12 <../figures/Validation_WindRose_Fino2.png (PNG copy)>]
+Overfull \hbox (161.20802pt too wide) in paragraph at lines 329--331
+[][] 
+ []
+
+
+Overfull \hbox (181.60847pt too wide) in paragraph at lines 332--334
+[][] 
+ []
+
+[13]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 341.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 341.
+ [14] [15]
+[16] [17] [18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 563.
+ [19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 563.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 257.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 257.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 563.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 563.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 84BFB4F7DD3145B7A9A553FA660408D4;337.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 257.
+(rerunfilecheck)             Checksum: C4C342CF192EA118D25EA3B7A0D799F2;391.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 563.
  ) 
 Here is how much of TeX's memory you used:
- 10371 strings out of 493304
- 149934 string characters out of 6139871
- 314315 words of memory out of 5000000
- 13633 multiletter control sequences out of 15000+600000
+ 10747 strings out of 493304
+ 155662 string characters out of 6139871
+ 481315 words of memory out of 5000000
+ 13713 multiletter control sequences out of 15000+600000
  10341 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 42i,9n,40p,1130b,1699s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,12n,40p,1127b,1857s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (13 pages, 1785477 bytes).
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (20 pages, 1847980 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 189 compressed objects within 2 object streams
- 65 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 627 PDF objects out of 1000 (max. 8388607)
+ 569 compressed objects within 6 object streams
+ 358 named destinations out of 1000 (max. 500000)
+ 117 words of extra memory for PDF output out of 10000 (max. 10000000)
 
