@@ -60,36 +60,36 @@ For the comparison, data from the met masts FINO 1, located in the north sea, an
 The FINO 1 data includes wind vanes at heights of $33m, 40m, 50m, 60m, 70m, 80m, 90m$ and eight anemometers at heights $33m, 40m, 50m, 60m, 70m, 80m, 90m$ and $100m$.
 The given data of FINO 2 contains 4 wind vanes at heights $31m, 51m, 71m$ and $91m$ with anemometers at heights $32m, 42m, 52m, 62m, 72m, 82m, 92m, 102m$.
 
-The given time period of ten minutes intervals is of 5 years, starting at 01.01.2010. The following tasks deal with wind roses, Weighbull distributions and vertical wind profile fitting.
+The given time period of ten minutes intervals is of 5 years, starting at 01.01.2010. The following tasks deal with wind roses, Weibull distributions and vertical wind profile fitting.
 \newpage
 \section{Wind roses}
-In this task, we were asked to create wind roses for FINO 1 and FINO 2 at around 90m height. We
-used a already existing routine to create wind roses. (routine used: see ...).
+In this task, we were asked to create wind roses for FINO 1 and FINO 2 at around $90m$ height. We
+used a already existing routine to create wind roses (Windrose.m by Daniel Pereira).
 In order to obtain correct wind directions we used the following plot routine:\\
 \begin{lstlisting}
 WindRose(fino1_d90,fino1_v90,'AngleNorth',0,'AngleEast',90);
 \end{lstlisting}
-By using the optional arguments $AngleNorth$ and $AngleEast$ we made sure that our axes are initialized correctly.
-Before we started to analyse our plots we double checked our wind roses by using a pdf-plot of our wind directions. See \ref{fig:WindRose1_valdidation}.
+By using the optional arguments $AngleNorth$ and $AngleEast$ we made sure that the axes are initialized correctly.
+Before we started to analyze our plots we double checked our wind roses by using a pdf-plot of the wind directions. See Figure~\ref{fig:WindroseValidation}.
 
 \begin{figure}[htb!]
-\label{fig:WindRose1_valdidation}
+
 \begin{subfigure}{0.5\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/WindRose_Fino1.png}
   \caption{Wind rose of FINO 1}
-  \label{fig:Windrose_Fino1}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/Validation_WindRose_Fino1.png}
   \caption{pdf plot FINO 1}
-    \label{fig:Windrose_Fino2}
 \end{subfigure}
+  \caption{Validation of Wind Rose}
+\label{fig:WindroseValidation}
 \end{figure}
 \newpage
 The pdf plot confirms that most of the wind is coming from south-west direction. This is identical with our FINO 1 wind rose. The same approach was used to confirm the wind rose created from FINO 2. (see Appendix)
-After validating our results we now can compare the two windroses. See 
+After validating our results we now can compare the two windroses. See Figure~\ref{fig:Windroses}.
 
 \begin{figure}[htb!]
 \label{fig:WindRose1_valdidation}
@@ -97,14 +97,14 @@ After validating our results we now can compare the two windroses. See
   \centering
   \includegraphics[width=1\linewidth]{../figures/WindRose_Fino1.png}
   \caption{Wind rose of FINO 1}
-  \label{fig:Windrose_Fino1}
 \end{subfigure}
 \begin{subfigure}{0.5\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/WindRose_Fino2.png}
   \caption{Wind rose of FINO 2}
-    \label{fig:Windrose_Fino2}
 \end{subfigure}
+\caption{Conparison of windroses}
+  \label{fig:Windroses}
 \end{figure}
 We observe that most of the the measured wind directions at FINO 1 are of south-western direction. For FINO 2, located in the baltic sea, the the wind is less distributed and has almost exclusively western and eastern directions. The difference in wind directions might be due to different pressure fields in the north sea and Baltic sea. Both met mast are located in the Northern Hemisphere. That means high pressure fields rotate clockwise and low pressure fields anti-clockwise. The wind directions are influenced by the isobars of the different pressure fields. Keeping this information in mind and looking at the content provided during the lecture (see. fig warm air advection), we can would the expect that the wind directions in the north sea have a south-west component. This coincides with our measured data. For FINO 2 we'd expect more or less only west and east components. This statement holds also for our measured data.
 Both measurement systems are located in the open sea, so in general there are no obstacles that can create additional turbulence. However the construction of wind farms may influence the measurement.
@@ -139,7 +139,7 @@ weibull_Fino2 = wblpdf(1:30,A_Fino2,k_Fino2);
 
 Figure shows the histogram for Fino 1 and Fino 2 with the corresponding weibull fit.
 \begin{figure}[htb!]
-\label{fig:WindRose1_valdidation}
+
 \begin{subfigure}{0.5\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/Hist_withfit_Fino1.png}
@@ -152,6 +152,7 @@ Figure shows the histogram for Fino 1 and Fino 2 with the corresponding weibull 
   \caption{Histogram with weibull fit FINO 2}
     \label{fig:Windrose_Fino2}
 \end{subfigure}
+\label{fig:WindRose1_valdidation}
 \end{figure}
 In order to evaluate which region is more favourable for wind power utilization, we implemented two wind turbine power curves and calculated the energy yield.
 The location of FINO 2 seems to be better for wind power utilization. This goes in hand with our first impression, because the curve of FINO 1 is more located at the left hand side.
