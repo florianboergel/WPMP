@@ -1,0 +1,34 @@
+% Page Layout
+\documentclass[12pt,t]{beamer}
+\usepackage{etex} % Avoid an error due to a lack of registers
+\usepackage[english]{babel} % Defines the language of macros as well
+\include{layout}
+
+
+\title[ShortTitle]{LongTitle}
+\author[ShortAuthor]{LongAuthor}
+\date{\today}
+\semester{Semester 20XX}
+\institute{Universität Oldenburg}
+
+\begin{document}
+
+\frame{\titlepage}
+\frame{\frametitle{Gliederung}\tableofcontents}
+
+%%%%%%%%%%%% Start of content %%%%%%%%%%%% 
+
+\begin{frame}
+	\frametitle{Title}
+		\Fat{Subtitle}
+\end{frame}
+
+%%%%%%%%%%%% End of content %%%%%%%%%%%%
+
+\input{end.tex}
+
+%%%%%%%%%%%% Start of appendix %%%%%%%%%%%% 
+
+%%%%%%%%%%%% End of appendix %%%%%%%%%%%%
+
+\end{document}
