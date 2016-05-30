@@ -1,0 +1,11 @@
+\frametitle{Wind Rose implementation}
+\begin{lstlisting}
+WindRose(fino1_d90,fino1_v90, ...
+'AngleNorth',0,'AngleEast',90);
+\end{lstlisting}
+\begin{figure}
+\centering
+\includegraphics[width=0.3\linewidth]{../../figures/WindRose_Fino1.png}
+\caption{Wind Rose of FINO 1}
+\end{figure}
+
