@@ -1,11 +1,6 @@
-\frametitle{Wind Rose implementation}
-\begin{lstlisting}
-WindRose(fino1_d90,fino1_v90, ...
-'AngleNorth',0,'AngleEast',90);
-\end{lstlisting}
-\begin{figure}
+\frametitle{Comparison of regression models}
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.3\linewidth]{../../figures/WindRose_Fino1.png}
-\caption{Wind Rose of FINO 1}
+\includegraphics[width=0.8\linewidth]{../../figures/verticalProfilesComparison.png}
+\label{fig:weatherpattern}
 \end{figure}
-

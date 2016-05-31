@@ -8,9 +8,9 @@ fino2_v92 = Fino2.ws92;
 fino2_d91 = Fino2.wd91;
 
 % Plot
-WindRose(fino1_d90,fino1_v90,'AngleNorth',0,'AngleEast',90);
+WindRose(fino1_d90,fino1_v90,'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
 saveas(gcf,'figures/WindRose_Fino1.png')
-WindRose(fino2_d91,fino2_v92,'AngleNorth',0,'AngleEast',90);
+WindRose(fino2_d91,fino2_v92,'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
 saveas(gcf,'figures/WindRose_Fino2.png')
 
 
@@ -61,6 +61,11 @@ for i = 1:25
     fino1_enerconyield(i,1) = y_enercon(i)*weibull_Fino1(i);
     fino2_enerconyield(i,1) = y_enercon(i)*weibull_Fino2(i);
 end
+
+AEPFino1Vestas = sum(fino1_vestasyield) *5*365.25*24;
+AEPFino2Vestas = sum(fino2_vestasyield)*5*365.25*24;
+AEPFino1Enercon = sum(fino1_enerconyield)*5*365.25*24;
+AEPFino2Enercon = sum(fino2_enerconyield)*5*365.25*24;
 
 if sum(fino1_vestasyield) > sum(fino2_vestasyield)
     disp('Fino 1 besser, vestas')

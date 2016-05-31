@@ -1,4 +1,5 @@
-\beamer@endinputifotherversion {3.36pt}
+\beamer@endinputifotherversion {3.24pt}
 \select@language {english}
 \beamer@sectionintoc {1}{Wind Roses}{3}{0}{1}
 \beamer@sectionintoc {2}{Weibull distribution}{11}{0}{2}
+\beamer@sectionintoc {3}{Vertical wind speed profile}{14}{0}{3}

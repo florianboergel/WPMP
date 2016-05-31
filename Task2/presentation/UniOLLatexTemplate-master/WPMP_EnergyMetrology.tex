@@ -9,10 +9,9 @@
 \usepackage{graphicx}
 \include{layout}
 
-
 \title[WPMP - Energy Meteorology]{WPMP - Energy Meteorology}
 \author[Jan \& Florian]{Jan Kämper \& Florian Börgel}
-\date{\today}
+\date{01.06.2016}
 \semester{Semester 2016}
 \institute{Universität Oldenburg}
 
@@ -24,7 +23,7 @@
 
 \lstset{ %
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  basicstyle=\tiny,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
@@ -52,7 +51,7 @@
 
 
 \frame{\titlepage}
-\frame{\frametitle{Gliederung}\tableofcontents}
+\frame{\frametitle{Table of Contents}\tableofcontents}
 
 \AtBeginSection[]{
 	\frame{
@@ -66,13 +65,11 @@
 \begin{frame}[fragile]
 \frametitle{Wind Rose implementation}
 \begin{lstlisting}
-WindRose(fino1_d90,fino1_v90, ...
-'AngleNorth',0,'AngleEast',90);
+WindRose(fino1_d90,fino1_v90, 'AngleNorth',0,'AngleEast',90);
 \end{lstlisting}
 \begin{figure}
 \centering
-\includegraphics[width=0.3\linewidth]{../../figures/WindRose_Fino1.png}
-\caption{Wind Rose of FINO 1}
+\includegraphics[width=0.45\linewidth]{../../figures/WindRose_Fino1.png}
 \end{figure}
 
 \end{frame}
@@ -83,15 +80,14 @@ WindRose(fino1_d90,fino1_v90, ...
 		\begin{minipage}[t]{0.4\linewidth}
 			\centering
 			\includegraphics[width=\linewidth]{../../figures/WindRose_Fino1.png}
-			\caption{Wind Rose of FINO 1}
+
 			\label{label 1}
 		\end{minipage}
 		\qquad
 		\pause
-		\begin{minipage}[t]{0.45\linewidth}
+		\begin{minipage}[t]{0.5\linewidth}
 			\centering
 			\includegraphics[width=\linewidth]{../../figures/Validation_WindRose_Fino1.png}
-			\caption{Validation of Wind Rose}
 			\label{label 2}
 		\end{minipage}
 	\end{center}
@@ -102,17 +98,16 @@ WindRose(fino1_d90,fino1_v90, ...
 	\frametitle{Wind Roses}
 \begin{figure}[htbp]
 	\begin{center}
-		\begin{minipage}[t]{0.4\linewidth}
+		\begin{minipage}[t]{0.45\linewidth}
 			\centering
+			Fino 1
 			\includegraphics[width=\linewidth]{../../figures/WindRose_Fino1.png}
-			\caption{Wind Rose of FINO 1}
 			\label{label 1}
 		\end{minipage}
-		\qquad
-		\begin{minipage}[t]{0.4\linewidth}
+		\begin{minipage}[t]{0.45\linewidth}
 			\centering
+			Fino 2
 			\includegraphics[width=\linewidth]{../../figures/WindRose_Fino2.png}
-			\caption{Wind Rose of FINO 2}
 			\label{label 2}
 		\end{minipage}
 	\end{center}
@@ -123,7 +118,6 @@ WindRose(fino1_d90,fino1_v90, ...
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\linewidth]{../../figures/Ferrel_cell.png}
-\caption{Geographical Distribution of Winds}
 \label{fig:weatherpattern}
 \end{figure}
 \end{frame}
@@ -134,28 +128,131 @@ WindRose(fino1_d90,fino1_v90, ...
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{../../figures/warm_air_advection.png}
-\caption{Typical weather pattern over Europe}
 \label{fig:weatherpattern}
 \end{figure}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Obstacles}
+\frametitle{Obstacles Fino 1}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{../../figures/fino1.png}
-\caption{Location of FINO 1}
 \label{fig:fino1}
 \end{figure} 
 \end{frame}
+
+
 \section{Weibull distribution}
+
+\begin{frame}[fragile]
+\frametitle{Computation of Weibull Distribution}
+\begin{lstlisting}
+k_Fino1 = 1;
+Func_Fino1 = @(k_Fino1) (mean1*mean1/(dev1*dev1))* ...
+     ((gamma(1+2/k_Fino1))/(gamma(1+1/k_Fino1))^2-1)-1 
+k_Fino1 = fsolve(Func_Fino1,k_Fino1);
+A_Fino1 = mean1/gamma(1+1/k_Fino1);
+weibull_Fino1 = wblpdf(1:30,A_Fino1,k_Fino1);
+\end{lstlisting}
+\begin{figure}[htbp]
+	\begin{center}
+		\begin{minipage}[t]{0.49\linewidth}
+			\centering
+		  \includegraphics[width=1\linewidth]{../../figures/Hist_withfit_Fino1.png}
+			\label{histo1}
+		\end{minipage}
+		\begin{minipage}[t]{0.49\linewidth}
+		  \centering
+		  \includegraphics[width=1\linewidth]{../../figures/Hist_withfit_Fino2.png}
+			\label{histo2}
+		\end{minipage}
+	\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htbp]
+	\begin{center}
+		\begin{minipage}[t]{0.45\linewidth}
+			\centering
+			Fino 1
+			\includegraphics[width=\linewidth]{../../figures/WindRose_Fino1.png}
+			
+			
+		\end{minipage}
+		\begin{minipage}[t]{0.45\linewidth}
+			\centering
+			Fino 2
+			\includegraphics[width=\linewidth]{../../figures/WindRose_Fino2.png}
+
+		\end{minipage}
+	\end{center}
+\end{figure}
+\begin{tabular}{c| c| c}
+			5y AEP 	& Fino 1 & Fino 2 \\ 
+				\hline
+			Vestas V90 1.8 MW & 39,3 GWh & 42,6 GWh \\
+			\hline
+			Enercon E82 3 MW& 46,4 GWh & 50,4 GWh \\
+			\end{tabular}
+\end{frame}
+
+
+\section{Vertical wind speed profile}
+
+\begin{frame}[fragile]
+\frametitle{Non-linear regression of vertical profile}
+\vspace{40 pt}
+\begin{lstlisting}
+logProfileModel = @(b,z) b(1)/0.4 *(log(z/b(2)));
+logProfileCoeffs = nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,logProfileModel,[0.2,10^-6],opts);
+[x,y]=fplot(@(z) logProfileCoeffs(1)/0.4 *(log(z/logProfileCoeffs(2))),[0 100])
+
+empPowerModel = @(c,x) avgPerHeight(8)*((x/90).^c(1));
+empPowerCoeff = real(nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,empPowerModel,[0.11],opts));
+[x,y]=fplot(@(z) avgPerHeight(8)*(z/90)^(empPowerCoeff),[0 100]);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Computation of Weibull Distribution}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{../../figures/verticalProfileFits.png}
+\label{fig:weatherpattern}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Seasonal analysis of vertical profile}
+\begin{figure}[htbp]
+	\begin{center}
+		\begin{minipage}[t]{0.49\linewidth}
+			\centering
+  \includegraphics[width=1\linewidth]{../../figures/verticalProfileFitsSommer.png}
+			\label{histo1}
+		\end{minipage}
+		\begin{minipage}[t]{0.49\linewidth}
+		  \centering
+  \includegraphics[width=1\linewidth]{../../figures/verticalProfileFitsWinter.png}
+			\label{histo2}
+		\end{minipage}
+	\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Comparison of regression models}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{../../figures/verticalProfilesComparison.png}
+\label{fig:weatherpattern}
+\end{figure}
+\end{frame}
+
 %%%%%%%%%%%% End of content %%%%%%%%%%%%
 
-\input{end.tex}
-
-%%%%%%%%%%%% Start of appendix %%%%%%%%%%%% 
-
-%%%%%%%%%%%% End of appendix %%%%%%%%%%%%
 
 \end{document}
