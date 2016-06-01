@@ -1,6 +1,0 @@
-\frametitle{Comparison of regression models}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\linewidth]{../../figures/verticalProfilesComparison.png}
-\label{fig:weatherpattern}
-\end{figure}

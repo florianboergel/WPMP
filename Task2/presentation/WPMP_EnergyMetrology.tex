@@ -145,8 +145,24 @@ WindRose(fino1_d90,fino1_v90, 'AngleNorth',0,'AngleEast',90);
 
 \section{Weibull distribution}
 
+\begin{frame}
+\frametitle{Computation of Weibull parameters}
+\begin{align*}
+&\mu = \lambda \cdot \Gamma\left(1+\frac{1}{k}\right) \\
+&\sigma^2 = \lambda^2 \cdot \left(\Gamma\left(1+\frac{2}{k}\right)-\Gamma\left(1+\frac{1}{k}\right)^2\right)
+\end{align*}
+By substitution:
+\begin{align*}
+&\sigma^2 = \left(\frac{\mu}{\Gamma(1+\frac{1}{k})}\right)^2 \cdot \left(\Gamma\left({1+\frac{2}{k}}\right)-\Gamma\left(1+\frac{1}{k}\right)^2\right)
+\end{align*}
+Function to solve:
+\begin{align*}
+&0 = \left(\frac{\mu}{\sigma}\right)^2 \cdot \left(\frac{\Gamma\left({1+\frac{2}{k}}\right)}{\Gamma\left(1+\frac{1}{k}\right)^2}-1\right)-1
+\end{align*}
+\end{frame}
+
 \begin{frame}[fragile]
-\frametitle{Computation of Weibull Distribution}
+\frametitle{Weibull Distribution}
 \begin{lstlisting}
 k_Fino1 = 1;
 Func_Fino1 = @(k_Fino1) (mean1*mean1/(dev1*dev1))* ...
@@ -252,6 +268,13 @@ empPowerCoeff = real(nlinfit([33,40,50,60,70,80,90,100],avgPerHeight,empPowerMod
 \end{figure}
 \end{frame}
 
+\begin{frame}[fragile]
+\vspace{100 pt}
+\Huge
+\begin{center}
+Thanks!
+\end{center}
+\end{frame}
 %%%%%%%%%%%% End of content %%%%%%%%%%%%
 
 
