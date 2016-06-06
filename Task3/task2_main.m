@@ -19,25 +19,41 @@ for i = 2:length(fino2_v92)
     end
 end
 
+if any(raw_data.Var9(:)) ~= 0
+    disp('error');
+end
+
 fino2_1h_v92 = [];
 for i = 1:last_timestamp/6
     fino2_1h_v92(i,1) = datenum('01-Jan-2010 00:00:00')+(i-1)*1/24;
     range_array_v = fino2_v92((i-1)*6+1:i*6,1);
     range_array_dir = fino2_d91((i-1)*6+1:i*6,1);
 
-    fino2_1h_v92(i,2) = nanmean(range_array);
-    fino2_1h_v92(i,3) = nanmean(range_array_dir);
+    fino2_1h_v92(i,3) = nanmean(range_array_v);
+    fino2_1h_v92(i,2) = nanmean(range_array_dir);
 end
 
-first_timestamp = find({raw_data{i,1}} == '13.11.2015 08:00');
 
-for 
+timestamps = raw_data.Var1(:,1);
+first_timestamp = find(strcmp(timestamps(:), '01.01.2010 00:00'));
+last_timestamp = find(strcmp(timestamps(:), '31.05.2014 23:00'));
 
-% timestamps = raw_data.Var1;
-% for i = 1:length(timestamps)
-%     first_timestamp = strfind('13.11.2015 08:00', timestamps{i});
-% end
+connected_data(:,1) = fino2_1h_v92(:,1);
+connected_data(:,2) = fino2_1h_v92(:,2);
+connected_data(:,3) = fino2_1h_v92(:,3);
+connected_data(:,4) = raw_data.Var2(first_timestamp:last_timestamp);
+connected_data(:,5) = raw_data.Var3(first_timestamp:last_timestamp);
 
+count = 0 
+for i = 1:length(connected_data(:,1))
+    if raw_data.Var8(i) ~= 0 || raw_data.Var9(i) ~= 0 || isnan(connected_data(i,2)) == 1 || isnan(connected_data(i,3)) == 1
+        connected_data(i,2:5) = NaN;
+        disp('NaN added')
+        count = count +1;
+        disp(i)
+        disp(count)
+    end
+end
 
 
 
