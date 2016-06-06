@@ -39,46 +39,51 @@ first_timestamp = find(strcmp(timestamps(:), '01.01.2010 00:00'));
 last_timestamp = find(strcmp(timestamps(:), '31.05.2014 23:00'));
 
 connected_data(:,1) = fino2_1h_v92(:,1);
-connected_data(:,2) = fino2_1h_v92(:,2);
-connected_data(:,3) = fino2_1h_v92(:,3);
-connected_data(:,4) = raw_data.Var2(first_timestamp:last_timestamp);
-connected_data(:,5) = raw_data.Var3(first_timestamp:last_timestamp);
+connected_data(:,2) = fino2_1h_v92(:,3); %speed fino 2
+connected_data(:,3) = fino2_1h_v92(:,2); %direction fino2
+connected_data(:,4) = raw_data.Var2(first_timestamp:last_timestamp); %speed merra2
+connected_data(:,5) = raw_data.Var3(first_timestamp:last_timestamp); %direction merra2
 
 count = 0 
 for i = 1:length(connected_data(:,1))
     if raw_data.Var8(i) ~= 0 || raw_data.Var9(i) ~= 0 || isnan(connected_data(i,2)) == 1 || isnan(connected_data(i,3)) == 1
         connected_data(i,2:5) = NaN;
-        disp('NaN added')
         count = count +1;
-        disp(i)
-        disp(count)
     end
 end
 
 
+%% Task 2
+for i=1:36
+    sortedCell{i} = [];
+end;
 
-%fino2_1h_v92 = fino2_1h_v92'
-%ino2_1h_v92 = [Fino2.time(1:last_timestamp/6), fino2_1h_v92];
-    
+for i = 1:length(connected_data(:,1))
+    if ~isnan(connected_data(i,3))
+        sortIndex = floor(connected_data(i,3)/360*12)+1;
+        sortedCell{sortIndex*3-2} = [sortedCell{sortIndex*3-2}, connected_data(i,1)]; %timestamp
+        sortedCell{sortIndex*3-1} = [sortedCell{sortIndex*3-1}, connected_data(i,4)]; %merra 2
+        sortedCell{sortIndex*3} = [sortedCell{sortIndex*3}, connected_data(i,2)]; %fino 2
+    end;
+end;
 
-% %% Task 3
-% wind_sector = [];
-% windsOnHeight = [];
-% j = 1
-% for i = 1:length(fino1_v90)
-%     if (fino1_d90(i) >= 240 && fino1_d90(i) <= 285)
-%         wind_sector(j,2) = fino1_v90(1,i);
-%         wind_sector(j,1) = fino1_d90(1,i);
-%         windsOnHeight(j,1) = Fino1.ws33(1,i);
-%         windsOnHeight(j,2) = Fino1.ws40(1,i);
-%         windsOnHeight(j,3) = Fino1.ws50(1,i);
-%         windsOnHeight(j,4) = Fino1.ws60(1,i);
-%         windsOnHeight(j,5) = Fino1.ws70(1,i);
-%         windsOnHeight(j,6) = Fino1.ws80(1,i);
-%         windsOnHeight(j,7) = Fino1.ws90(1,i);
-%         windsOnHeight(j,8) = Fino1.ws100(1,i);
-%         j= j+1;
-%     end
-% end
+%% Task 3
+avgSectorPerMonth = zeros(53,25);
+firstMonth = datenum('01-Jan-2010');
 
-%% ExtraTas
+for i=1:53
+    avgSectorPerMonth(i,1) = addtodate(firstMonth,i-1,'month');
+end;
+
+for sectorIndex = 1:12
+    for monthIndex = 1:53
+        valuesInMonthAndSectorMerra2 = sortedCell{sectorIndex*3-1}(find((sortedCell{sectorIndex*3-2} > addtodate(firstMonth,monthIndex-1,'month')) ...
+            & (sortedCell{sectorIndex*3-2} <= addtodate(firstMonth,monthIndex,'month'))));
+       valuesInMonthAndSectorFino2 = sortedCell{sectorIndex*3}(find((sortedCell{sectorIndex*3-2} > addtodate(firstMonth,monthIndex-1,'month')) ...
+            & (sortedCell{sectorIndex*3-2} <= addtodate(firstMonth,monthIndex,'month'))));
+        avgSectorPerMonth(monthIndex,sectorIndex*2)= nanmean(valuesInMonthAndSectorMerra2);
+        avgSectorPerMonth(monthIndex,sectorIndex*2+1)= nanmean(valuesInMonthAndSectorFino2);
+    end;
+end;
+
+%% Task 4
