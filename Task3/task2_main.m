@@ -87,3 +87,10 @@ for sectorIndex = 1:12
 end;
 
 %% Task 4
+figure();
+for i=1:12
+    subplot(3,4,i);
+    scatter(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1));
+    title(strcat('Sector  ', num2str((i-1)*30), '° - ', num2str(i*30) ,'°'));
+end;
+saveas(gcf,'figures/scatterPlots.jpg');
