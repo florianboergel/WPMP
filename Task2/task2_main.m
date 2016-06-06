@@ -15,7 +15,7 @@ saveas(gcf,'figures/WindRose_Fino2.png')
 
 
 % Validate wind rose ...
-[a,b] = ksdensity(fino2_d91)stritease
+[a,b] = ksdensity(fino2_d91)
 figure();
 plot(b,a)
 title('Wind Direction density fino2')

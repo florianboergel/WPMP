@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  1 JUN 2016 12:51
+=======
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  1 JUN 2016 11:40
+>>>>>>> 90cf4453a08ee68f4bef46cd8422ac8f38e18332
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2139,6 +2143,7 @@ Here is how much of TeX's memory you used:
 fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-
 super-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/te
 xmf/fonts/enc/dvips/lm/lm-mathit.enc}</usr/share/texlive/texmf-dist/fonts/type1
+<<<<<<< HEAD
 /public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pub
@@ -2152,6 +2157,21 @@ blic/cm-super/sfss2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx06
 exmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/pub
 lic/cm-super/sfsx1728.pfb>
 Output written on WPMP_EnergyMetrology.pdf (20 pages, 2425687 bytes).
+=======
+/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/shar
+e/texmf/fonts/type1/public/cm-super/sfsi0800.pfb></usr/share/texmf/fonts/type1/
+public/cm-super/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss
+0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0800.pfb></usr/share
+/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sfss2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx0
+600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx0800.pfb></usr/share/
+texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/pu
+blic/cm-super/sfsx1728.pfb>
+Output written on WPMP_EnergyMetrology.pdf (20 pages, 2425680 bytes).
+>>>>>>> 90cf4453a08ee68f4bef46cd8422ac8f38e18332
 PDF statistics:
  443 PDF objects out of 1000 (max. 8388607)
  353 compressed objects within 4 object streams
