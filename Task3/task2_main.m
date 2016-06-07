@@ -86,11 +86,20 @@ for sectorIndex = 1:12
     end;
 end;
 
-%% Task 4
-figure();
+%% Task 4 Task 5
+regressionParameters = zeros(12,3);
 for i=1:12
     subplot(3,4,i);
-    scatter(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1));
-    title(strcat('Sector  ', num2str((i-1)*30), '° - ', num2str(i*30) ,'°'));
+    %scatter(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1));
+    [regressionParameters(i,1),  regressionParameters(i,2), regressionParameters(i,3)] =  regression(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1), 'one');
+      
+
+    plotregression(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1), 'Regression');
+   % title(strcat('Sector  ', num2str((i-1)*30), '° - ', num2str(i*30) ,'°'));
+    saveas(gcf,strcat('figures/scatterPlot_Sector',num2str((i-1)*30),'.jpg'));
+
 end;
-saveas(gcf,'figures/scatterPlots.jpg');
+
+
+%% Task 6
+
