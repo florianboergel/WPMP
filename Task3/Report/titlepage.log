@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  18 APR 2016 15:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  7 JUN 2016 11:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -110,7 +110,7 @@ Overfull \hbox (41.2164pt too wide) in paragraph at lines 8--8
 
 ! Undefined control sequence.
 l.14 { \huge
-             \bfseries Exercise 1 - Handling and preprocessing of measuremen...
+             \bfseries Exercise 3 - Long Term Assessment and MCP Method}\\[0...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -124,7 +124,7 @@ Overfull \hbox (41.74423pt too wide) in paragraph at lines 14--14
 
 
 Overfull \hbox (5.74997pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 1 
+ \OT1/cmr/bx/n/10 3 
  []
 
 
@@ -133,53 +133,23 @@ Overfull \hbox (3.83331pt too wide) in paragraph at lines 14--14
  []
 
 
-Overfull \hbox (24.81235pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 Han- 
+Overfull \hbox (24.80542pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 Long 
  []
 
 
-Overfull \hbox (24.91653pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 dling 
+Overfull \hbox (26.63182pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 Term 
  []
 
 
-Overfull \hbox (18.36794pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 and 
+Overfull \hbox (17.06378pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 As- 
  []
 
 
-Overfull \hbox (20.22908pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 pre- 
- []
-
-
-Overfull \hbox (20.70824pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 pro- 
- []
-
-
-Overfull \hbox (23.28735pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 cess- 
- []
-
-
-Overfull \hbox (15.33325pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 ing 
- []
-
-
-Overfull \hbox (9.26384pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 of 
- []
-
-
-Overfull \hbox (24.27763pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 mea- 
- []
-
-
-Overfull \hbox (24.76515pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 sure- 
+Overfull \hbox (22.71234pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 sess- 
  []
 
 
@@ -188,8 +158,18 @@ Overfull \hbox (25.3957pt too wide) in paragraph at lines 14--14
  []
 
 
-Overfull \hbox (22.0415pt too wide) in paragraph at lines 14--14
- \OT1/cmr/bx/n/10 data 
+Overfull \hbox (18.36794pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 and 
+ []
+
+
+Overfull \hbox (27.08319pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 MCP 
+ []
+
+
+Overfull \hbox (39.50674pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/bx/n/10 Method 
  []
 
 ! Undefined control sequence.
@@ -224,15 +204,13 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no M in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no i in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no Ã in font cmcsc10!
-Missing character: There is no ¤ in font cmcsc10!
 
 Overfull \hbox (3276.74998pt too wide) in paragraph at lines 19--33
  []$[]$ 
@@ -288,5 +266,5 @@ Here is how much of TeX's memory you used:
  3603 multiletter control sequences out of 15000+600000
  4595 words of font info for 17 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 20i,3n,18p,119b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 20i,3n,18p,108b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!
