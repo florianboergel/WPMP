@@ -1,42 +1,35 @@
 %% Task 1
-disp('Load Data')
 load('WMP_WEnMet_data.mat');
 raw_data = readtable('MERRA2_N55.000_E013.125_1992-2016.txt','Delimiter','tab','HeaderLines',26);
 
 fino2_v92 = Fino2.ws92';
 fino2_d91 = Fino2.wd91';
 
-%compute timestamps
+%compute timestamps (start and end of important period in both formats for
+%Merra2 and Fino2)
 timestamps = raw_data.Var1(:,1);
 first_timestamp = find(strcmp(timestamps(:), '01.01.2010 00:00'));
 last_timestamp = find(strcmp(timestamps(:), '31.05.2014 23:00'));
 last_timestampFino2 = find(Fino2.time==datenum('31-May-2014 23:55:00'));
 
-% Check for continous time axis
-count = 0
-for i = 2:length(fino2_v92)
-    if Fino2.time(i)-Fino2.time(i-1) >= 1/24/6*1.5
-        count = i;
-    end
-end
-
+% Check status flags of Merra2 Data
 if any(raw_data.Var9(:)) ~= 0
     disp('error');
 end
 
-fino2_1h_v92 = [];
+%creating 1h averages for FINO2 over important period
+fino2_1h_92 = [];
 for i = 1:last_timestampFino2/6
-    fino2_1h_v92(i,1) = datenum('01-Jan-2010 00:00:00')+(i-1)*1/24;
+    fino2_1h_92(i,1) = datenum('01-Jan-2010 00:00:00')+(i-1)*1/24;
     range_array_v = fino2_v92((i-1)*6+1:i*6,1);
     range_array_dir = fino2_d91((i-1)*6+1:i*6,1);
-
-    fino2_1h_v92(i,3) = nanmean(range_array_v);
-    fino2_1h_v92(i,2) = nanmean(range_array_dir);
+    fino2_1h_92(i,3) = nanmean(range_array_v);
+    fino2_1h_92(i,2) = nanmean(range_array_dir);
 end
 
-connected_data(:,1) = fino2_1h_v92(:,1);
-connected_data(:,2) = fino2_1h_v92(:,3); %speed fino 2
-connected_data(:,3) = fino2_1h_v92(:,2); %direction fino2
+connected_data(:,1) = fino2_1h_92(:,1);
+connected_data(:,2) = fino2_1h_92(:,3); %speed fino 2
+connected_data(:,3) = fino2_1h_92(:,2); %direction fino2
 connected_data(:,4) = raw_data.Var2(first_timestamp:last_timestamp); %speed merra2
 connected_data(:,5) = raw_data.Var3(first_timestamp:last_timestamp); %direction merra2
 

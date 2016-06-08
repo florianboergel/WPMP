@@ -57,10 +57,11 @@
 \tableofcontents
 \newpage
 \section*{Introduction}
+In this third learning unit of the Wind Physics Measurement Project the goal was to perform a long term assessment of wind resources for the windpark Kriegers Flak2 close to the FINO2 met mast in the Baltic Sea. As reanalysis data for wind speeds and directions a 24 year time-series called MERRA-2 was provided. This report describes how the short-term measurement data and the reanalysis data were taken to derive long-term corrected data for Fino2 by applying the Sectoral Regression MCP method.
+ 
 \section{Synchronizing the data}
-In task 1 we were asked to synchronize the data of FINO 2 and MERRA-2. The data of FINO 2 was provided in 10 minute-averages over five years starting at January 2010. 
-The MERRA-2 data is the so called long term data provided in one hour-averages, ranging from 1992-2016.
-Before we started with the actual task we had to neglect all measured data of FINO 2 after end of May 2014 and calculate one hour averages at height 90 m.
+In task 1 we were asked to synchronize the data of FINO2 and MERRA-2. The data of FINO2 was provided in 10 minute-averages over five years starting in January 2010. The MERRA-2 data is the so called long term data provided in one hour-averages, ranging from 1992 to 2016.
+Preprocessement of the data included neglection of all measured data of FINO 2 after end of May 2014 and computation of one hour averages at a height of 90 m.
 We used the following routine:
 \begin{lstlisting}
 last_timestamp = find(Fino2.time==datenum('31-May-2014 23:55:00'));
