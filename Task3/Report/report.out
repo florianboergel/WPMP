@@ -1,4 +1,10 @@
-\BOOKMARK [1][-]{section.1}{Synchronizing the data}{}% 1
-\BOOKMARK [1][-]{section.2}{Sorting into 12 wind sectors}{}% 2
-\BOOKMARK [1][-]{section.3}{Monthly averages of sectors}{}% 3
-\BOOKMARK [1][-]{section.4}{Regressions parameters and plots}{}% 4
+\BOOKMARK [1][-]{section.1}{Task 1: Synchronizing the data}{}% 1
+\BOOKMARK [1][-]{section.2}{Task 2: Sorting into 12 wind sectors}{}% 2
+\BOOKMARK [1][-]{section.3}{Task 3: Monthly averages of sectors}{}% 3
+\BOOKMARK [1][-]{section.4}{Task 4-5: Regressions parameters and plots}{}% 4
+\BOOKMARK [1][-]{section.5}{Task 6: Deriving long-term predicted data}{}% 5
+\BOOKMARK [1][-]{section.6}{Task 7-8: Calculating Weibull parameters for the log-term predicted data and plot}{}% 6
+\BOOKMARK [1][-]{section.7}{Task 9: Comparing short-term measured and long-term predicted data sector-wise}{}% 7
+\BOOKMARK [1][-]{section.8}{Task 10-11: Regression quality and bias and discussion}{}% 8
+\BOOKMARK [1][-]{appendix.A}{Appendix}{}% 9
+\BOOKMARK [2][-]{subsection.A.1}{Code}{appendix.A}% 10
