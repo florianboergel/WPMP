@@ -64,10 +64,9 @@ In this third learning unit of the Wind Physics Measurement Project the goal was
  
 \section{Task 1: Synchronizing the data}
 In task 1 we were asked to synchronize the data of FINO2 and MERRA-2. The data of FINO2 was provided in 10 minute-averages over five years starting in January 2010. The MERRA-2 data is the so called long-term data provided in one hour-averages, ranging from 1992 to 2016.
-Preprocessing of the data included neglecting all measured data of FINO2 after the end of May 2014 and computation of one hour averages at a height of 92m as indicated in the hints.
-Since we can only synchronize overlapping time intervals of FINO2 and MERRA-2 we had to look up the correct time stamps in both time formats: 
+Preprocessing of the data included neglecting all measured data of FINO2 after the end of May 2014 and computation of one hour averages at a height of $92m$.
+Since we only synchronize overlapping time intervals of FINO2 and MERRA-2 we had to look up the according time stamps in both given time formats: 
 \begin{lstlisting}
-%compute indices for relevant timestamps in both formats (Merra2 and Fino2)
 timestamps = raw_data.Var1(:,1);
 first_timestamp = find(strcmp(timestamps(:), '01.01.2010 00:00'));
 last_timestamp = find(strcmp(timestamps(:), '31.05.2014 23:00'));
@@ -75,7 +74,6 @@ last_timestampFino2 = find(Fino2.time==datenum('31-May-2014 23:55:00'));
 \end{lstlisting}
 We used the following routine for converting the 10-minute averages of speed and direction into 1-hour averages:
 \begin{lstlisting}
-%creating 1h averages for FINO2 over relevant period
 fino2_1h_92 = [];
 for i = 1:last_timestampFino2/6
     fino2_1h_92(i,1) = datenum('01-Jan-2010 00:00:00')+(i-1)*1/24;
@@ -87,8 +85,8 @@ end
 \end{lstlisting}
 The loop creates a continuous time axis with hour intervals  In addition it calculates the mean of six 10-minutes intervals for wind speeds and wind directions.\\
 
-After preparing the right time intervals we were able to save the data into one variable called $connected_data$ holding the synchronized data. \\
-Synchronizing the data means that we only take time stamps into account for which both measurement systems have valid entries. Incorrect data of FINO2 appears as NaN values. The data of MERRA-2 has additional status columns. $0$ as an entry indicates a correct measurement. Thus we made sure that only those rows are taken into further consideration where both FINO2 and MERRA-2 have valid data:
+After preparing the right time intervals we were able to save the data into a variable called connected\_data holding the synchronized data. \\
+Synchronizing the data means that we only take into account time stamps for which both measurement systems have valid entries. Incorrect data of FINO2 appears as NaN values. The data of MERRA-2 has additional status columns. $0$ as an entry indicates a correct measurement. Thus we made sure that only those rows are taken into further consideration where both FINO2 and MERRA-2 have valid data. Otherwise rows are omitted by setting them to $NaN$:
 \begin{lstlisting}
 for i = 1:length(connected_data(:,1))
     if raw_data.Var8(i) ~= 0 || raw_data.Var9(i) ~= 0 || isnan(connected_data(i,2)) == 1 || isnan(connected_data(i,3)) == 1
@@ -103,8 +101,6 @@ In order to sort the synchronized data into 12 sectors we decided to store the d
 \end{equation*}
 Here is how the wind speeds are sorted according to the directions using this formula:
 \begin{lstlisting}
-%compute sector index and put the relevant data (merra2 and fino2 speed and
-%timestamp) into cell structure by appending
 for i = 1:length(connected_data(:,1))
     if ~isnan(connected_data(i,3)) && ~isnan(connected_data(i,4)) && ~isnan(connected_data(i,2))
         sortIndex = floor(connected_data(i,3)/360*12)+1;
@@ -117,11 +113,11 @@ for i = 1:length(connected_data(:,1))
     end;
 end;
 \end{lstlisting} 
-The variable $sortedCell$ contains 3 vectors for every sector, one for the timestamps and one for the speed at FINO2 and MERRA-2. Additionally the first 3 vectors contain the corresponding values for all data independent of the sector.
-The first sector here is from $0^{\circ}-30^{\circ}$. Of course one could as well start with a north sector of $365^{\circ}-15^{\circ}$ but this a question of definitions.
+The variable $sortedCell$ contains 3 vectors for every sector, one for the timestamps and one for the speed at FINO2 and MERRA-2. Additionally the last 3 vectors contain the corresponding values for all data independent of the sector.
+The first sector here is from $0^{\circ}-30^{\circ}$. Of course one could as well start with a true north sector of $345^{\circ}-15^{\circ}$ but this a question of definitions.
 
 \section{Task 3: Monthly averages of sectors}
-The next step consisted in computing the sector-wise and 1-month averages of the synchronized data. The relevant period consists of 53 months and we have 26 averages to compute, i.e. the MERRA-2 averages and the FINO2 averages for each of the 12 sectors and for the entire data. Hence we obtain with a $53 x 27$ matrix where the first column is reserved for an identifier of the month. The variable $avgSectorPerMonth$ holds these averages. In the following code extract it can be seen how the sector-wise data is taken from the $sortedCell$ structure and then filtered by the corresponding using the $addtodate$ command:
+The next step consisted in computing the sector-wise and 1-month averages of the synchronized data. The relevant period consists of 53 months and we have 26 averages to compute, i.e. the MERRA-2 averages and the FINO2 averages for each of the 12 sectors and for the entire data. Hence we obtain a $53 x 27$ matrix where the first column is reserved for an identifier of the month. The variable $avgSectorPerMonth$ holds these averages. In the following code extract it can be seen how the sector-wise data is taken from the $sortedCell$ structure and then filtered by the corresponding month using the $addtodate$ command:
 \begin{lstlisting}
 for sectorIndex = 1:12
     for monthIndex = 1:53
@@ -136,7 +132,7 @@ end;
 \end{lstlisting} 
 
 \section{Task 4-5: Regressions parameters and plots} 
-With all the synchronization and preparation of the data done, we can now start with the analysis. As a first step a regression between FINO2 and MERRA-2 monthly averages will be carried out and linear relationships derived for each sector and for the entire data. The routine $regression()$ and $plotregression()$ are well suited for this purpose where the first supplies the regression parameters $R, m$ and $b$ and the latter graphically illustrates the found relationship. 
+With all the synchronization and preparation of the data done, we can now start with the analysis. As a first step a regression between FINO2 and MERRA-2 monthly averages will be carried out and linear relationships derived for each sector and for the entire data. The routines $regression()$ and $plotregression()$ are well suited for this purpose where the first supplies the regression parameters $R, m$ and $b$ and the latter graphically illustrates the found relationship. 
 
 \begin{lstlisting}
     [regressionParameters(i,2),  regressionParameters(i,3), regressionParameters(i,4)] = ... 
@@ -145,18 +141,51 @@ With all the synchronization and preparation of the data done, we can now start 
     plotregression(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1), 'Regression');
 \end{lstlisting}
 Figure~\ref{fig:Regression} shows the resulting plots for all 12 sectors and at last for the entire data. 
-We can see that a linear relationship models the two datasets quite well. The regression lines for all sectors start with a small vertical offset although there are differences between the various sectors. Regarding the correlation we can see that only one sector has a value of $R^2 <0.8$ which was given as quality criteria in the lecture, sector $120^{\circ}-150^{\circ}$ with $R^2=0.75$. The majority of the line slopes are slightly larger than $1$, except for sectors $150^{\circ}-180^{\circ}$ and $120^{\circ}-150^{\circ}$.
+We can see that a linear relationship models the two datasets quite well. The regression lines for all sectors start with a small vertical offset although there are differences between the various sectors. Regarding the correlation we can see that all sectors except one have a value of $R^2 \geq 0.8$ which was given as quality criteria in the lecture, sector $120^{\circ}-150^{\circ}$ with $R^2=0.75$ being the exception. The majority of the line slopes are slightly larger than $1$, except for sectors $150^{\circ}-180^{\circ}$ and $120^{\circ}-150^{\circ}$.
+
+An overview of all regression parameters is given in the following table~\ref{tab:regParam}.
 
 \begin{figure}[H]
-\begin{subfigure}{0.3\textwidth}
+\begin{tabular}{c||c|c|c|c|c|c|c|c}
+
+	& ALL:  $0^{\circ}-360^{\circ}$ &  $0^{\circ}-30^{\circ}$ & $30^{\circ}-60^{\circ}$ & $60^{\circ}-90^{\circ}$ & $90^{\circ}-120^{\circ}$ & $120^{\circ}-150^{\circ}$ & $150^{\circ}-180^{\circ}$ \\
+	\hline \hline
+    R & 0.9574 &   0.9096 &   0.9391  &  0.9138  &  0.9002  &  0.8681  &  0.9367  &  \\
+    \hline
+    m & 1.0211 &   0.6329 &   1.0882  &  1.2793  &  1.0177  &  0.8368  &  0.9616  &   \\
+    \hline
+    b & 1.1831 &   0.8299 &   0.4746  & -0.4634  &  1.3246  &  2.4300  &  0.9867  &  \\
+
+\end{tabular}
+
+\vspace{30 pt}
+
+\begin{tabular}{c||c|c|c|c|c|c|c}
+
+	& $180^{\circ}-210^{\circ}$ & $210^{\circ}-240^{\circ}$ & $240^{\circ}-270^{\circ}$ & $270^{\circ}-300^{\circ}$ & $300^{\circ}-330^{\circ}$ & $330^{\circ}-360^{\circ}$ \\
+	\hline \hline
+    R   &  0.9311  &  0.9646  &  0.9824  &  0.9768  &  0.9554  &  0.9054 & \\
+    \hline
+    m &  1.1074  &  1.1520  &  1.1237 &   1.0506 &   1.1058  &  1.0034 & \\
+    \hline
+    b   &  0.1886  &  0.3036  &  0.2504 &   0.7260  &  0.4979  &  1.0759& \\
+
+\end{tabular}
+\caption{Regression parameters for all data and sector-wise}
+\label{tab:regParam}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{subfigure}{0.33\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/scatterPlot_Sector0.jpg}
 \end{subfigure}
-\begin{subfigure}{0.3\textwidth}
+\begin{subfigure}{0.33\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/scatterPlot_Sector30.jpg}
 \end{subfigure}
-\begin{subfigure}{0.3\textwidth}
+\begin{subfigure}{0.33\textwidth}
   \centering
   \includegraphics[width=1\linewidth]{../figures/scatterPlot_Sector60.jpg}
 \end{subfigure}
@@ -204,8 +233,10 @@ We can see that a linear relationship models the two datasets quite well. The re
 \label{fig:Regression}
 \end{figure}
 
+
+
 \section{Task 6: Deriving long-term predicted data}
-With the previous tasks the measurement and correlation of the data has been successfully carried out. We now proceed to the last step of the MCP method which is prediction. The found relationships from the linear regression enable deriving long-term predicted data, i.e. the FINO2 data is extrapolated to the 24 years period. The data structures set up in the previous tasks make it easy to efficiently apply the relationships fo each sector with only 4 lines of code:
+With the previous tasks the measurement and correlation of the data has been successfully carried out. We now proceed to the last step of the MCP method which is prediction. The found relationships from the linear regression enable deriving long-term predicted data, i.e. the FINO2 data is extrapolated to the 24 years period. The data structures set up in the previous tasks make it easy to efficiently apply the relationships for each sector with only 4 lines of code:
 \begin{lstlisting}
 for i = 1:length(raw_data.Var2(:))
     sectorIndex= floor(raw_data.Var3(i) /360*12)+1;
@@ -215,7 +246,7 @@ end;
 \end{lstlisting} 
 Again a sector index is calculated from the direction of the MERRA-2 data row and then the found regression parameters $m$ and $b$ are used to derive the long-term corrected FINO2 data from 1992-2016 in 1 hour time-intervals. The wind directions are copied 1-to-1 from the MERRA-2 data.
 
-\section{Task 7-8: Calculating Weibull parameters for the log-term predicted data and plot}
+\section{Task 7-8: Calculating Weibull parameters for the long-term predicted data and plot}
 We now take a closer look at the distribution of the sector-wise wind speeds for the long-term predicted data. The routine $wblfit()$ combined with our data set up in the previous task complete this task efficiently:
 \begin{lstlisting}
 for sectorIndex=1:12
@@ -224,7 +255,7 @@ for sectorIndex=1:12
 end;
 \end{lstlisting} 
 
-With the Weibull parameters calculated for each sector and also for the entire data we can then put the Weibull curves in one single plot in order to detect differences for the 12 sectors, see Figure~\ref{fig:weibullPlots}. We state that the distributions are considerably different. E.g. sectors 3 and 6 have quite low Weibull parameters $A$ around $A=7.8$ which leads to the corresponding curves being shifted to the left with lower mean wind speeds. On the opposite site sectors 9 and 10 have larger $A$ parameters of around $A=11.5$ accounting for a higher mean and the curves lying on the side of the spectrum. Not surprisingly the Weibull distribution of the entire data is pretty much in the middle of the sector-wise distributions. Differences of the various sectors can be explained with obstacles which influence the wind speed depending on the specific direction.
+With the Weibull parameters calculated for each sector and also for the entire data we can then put the Weibull curves into one single plot in order to detect differences for the 12 sectors, see Figure~\ref{fig:weibullPlots}. We state that the distributions are considerably different. E.g. sectors 3 and 6 have quite low Weibull scale parameters, around $A \approx 7.8$, which leads to the corresponding curves being shifted to the left with lower mean wind speeds. On the opposite side sectors 9 and 10 have larger scale parameters of around $A \approx 11.5$ accounting for a higher mean and the curves lying on the right side of the spectrum. Not surprisingly the Weibull distribution of the entire data is pretty much in the middle of the sector-wise distribution curves. Differences of the various sectors can be explained with obstacles which influence the wind speed depending on the specific direction.
 \begin{figure}
 \centering
   \includegraphics[width=0.7\linewidth]{../figures/weibullPlots.jpg}
@@ -297,9 +328,9 @@ After comparison of the sector-wise Weibull distributions next a comparison of t
 \end{figure}
 
 
-The 13 plots (1 for the entire data and 12 for the sectors) are depicted in Figure~\ref{fig:CompWeibull}. The blue curves represent the long-term corrected data while the red curves represent the short-term measured data. In the 13 plots we can clearly see that the Weibull distributions of long and short-term data are strongly correlated. The peaks of the blue and red curve are for all sectors almost vertically aligned. However, in most cases the short-term data Weibull peak lies considerably below the the long-term Weibull peak which means that the predicted wind is weaker than the wind actually measured at the met-mast in the short-term period, i.e. the Weibull A parameter is higher for the short-term data. The unusually weak wind period in the 1990s could account for this trend, i.e. the wind is stronger then expected because the reanalyzed data used for prediction origins from a low wind period. This holds for all sectors except sector 1, i.e. $0^{\circ}-30^{\circ}$, where the long-term prediction yields a stronger wind speed than actually measured at FINO2. We assume that the reason for this irregularity is some obstacle which is specific to the FINO2 location, most probably the met-mast itself.
+The 13 plots (1 for the entire data and 12 for the sectors) are depicted in Figure~\ref{fig:CompWeibull}. The blue curves represent the long-term corrected data while the red curves represent the short-term measured data. In the 13 plots we can clearly see that the Weibull distributions of long and short-term data are strongly correlated. The peaks of the blue and red curve are for all sectors almost vertically aligned. However, in most cases the short-term data Weibull peak lies considerably below the long-term Weibull peak which means that the predicted wind is weaker than the wind actually measured at the met-mast in the short-term period, i.e. the Weibull A parameter is higher for the short-term data. The unusually weak wind period in the 1990s could account for this trend, i.e. the wind is stronger then expected because the reanalyzed data used for prediction origins from a low wind period. This holds for all sectors except sector 1, i.e. $0^{\circ}-30^{\circ}$, where the long-term prediction yields a stronger wind speed than actually measured at FINO2. We assume that the reason for this irregularity is some obstacle which is specific to the FINO2 location, most probably the met-mast itself.
 
-\section{Task 10-11: Regression quality and bias and discussion}
+\section{Task 10-11: Regression quality, bias and discussion}
 The table in Figure~\ref{fig:overview} shows in its 3 rows: $R^2$ and the two biases $\frac{A_{long}}{A_{short}}$ as well as $\frac{k_{long}}{k_{short}}$ for the entire data (1st column) and the 12 different sectors (columns 2-13). 
 
 \begin{figure}[H]
@@ -309,7 +340,7 @@ The table in Figure~\ref{fig:overview} shows in its 3 rows: $R^2$ and the two bi
   \label{fig:overview}
 \end{figure}
 
-We state that the further a scaling factor of the Weibull $A$ or $k$ parameter is from $1$ the less precise the prediction of the long-term data becomes. For example see sector 3 where the two Weibull plots in Task 9 are very much different, here we can see the reason for this which is that the scaling factor is only around $0.8$. An opposite example is sector 10 where both $A$ and $k$ parameter have a relatively low scaling factor between long and short-term data. So in this case prediction does approach the actually measured short-term data better. The same holds for the regression parameter $R^2$. If the regression achieves a higher value here the more correlated and the more uncertain will be the long-term prediction.
+We state that the further a scaling factor of the Weibull $A$ or $k$ parameter is from $1$ the less precise the prediction of the long-term data becomes. For example see sector 3 where the two Weibull plots in Task 9 are very much different, here we can see the reason for this which is that the scaling factor is only around $0.8$. An opposite example is sector 10 where both $A$ and $k$ parameter have a scaling factor between long and short-term data relatively close to $1$. So in this case prediction does approach the actually measured short-term data better. The same holds for the regression parameter $R^2$. If the regression achieves a higher value here the more correlated and the less uncertain will be the long-term prediction.
 
 \newpage
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  9 JUN 2016 01:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.31)  9 JUN 2016 13:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -709,146 +709,145 @@ been already used, duplicate ignored
                    \relax 
 l.61 \newpage
               [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 81.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 79.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 79.
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 [2] [3]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 128.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 124.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 128.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 124.
  [4]
-<../figures/scatterPlot_Sector0.jpg, id=140, 878.28125pt x 658.46pt>
+Overfull \hbox (24.35655pt too wide) in paragraph at lines 149--160
+[][] 
+ []
+
+<../figures/scatterPlot_Sector0.jpg, id=136, 887.315pt x 665.48625pt>
 File: ../figures/scatterPlot_Sector0.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector0.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector0.jpg used on input line 
-153.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+182.
+(pdftex.def)             Requested size: 141.9023pt x 106.41904pt.
 
-<../figures/scatterPlot_Sector30.jpg, id=141, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_Sector30.jpg, id=137, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector30.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector30.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector30.jpg used on input line
- 157.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ 186.
+(pdftex.def)             Requested size: 141.9023pt x 106.14102pt.
 
-<../figures/scatterPlot_Sector60.jpg, id=142, 878.28125pt x 658.46pt>
+<../figures/scatterPlot_Sector60.jpg, id=138, 887.315pt x 665.48625pt>
 File: ../figures/scatterPlot_Sector60.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector60.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector60.jpg used on input line
- 161.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+ 190.
+(pdftex.def)             Requested size: 141.9023pt x 106.41904pt.
 
-<../figures/scatterPlot_Sector90.jpg, id=143, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_Sector90.jpg, id=139, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector90.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector90.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector90.jpg used on input line
- 165.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ 194.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_Sector120.jpg, id=144, 878.28125pt x 658.46pt>
+<../figures/scatterPlot_Sector120.jpg, id=140, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector120.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector120.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector120.jpg used on input lin
-e 169.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+e 198.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_Sector150.jpg, id=145, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_Sector150.jpg, id=141, 887.315pt x 665.48625pt>
 File: ../figures/scatterPlot_Sector150.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector150.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector150.jpg used on input lin
-e 173.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+e 202.
+(pdftex.def)             Requested size: 129.00269pt x 96.75197pt.
 
-<../figures/scatterPlot_Sector180.jpg, id=146, 878.28125pt x 658.46pt>
+<../figures/scatterPlot_Sector180.jpg, id=142, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector180.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector180.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector180.jpg used on input lin
-e 177.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+e 206.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_Sector210.jpg, id=147, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_Sector210.jpg, id=143, 887.315pt x 665.48625pt>
 File: ../figures/scatterPlot_Sector210.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector210.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector210.jpg used on input lin
-e 181.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+e 210.
+(pdftex.def)             Requested size: 129.00269pt x 96.75197pt.
 
-<../figures/scatterPlot_Sector240.jpg, id=148, 878.28125pt x 658.46pt>
+<../figures/scatterPlot_Sector240.jpg, id=144, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector240.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector240.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector240.jpg used on input lin
-e 185.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+e 214.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_Sector270.jpg, id=149, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_Sector270.jpg, id=145, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector270.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector270.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector270.jpg used on input lin
-e 189.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+e 218.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_Sector300.jpg, id=150, 878.28125pt x 658.46pt>
+<../figures/scatterPlot_Sector300.jpg, id=146, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector300.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector300.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector300.jpg used on input lin
-e 193.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+e 222.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_Sector330.jpg, id=151, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_Sector330.jpg, id=147, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_Sector330.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_Sector330.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_Sector330.jpg used on input lin
-e 197.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+e 226.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/scatterPlot_AllSectors.jpg, id=152, 890.32625pt x 666.49pt>
+<../figures/scatterPlot_AllSectors.jpg, id=148, 900.36375pt x 673.51625pt>
 File: ../figures/scatterPlot_AllSectors.jpg Graphic file (type jpg)
 
 <use ../figures/scatterPlot_AllSectors.jpg>
 Package pdftex.def Info: ../figures/scatterPlot_AllSectors.jpg used on input li
-ne 201.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ne 230.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--203
-[]$[]$ $[]$ $[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 151--203
+Underfull \hbox (badness 10000) in paragraph at lines 180--232
 []$ $[]$ $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--203
+Underfull \hbox (badness 10000) in paragraph at lines 180--232
 []$ $[]$ $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--203
+Underfull \hbox (badness 10000) in paragraph at lines 180--232
 []$ $[]$ $[]$
  []
 
@@ -859,133 +858,133 @@ g> <../figures/scatterPlot_Sector60.jpg> <../figures/scatterPlot_Sector90.jpg>
 ./figures/scatterPlot_Sector240.jpg> <../figures/scatterPlot_Sector270.jpg> <..
 /figures/scatterPlot_Sector300.jpg> <../figures/scatterPlot_Sector330.jpg> <../
 figures/scatterPlot_AllSectors.jpg>]
-<../figures/weibullPlots.jpg, id=171, 890.32625pt x 666.49pt>
+<../figures/weibullPlots.jpg, id=168, 900.36375pt x 673.51625pt>
 File: ../figures/weibullPlots.jpg Graphic file (type jpg)
 
 <use ../figures/weibullPlots.jpg>
-Package pdftex.def Info: ../figures/weibullPlots.jpg used on input line 230.
-(pdftex.def)             Requested size: 301.00192pt x 225.3222pt.
+Package pdftex.def Info: ../figures/weibullPlots.jpg used on input line 261.
+(pdftex.def)             Requested size: 301.00192pt x 225.15916pt.
  [7]
-<../figures/shortVsLongTerm_Sector0.jpg, id=188, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_Sector0.jpg, id=185, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector0.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector0.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector0.jpg used on input l
-ine 245.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+ine 276.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector30.jpg, id=189, 890.32625pt x 666.49pt>
+<../figures/shortVsLongTerm_Sector30.jpg, id=186, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector30.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector30.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector30.jpg used on input 
-line 249.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+line 280.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector60.jpg, id=190, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_Sector60.jpg, id=187, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector60.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector60.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector60.jpg used on input 
-line 253.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+line 284.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector90.jpg, id=191, 890.32625pt x 666.49pt>
+<../figures/shortVsLongTerm_Sector90.jpg, id=188, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector90.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector90.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector90.jpg used on input 
-line 257.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+line 288.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector120.jpg, id=192, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_Sector120.jpg, id=189, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector120.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector120.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector120.jpg used on input
- line 261.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+ line 292.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector150.jpg, id=193, 890.32625pt x 666.49pt>
+<../figures/shortVsLongTerm_Sector150.jpg, id=190, 887.315pt x 665.48625pt>
 File: ../figures/shortVsLongTerm_Sector150.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector150.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector150.jpg used on input
- line 265.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ line 296.
+(pdftex.def)             Requested size: 129.00269pt x 96.75197pt.
 
-<../figures/shortVsLongTerm_Sector180.jpg, id=194, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_Sector180.jpg, id=191, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector180.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector180.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector180.jpg used on input
- line 269.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+ line 300.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector210.jpg, id=195, 890.32625pt x 666.49pt>
+<../figures/shortVsLongTerm_Sector210.jpg, id=192, 887.315pt x 665.48625pt>
 File: ../figures/shortVsLongTerm_Sector210.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector210.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector210.jpg used on input
- line 273.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ line 304.
+(pdftex.def)             Requested size: 129.00269pt x 96.75197pt.
 
-<../figures/shortVsLongTerm_Sector240.jpg, id=196, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_Sector240.jpg, id=193, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector240.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector240.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector240.jpg used on input
- line 277.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+ line 308.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector270.jpg, id=197, 890.32625pt x 666.49pt>
+<../figures/shortVsLongTerm_Sector270.jpg, id=194, 887.315pt x 665.48625pt>
 File: ../figures/shortVsLongTerm_Sector270.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector270.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector270.jpg used on input
- line 281.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ line 312.
+(pdftex.def)             Requested size: 129.00269pt x 96.75197pt.
 
-<../figures/shortVsLongTerm_Sector300.jpg, id=198, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_Sector300.jpg, id=195, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector300.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector300.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector300.jpg used on input
- line 285.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+ line 316.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_Sector330.jpg, id=199, 890.32625pt x 666.49pt>
+<../figures/shortVsLongTerm_Sector330.jpg, id=196, 900.36375pt x 673.51625pt>
 File: ../figures/shortVsLongTerm_Sector330.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_Sector330.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_Sector330.jpg used on input
- line 289.
-(pdftex.def)             Requested size: 129.00269pt x 96.5623pt.
+ line 320.
+(pdftex.def)             Requested size: 129.00269pt x 96.4909pt.
 
-<../figures/shortVsLongTerm_AllSectors.jpg, id=200, 878.28125pt x 658.46pt>
+<../figures/shortVsLongTerm_AllSectors.jpg, id=197, 887.315pt x 665.48625pt>
 File: ../figures/shortVsLongTerm_AllSectors.jpg Graphic file (type jpg)
 
 <use ../figures/shortVsLongTerm_AllSectors.jpg>
 Package pdftex.def Info: ../figures/shortVsLongTerm_AllSectors.jpg used on inpu
-t line 293.
-(pdftex.def)             Requested size: 129.00269pt x 96.71509pt.
+t line 324.
+(pdftex.def)             Requested size: 129.00269pt x 96.75197pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--295
+Underfull \hbox (badness 10000) in paragraph at lines 274--326
 []$[]$ $[]$ $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--295
+Underfull \hbox (badness 10000) in paragraph at lines 274--326
 []$ $[]$ $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--295
+Underfull \hbox (badness 10000) in paragraph at lines 274--326
 []$ $[]$ $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--295
+Underfull \hbox (badness 10000) in paragraph at lines 274--326
 []$ $[]$ $[]$
  []
 
@@ -997,11 +996,11 @@ m_Sector180.jpg> <../figures/shortVsLongTerm_Sector210.jpg> <../figures/shortVs
 LongTerm_Sector240.jpg> <../figures/shortVsLongTerm_Sector270.jpg> <../figures/
 shortVsLongTerm_Sector300.jpg> <../figures/shortVsLongTerm_Sector330.jpg> <../f
 igures/shortVsLongTerm_AllSectors.jpg>]
-<../figures/overview.jpg, id=214, 997.7275pt x 85.31876pt>
+<../figures/overview.jpg, id=211, 997.7275pt x 85.31876pt>
 File: ../figures/overview.jpg Graphic file (type jpg)
 
 <use ../figures/overview.jpg>
-Package pdftex.def Info: ../figures/overview.jpg used on input line 307.
+Package pdftex.def Info: ../figures/overview.jpg used on input line 338.
 (pdftex.def)             Requested size: 430.00462pt x 36.77095pt.
  [10 <../figures/overview.jpg>] [11] [12] [13]
 
@@ -1012,13 +1011,11 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.440 ...trcat('Sector  ', num2str((i-2)*30), '째 
+l.471 ...trcat('Sector  ', num2str((i-2)*30), '째 
                                                   - ', num2str((i-1)*30) ,'�...
 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
+? R
+OK, entering \nonstopmode...
 
 ! Package inputenc Error: Keyboard character used is undefined
 (inputenc)                in inputencoding `utf8'.
@@ -1027,7 +1024,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.440 ...trcat('Sector  ', num2str((i-2)*30), '째 
+l.471 ...trcat('Sector  ', num2str((i-2)*30), '째 
                                                   - ', num2str((i-1)*30) ,'�...
 
 You need to provide a definition with \DeclareInputText 
@@ -1041,7 +1038,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.440 ...-2)*30), '째 - ', num2str((i-1)*30) ,'째'
+l.471 ...-2)*30), '째 - ', num2str((i-1)*30) ,'째'
                                                   ));
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1055,30 +1052,30 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.440 ...-2)*30), '째 - ', num2str((i-1)*30) ,'째'
+l.471 ...-2)*30), '째 - ', num2str((i-1)*30) ,'째'
                                                   ));
 You need to provide a definition with \DeclareInputText 
 or \DeclareInputMath before using this key.
 
 [14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 515.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 546.
  [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 515.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 546.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 515.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 515.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 546.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 546.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: A68FFA70C38B78FEE119E53ED56AEE12;776.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 515.
+(rerunfilecheck)             Checksum: ABF5DCFA37608FAE17AB8737046C861D;774.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 546.
  ) 
 Here is how much of TeX's memory you used:
- 11251 strings out of 493304
- 166591 string characters out of 6139871
- 439054 words of memory out of 5000000
- 14258 multiletter control sequences out of 15000+600000
+ 11249 strings out of 493304
+ 166563 string characters out of 6139871
+ 439135 words of memory out of 5000000
+ 14259 multiletter control sequences out of 15000+600000
  10042 words of font info for 36 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 42i,8n,40p,1251b,1857s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,40p,1247b,1857s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1094,10 +1091,10 @@ r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (16 pages, 1401361 bytes).
+Output written on report.pdf (16 pages, 1476103 bytes).
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
- 486 compressed objects within 5 object streams
- 291 named destinations out of 1000 (max. 500000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 482 compressed objects within 5 object streams
+ 288 named destinations out of 1000 (max. 500000)
  221 words of extra memory for PDF output out of 10000 (max. 10000000)
 

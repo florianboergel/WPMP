@@ -101,9 +101,9 @@ hold on;
 regressionParameters(1,1) = regressionParameters(1,2) * regressionParameters(1,2);
 fplot( @(x) regressionParameters(1,3)*x + regressionParameters(1,4), [0 18]);
 scatter(avgSectorPerMonth(:,2), avgSectorPerMonth(:,3));
-xlabel('MERRA-2 speed [m/s]');
-ylabel('FINO2 speed [m/s]');
-title('All Sectors');
+xlabel('MERRA-2 speed [m/s]','FontSize',12);
+ylabel('FINO2 speed [m/s]','FontSize',12);
+title('All Sectors', 'FontSize',20);
 legend(strcat('R^2= ',num2str(regressionParameters(1,1)),'  m= ',num2str(regressionParameters(1,3)),' b= ',num2str(regressionParameters(1,4))),'Data points','Location','northwest');
 saveas(gcf,strcat('figures/scatterPlot_AllSectors.jpg'));
 hold off;
@@ -114,11 +114,11 @@ for i=2:13
     [regressionParameters(i,2),  regressionParameters(i,3), regressionParameters(i,4)] = ... 
         regression(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1), 'one');
     regressionParameters(i,1) = regressionParameters(i,2) * regressionParameters(i,2);
-    fplot( @(x) regressionParameters(i,3)*x + regressionParameters(i,4), [0 18]);
+    fplot( @(x) regressionParameters(i,3)*x + regressionParameters(i,4),[0 max(avgSectorPerMonth(:,i*2))]);
     scatter(avgSectorPerMonth(:,i*2), avgSectorPerMonth(:,i*2+1));
-    xlabel('MERRA-2 speed [m/s]');
-    ylabel('FINO2 speed [m/s]');
-    title(strcat('Sector  ', num2str((i-2)*30), '° - ', num2str((i-1)*30) ,'°'));
+    xlabel('MERRA-2 speed [m/s]','FontSize',12);
+    ylabel('FINO2 speed [m/s]','FontSize',12);
+    title(strcat(num2str((i-2)*30), '° - ', num2str((i-1)*30) ,'°'),'FontSize',20);
     legend(strcat('R^2= ',num2str(regressionParameters(i,1)),'  m= ',num2str(regressionParameters(i,3)),' b= ',num2str(regressionParameters(i,4))),'Data points','Location','northwest');
     saveas(gcf,strcat('figures/scatterPlot_Sector',num2str((i-2)*30),'.jpg'));
     hold off;
@@ -165,7 +165,7 @@ plot(0:0.1:25,wblpdf(0:0.1:25,weibullParam(1,1), weibullParam(1,2)),'LineWidth',
 plot(0:0.1:25,wblpdf(0:0.1:25,weibullParam_shortTerm(1,1),weibullParam_shortTerm(1,2)),'LineWidth',2);
 xlabel('Windspeed in [m/s]');
 ylabel('Prob.');
-title('All Sectors');
+title('All Sectors','FontSize',20);
 legend('Long-Term Corrected','Short-Term Measured', 'Location','northeast');
 saveas(gcf,'figures/shortVsLongTerm_AllSectors.jpg');
 hold off; 
@@ -178,7 +178,7 @@ for sectorIndex=2:13
     plot(0:0.1:25,wblpdf(0:0.1:25,weibullParam_shortTerm(sectorIndex,1),weibullParam_shortTerm(sectorIndex,2)),'LineWidth',2);
     xlabel('Windspeed in [m/s]');
     ylabel('Prob.');
-    title(strcat('Sector ',num2str(sectorIndex-1)));
+    title(strcat(num2str((sectorIndex-2)*30), '° - ', num2str((sectorIndex-1)*30) ,'°'),'FontSize',20);
     legend('Long-Term Corrected','Short-Term Measured', 'Location','northeast');
     saveas(gcf,strcat('figures/shortVsLongTerm_Sector',num2str((sectorIndex-2)*30),'.jpg'));
     hold off; 
