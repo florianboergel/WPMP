@@ -26,21 +26,60 @@ bins     = 256;             % amount of bins in each spectrum
 bandwith = 25e6;            % frequency bandwith of the spectra
 lambda  = 1560e-9;          % wavelength of the laser light
 
+%%Step 1: noise cancelling by discarding all bins below mean*1.1 per spectra
+for pos = 1:312
+    spinner_noiseCancelled(pos,:) = spinnerlidar_spectra(pos,:)-1.1*mean(spinnerlidar_spectra(pos,:));
+    spinner_noiseCancelled(spinner_noiseCancelled<0) = 0;
+%    figures created once in directory
+%    figure('visible','off')
+%    plot(spinner_noiseCancelled(pos,:));
+%    saveas(gcf,strcat('figures/spectra_noisecancels_normed_',num2str(pos) ,'.jpg'));
+end;
+
+%% Step 2
 % Calculate the frequency resolution of the spectra, the Doppler frequency of each
 % bin and from that the wind speed corresponding to each bin:
+c = 3*10^8;
+f_0 = c/lambda;
+lambda_0 = c/f_0;
+for bin=1:256
+    f_d(bin,1) = (bin-1)/bins*bandwith;
+    v(bin,1) = f_d(bin,1) *lambda_0; %divided by 2?
+end;
 
-% f = ...
-% v = ...
+%% Finding the spectra peaks and visualize
 
 
-%% Finding the spectra peaks
+%%Step 3: apply centroid method
+for pos = 1:312 
+    spinnerSum = sum(spinner_noiseCancelled(pos,:));
+    spinner_noiseCancelled_normed(pos,:) = spinner_noiseCancelled(pos,:)/spinnerSum;
+end;
 
+for pos = 1:312
+    f_peak(pos,1) = sum(spinner_noiseCancelled_normed(pos,:)*f_d(:))/sum(spinner_noiseCancelled_normed(pos,:));
+end;
 
+%detect centroid failures
+for pos = 1:312
+    maxIndex= find(spinner_noiseCancelled_normed(pos,:) == max(spinner_noiseCancelled_normed(pos,:))); 
+    centroidIndex= f_peak(pos)/bandwith*bins;
+    failures(pos,1) = abs(centroidIndex-maxIndex);
+end;
+figure();
+hold on;
+plot(failures);
+[pks,locs] = findpeaks(failures);
+text(locs+.02,pks,num2str((1:numel(pks))'));
+xlabel('Spectra number','fontsize',10)
+ylabel('Differences of bin indices for max and centroid functions','fontsize',10)
+hold off;
 
+%%Step 4: Calc centroid velocity for correlation with lidar measured speeds
+vlos_centroid(:,1) = f_peak(:,1) *lambda_0; %divided by 2?
 
 %% Plotting
-
-Correlation(vlos,vlos);
+Correlation(vlos,vlos_centroid);
 
 Rosette_Scan_Plot(y,z,vlos,...
         'coloraxis',[5 10],...
