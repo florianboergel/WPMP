@@ -19,9 +19,9 @@ data_VAD = [ts_VAD az_c_VAD rs_VAD cnr_VAD el_VAD rg_VAD x_VAD y_VAD z_VAD];
 
 % Filter data by CnR, all DATA?
 cnr_ind = find(cnr_VAD <= -20 | cnr_VAD >= -5);
-%data_VAD(cnr_ind, 2:3) = NaN;
+%data_VAD(cnr_ind, :) = NaN;
 %rs_VAD(cnr_ind) = NaN;
-%az_VAD(cnr_ind) = NaN;
+%az_c_VAD(cnr_ind) = NaN;
 
 
 % get all range gates
@@ -47,11 +47,15 @@ time_per_scan = 360 / 25
 time_per_scan_intervalls = time_per_scan / 0.4
 
 %% Step 2
-phi = az_c_VAD_filter(500:1000,1);
-v_r = rs_VAD_filter(500:1000,1);
-
-VADCos = @(param,phi) param(1)*cosd(phi-param(2))+param(3)
-startvalues = [0, 0, 0]
-fitparam = lsqcurvefit(VADCos, startvalues, phi, v_r)
-
-
+for j = 1:14
+    for i = 1:floor(length(az_c_VAD_filter)/36-1)
+        phi = az_c_VAD_filter((i-1)*36+18:(i-1)*36+53,j);
+        v_r = rs_VAD_filter(18:53,j);
+        phi(phi == NaN) = [];
+        v_r(v_r== NaN) = [];
+        VADCos = @(param,phi) param(1)*cosd(phi-param(2))+param(3);
+        startvalues = [0, 0, 0];
+        fitparam = lsqcurvefit(VADCos, startvalues, phi, v_r);
+        savedparm{i,j} = fitparam;
+    end 
+end
