@@ -13,9 +13,11 @@ lidar_range=sqrt((repmat(staring_point(1),1,3)-lidar_positions(1,:)).^2+...
        
 % Here you have to calculate the azimuth and elevation scanning angles of each of
 % the lidars:
+for i=1:3
+    distOnGround = (staring_point(1) - lidar_positions(i,1))
+   ele(i)= acos();
+end
 
-% azi = ...
-% ele = ...
 
 % Reading the line-of-sight velocity data
 

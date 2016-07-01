@@ -81,19 +81,68 @@ end
 
 
 %% Step 3: compare lidar and sonic data
-%10 minute averages of the lidar data 
 startTime = datenum('02-Jan-2014 06:00:00','dd-mmm-yyyy HH:MM:SS');
+endTime = datenum('02-Jan-2014 12:00:00','dd-mmm-yyyy HH:MM:SS');
 
+%10 minute averages of the lidar wind speed (horizontal) 
 for j=1:14
     for interval = 1:36 %we have 36 ten minute intervals
-        avgs_horSpeed(interval,j) = mean(calc_vHor(calc_times(:,j) >= startTime +(interval-1)/(24*6) & ... 
+        tenMinAvg_horSpeed(interval,j) = nanmean(calc_vHor(calc_times(:,j) >= startTime +(interval-1)/(24*6) & ... 
                                                     calc_times(:,j) < startTime +interval/(24*6),j));
-        avgs_horDir(interval,j) = mean(calc_D(calc_times(:,j) >= startTime +(interval-1)/(24*6) & ... 
-                                                calc_times(:,j) < startTime +interval/(24*6),j));
     end;
 end;
 
-%calc vertical profiles and compare
+%load fino1 data
+fino_33 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_33m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_40 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_40m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_50 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_50m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_60 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_60m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_70 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_70m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_80 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_80m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_90 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_90m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_100 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_100m_20131220_20140121.dat','Delimiter','tab','HeaderLines',8);
+fino_speeds(:,1) = fino_33.Var2((datenum(fino_33.Var1(:)) >= startTime & datenum(fino_33.Var1(:)) < endTime));
+fino_speeds(:,2) = fino_40.Var2((datenum(fino_40.Var1(:)) >= startTime & datenum(fino_40.Var1(:)) < endTime));
+fino_speeds(:,3) = fino_50.Var2((datenum(fino_50.Var1(:)) >= startTime & datenum(fino_50.Var1(:)) < endTime));
+fino_speeds(:,4) = fino_60.Var2((datenum(fino_60.Var1(:)) >= startTime & datenum(fino_60.Var1(:)) < endTime));
+fino_speeds(:,5) = fino_70.Var2((datenum(fino_70.Var1(:)) >= startTime & datenum(fino_70.Var1(:)) < endTime));
+fino_speeds(:,6) = fino_80.Var2((datenum(fino_80.Var1(:)) >= startTime & datenum(fino_80.Var1(:)) < endTime));
+fino_speeds(:,7) = fino_90.Var2((datenum(fino_90.Var1(:)) >= startTime & datenum(fino_90.Var1(:)) < endTime));
+fino_speeds(:,8) = fino_100.Var2((datenum(fino_100.Var1(:)) >= startTime & datenum(fino_100.Var1(:)) < endTime));
+fino_speeds(fino_speeds==-999) = NaN;
+%overall mean speeds for lidar
+for j=1:14
+    avg_horSpeed_Lidar(j) = nanmean(tenMinAvg_horSpeed(:,j));
+end;
+%overall mean speeds for fino
+avg_horSpeed_Fino(1) = nanmean(fino_speeds(:,1));
+avg_horSpeed_Fino(2) = nanmean(fino_speeds(:,2));
+avg_horSpeed_Fino(3) = nanmean(fino_speeds(:,3));
+avg_horSpeed_Fino(4) = nanmean(fino_speeds(:,4));
+avg_horSpeed_Fino(5) = nanmean(fino_speeds(:,5));
+avg_horSpeed_Fino(6) = nanmean(fino_speeds(:,6));
+avg_horSpeed_Fino(7) = nanmean(fino_speeds(:,7));
+avg_horSpeed_Fino(8) = nanmean(fino_speeds(:,8));
 
 
+%perform power log fit for fino1
+logProfileModel = @(b,z) b(1)/0.4 *(log(z/b(2)));
+opts = statset('nlinfit');
+opts.RobustWgtFun = 'bisquare';
+logProfileCoeffsFino = real(nlinfit([33,40,50,60,70,80,90,100],avg_horSpeed_Fino,logProfileModel,[0.1,10^-5],opts));
+lidarHeights = rangeGateSet/sind(60);
+logProfileCoeffsLidar= real(nlinfit(lidarHeights,avg_horSpeed_Lidar,logProfileModel,[0.1,10^-5],opts));
 
+%plot both vertical wind speed profiles
+figure();
+hold on;
+[xLogFino,yLogFino]=fplot(@(z) logProfileCoeffsFino(1)/0.4 *(log(z/logProfileCoeffsFino(2))),[0 100]);
+[xLogLidar,yLogLidar]=fplot(@(z) logProfileCoeffsLidar(1)/0.4 *(log(z/logProfileCoeffsLidar(2))),[0 100]);
+plot(yLogFino,xLogFino,'Color','b');
+plot(yLogLidar,xLogLidar,'Color','r');
+ylabel('Height in [m]');
+xlabel('windspeed in [m/s]');
+title('Vertical Profiles');
+legend('Fino1','Lidar VAD','Location','northwest');
+saveas(gcf,'figures/verticalProfiles.png')
+hold off;
