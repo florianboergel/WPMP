@@ -14,8 +14,10 @@ lidar_range=sqrt((repmat(staring_point(1),1,3)-lidar_positions(1,:)).^2+...
 % Here you have to calculate the azimuth and elevation scanning angles of each of
 % the lidars:
 for i=1:3
-    distOnGround = (staring_point(1) - lidar_positions(i,1))
-   ele(i)= acos();
+    distOnGround = sqrt((staring_point(1) - lidar_positions(1,i))^2+(staring_point(2) - lidar_positions(2,i))^2);
+    distDiagonal = sqrt(distOnGround^2 + (staring_point(3) - lidar_positions(3,i))^2);
+    ele(i) = acosd(distOnGround/distDiagonal);
+    azi(i) = atand((lidar_positions(2,i)-staring_point(2))/(lidar_positions(1,i)-staring_point(1)));
 end
 
 
