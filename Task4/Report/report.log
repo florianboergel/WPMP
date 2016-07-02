@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  29 JUN 2016 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  2 JUL 2016 14:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -724,16 +724,16 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 73.
 
-<../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png, id=39, 421.575pt x 31
-6.0608pt>
+<../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png, id=44, 429.2838pt x 3
+17.5062pt>
 File: ../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png Graphic file (typ
 e png)
  <use ../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/spectra_nofilter.pn
 g used on input line 82.
-(pdftex.def)             Requested size: 215.0023pt x 161.1937pt.
+(pdftex.def)             Requested size: 215.0023pt x 159.01915pt.
 
-<../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png, id=40, 429.2838
+<../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png, id=45, 429.2838
 pt x 317.5062pt>
 File: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png Graphic fil
 e (type png)
@@ -758,44 +758,73 @@ Overfull \hbox (1.27313pt too wide) in paragraph at lines 111--111
 -troid method 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
 [3 <../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png (PNG copy)> <../Exe
-rcises_and_Tasks/ex1/figures/spectra_noisecancelled.png (PNG copy)>] [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+rcises_and_Tasks/ex1/figures/spectra_noisecancelled.png (PNG copy)>]
+<../Exercises_and_Tasks/ex1/figures/failures.png, id=77, 429.2838pt x 317.5062p
+t>
+File: ../Exercises_and_Tasks/ex1/figures/failures.png Graphic file (type png)
+ <use ../Exercises_and_Tasks/ex1/figures/failures.png>
+Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/failures.png used o
+n input line 122.
+(pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
 
-(./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+<../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg, id=79, 
+878.28125pt x 658.46pt>
+File: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg Gra
+phic file (type jpg)
+
+<use ../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg>
+Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancel
+s_normed_72.jpg used on input line 131.
+(pdftex.def)             Requested size: 430.00462pt x 322.387pt.
+
+[4 <../Exercises_and_Tasks/ex1/figures/failures.png (PNG copy)>]
+<../Exercises_and_Tasks/ex1/figures/correlation.png, id=87, 429.2838pt x 317.50
+62pt>
+File: ../Exercises_and_Tasks/ex1/figures/correlation.png Graphic file (type png
+)
+ <use ../Exercises_and_Tasks/ex1/figures/correlation.png>
+Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/correlation.png use
+d on input line 140.
+(pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
+ [5 <../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 147.
+ [6 <../Exercises_and_Tasks/ex1/figures/correlation.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 147.
+ (./report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 147.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 147.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 803FA0DAF5B4EC31C47BCA9F40615910;448.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+(rerunfilecheck)             Checksum: 820EC15CE9FE2ECCD7614932A4147A49;543.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 147.
  ) 
 Here is how much of TeX's memory you used:
- 10816 strings out of 493085
- 157289 string characters out of 6136917
- 287680 words of memory out of 5000000
- 14142 multiletter control sequences out of 15000+600000
+ 10841 strings out of 493085
+ 158207 string characters out of 6136917
+ 287904 words of memory out of 5000000
+ 14158 multiletter control sequences out of 15000+600000
  10341 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,8n,40p,381b,1911s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,40p,496b,1912s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (5 pages, 218366 bytes).
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on report.pdf (7 pages, 353231 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 159 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
