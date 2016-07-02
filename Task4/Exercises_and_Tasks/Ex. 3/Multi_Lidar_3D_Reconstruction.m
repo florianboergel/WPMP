@@ -51,6 +51,20 @@ vlos3_interp = interp1(vlos3(:,1),vlos3(:,2),timeline);
 % v = ...
 % w = ...
 
+
+matrix = [cosd(ele(1))*sind(azi(1)),cosd(ele(1))*cosd(azi(1)),sind(ele(1));...
+            cosd(ele(2))*sind(azi(2)),cosd(ele(2))*cosd(azi(2)),sind(ele(2));...
+            cosd(ele(3))*sind(azi(3)),cosd(ele(3))*cosd(azi(3)),sind(ele(3))]
+V = [vlos1_interp vlos2_interp vlos3_interp];
+for i = 1:length(vlos1_interp)
+    solution = inv(matrix)*V(i,:)';
+    u(i) = solution(1);
+    v(i) = solution(2);
+    w(i) = solution(3);
+end
+u = u';
+v = v';
+w = w';
 % In this part the calculated u, v and w components are aligned with the
 % 'main' wind direction, such that both v and w have a mean of 0 m/s:
 

@@ -4,3 +4,7 @@
 \contentsline {subsection}{\numberline {1.2}Calculate the Doppler frequency that each bin of the spectra corresponds to}{3}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}For each spectrum, define the peak location with the centroid method}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Correlate your calculated line-of-sight speeds}{5}{subsection.1.4}
+\contentsline {section}{\numberline {2}VAD Scanning: from line-of-sight velocity to wind factor}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}Investigate the LiDAR data}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Separate the data single 360$^\circ $ scans and carry out a cosine fit}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}10 minute averages and comparison of vertical wind profiles and wind directions}{9}{subsection.2.3}

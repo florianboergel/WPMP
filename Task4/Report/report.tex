@@ -143,5 +143,115 @@ In step 4 we were asked to correlate the calculated line-of-sight speeds with th
 \end{figure}
 
 Figure \ref{fig:correlation} shows a strong correlation of $R^2 = 0.972$. As discussed in section 1.3 there are measurement errors due to the position of the lidar. Some measurements are blocked by the moving blades. 
+\section{VAD Scanning: from line-of-sight velocity to wind factor}
+\subsection{Investigate the LiDAR data}
+In exercise 2 we were working with a 6 hour dataset of VAD Lidar measurements located on the FINO1 platform. For further comparison we were also provided a 10 minute averaged dataset of FINO 1.
+The first step was to filter bad measurements. A common procedure is to filter bad Carrier-to-Noise-Ratios (CNR). 
+The procedure is shown in the following code-snippet:
 
+\begin{lstlisting}
+% Filter data by CnR, by setting to NaN and later in Step 2 discarding NaN
+% values
+cnr_ind = find(cnr_VAD <= -20 | cnr_VAD >= -5);
+rs_VAD(cnr_ind) = NaN;
+az_c_VAD(cnr_ind) = NaN;
+\end{lstlisting}
+
+After filtering the data we were asked to separate the data for the different range gates. We identified 14 different range gates, measuring at $61m, 64m, 67m, 70m, 72m, 75m, 78m, 81m, 84m, 87m, 90m, 93m, 96m and 98m$. 
+The last task of 2.1 was to calculate the time for a full $360^\circ$ scan. The LiDAR has a scanner speed of $25^\circ/s$. Therefore one full scan takes:
+
+\begin{align*}
+\textit{time per scan} = \frac{360}{25^\circ/s} = 14.4s 
+\end{align*}
+The given data is measured at a time interval of 0.4 s. A full scan represents $14.4s / 0.4s = 36$ intervals.
+\subsection{Separate the data single 360$^\circ$ scans and carry out a cosine fit}
+The goal of this section is to compute the horizontal wind speed, the horizontal wind direction and the vertical wind speed. In the last section we calculated that a full scan is represented by 36 intervals. So in the ideal case of a homogeneous atmosphere the line-of-sight velocity should show a sine-like behaviour. There fore we should be able to fit this to a function of type:
+\begin{equation*}
+v_{rad} =  b \cdot\cos(\phi - \Theta) +a
+\end{equation*}
+where 
+\begin{align*}
+v_{hor} = \frac{b}{cos(\theta)} \hspace{1cm} w= \frac{-a}{\sin(\theta)} \hspace{1cm} D= b \pm 180
+\end{align*}
+To implement the fitting routine in Matlab we first defined the function, depending on the three parameters $b, \Theta$ and $a$ and the azimuth angle $\phi$. During the lecture the function $lsqcurvefit()$ was recommended as the fitting routine. It should be noted, that the function is not able to deal with $NaN$ values. Therefore $NaN$ values had to be discarded temporally.
+The following code-snippet shows the Matlab implementation. The fitting was done over all full 360$^\circ$ scans and over all range gates.
+
+\begin{lstlisting}
+for j = 1:14 % number of Range Gates
+    for i = 1:numberOfScans
+        phi = az_c_VAD_filter((i-1)*intervalls_per_scan+18:(i-1)*intervalls_per_scan+53,j);
+        v_r = rs_VAD_filter((i-1)*intervalls_per_scan+18:(i-1)*intervalls_per_scan+53,j);
+        nanIndices = isnan(phi) | isnan(v_r); 
+        phi(nanIndices) = [];
+        v_r(nanIndices) = [];
+        if length(phi>0)
+            fitparam = lsqcurvefit(VADCos, startvalues, phi, v_r);
+            savedparam{i,j} = fitparam;
+            %calculate horiz and vertical speed
+            v_hor = fitparam(1) / cosd(60);
+            v_ver = -fitparam(3) / sind(60);
+            D = abs(fitparam(1)-180);
+            calc_times(i,j) = ts_VAD_filter((i-1)*intervalls_per_scan+18,j);
+            calc_vHor(i,j) =  v_hor;
+            calc_vVer(i,j) = v_ver;
+            calc_D(i,j) = D;
+        end
+    end 
+end
+\end{lstlisting}
+
+In order to understand what the fitting routine returns, we also plotted the data and the fitted curve. The results are shown in figure \ref{fig:fit}.
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{../Exercises_and_Tasks/ex2/figures/fit.png}
+\caption{Full 360$^\circ$ for Range Gate = 61 m with fit}
+\label{fig:fit}
+\end{figure}
+
+\subsection{10 minute averages and comparison of vertical wind profiles and wind directions}
+The FINO 1 data includes wind vanes at heights of \textit{33m, 40m, 50m, 60m, 70m, 80m, 90m} and eight anemometers at heights \textit{33m, 40m, 50m, 60m, 70m, 80m, 90m and 100m}.The measurements are in 10 minute intervals. The LiDAR data was measured at heights \textit{67m, 70m, 72m, 75m, 77m, 80m,	83m} and \textit{85m}.
+To compare the vertical profiles we had to compute 10 minute averages of the LiDAR wind speeds and wind directions. Since we only had a six hour dataset we searched for the corresponding time stamp in the FINO 1 data. After averaging the LiDAR data and extracting the correct FINO 1. We were now able to compare the datasets. 
+In Exercise 2 - Energy Meteorology we identified the logarithmic wind speed profile as a good method to predict the vertical wind speed profile.
+Therefore we fitted the calculated LiDAR data and the given FINO 1 data with the help of logarithmic wind speed profile. 
+The procedure for FINO 1 is shown following code-snippet:
+\begin{lstlisting}
+logProfileModel = @(b,z) b(1)/0.4 *(log(z/b(2)));
+opts = statset('nlinfit');
+opts.RobustWgtFun = 'bisquare';
+logProfileCoeffsFino = real(nlinfit([33,40,50,60,70,80,90,100],...
+avg_horSpeed_Fino,logProfileModel,[0.1,10^-5],opts));
+\end{lstlisting}
+The results are shown in figure \ref{fig:verticalprofiles} :
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{../Exercises_and_Tasks/ex2/figures/verticalProfiles.png}
+\caption{Vertical profile of FINO 1 and LiDAR measurement}
+\label{fig:verticalprofiles}
+\end{figure}
+The figures shows that the vertical profile of the LiDAR is shifted to the left. As discussed in the lecture, anemometers measure more accurately and therefore the FINO 1 curve should be more representative. 
+
+Further we also evaluated the wind directions. Here we also used the already existing WindRose.m routine. The wind rose helps to evaluate and compare the wind directions.
+
+In order to obtain correct wind directions we used the following plot routine:\\
+\begin{lstlisting}
+WindRose(fino_90_dir_interval,fino_speeds(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
+WindRose(tenMinAvg_direction(:,7), tenMinAvg_horSpeed(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
+\end{lstlisting}
+
+The comparison between the two wind roses are shown in figure~\ref{fig:WindrosesVal}. 
+
+\begin{figure}[htb!]
+\label{fig:WindRose1_valdidation}
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png}
+  \caption{Wind rose of FINO 1}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{../Exercises_and_Tasks/ex2/figures/WindRose_lidar.png}
+  \caption{Wind rose of LiDAR VAD}
+\end{subfigure}
+\caption{Comparison of wind roses}
+  \label{fig:WindrosesVal}
+\end{figure}
 \end{document}
