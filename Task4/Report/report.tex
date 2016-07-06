@@ -141,6 +141,7 @@ In step 4 we were asked to correlate the calculated line-of-sight speeds with th
 \end{figure}
 
 Figure \ref{fig:correlation} shows a strong correlation of $R^2 = 0.972$. As discussed in section 1.3 there are measurement errors due to the position of the lidar. Some measurements are blocked by the moving blades. 
+\newpage
 \section{VAD Scanning: from line-of-sight velocity to wind factor}
 \subsection{Investigate the LiDAR data}
 In exercise 2 we were working with a 6 hour dataset of VAD Lidar measurements located on the FINO1 platform. For further comparison we were also provided a 10 minute averaged dataset of FINO 1.
@@ -268,7 +269,7 @@ he lidar data contains the 3D coordinates of each lidar system and the measured 
 \subsection{Azimuth and elevation angle for each lidar}
 In order to calculate the the azimuth and the elevation we used the geometric set-up of the system.
 It should be noted that $0^\circ$ azimuth angle is defined to be aligned with the positive x-axis and is counted counter-clockwise for positive values. 
-To Matlab implementation is shown below:\\
+The Matlab implementation is shown below:\\
 
 \begin{lstlisting}
 for i=1:3
@@ -299,7 +300,7 @@ V_{rad} = [u, v ,w]\cdot[\cos(\beta)\sin(\alpha), \cos(\beta)\cos(\alpha), \sin(
 That leaves us with 3 equation for 3 unknown. 
 The trigonometric functions represent the coefficient matrix A and the three different line of sight velocities $V_{rad}$ represent c.
 To solve for $[u,v,w]$ we have to multiply $A^{-1}$ with the radial wind speed vector.
-In Matlab this can be done with $mldivide()$:
+In Matlab this can be done with $mldivide()$:\newpage
 
 \begin{lstlisting}
     solution = mldivide(matrix, V(i,:)');
@@ -321,4 +322,422 @@ Lidar 1 &-4.83 & 0.76 \\
 Lidar 2 &-3.20 & 0.63\\
 Lidar 3 & 	3.38& 0.96\\
 \end{tabular}
+\newpage
+\appendix
+\section{Appendix}
+\subsection{Spectral\_Analysis.m}
+\begin{lstlisting}
+%% Spectra_Data
+%  Script that converts raw spectra from the SpinnerLidar to the
+%  line-of-sight wind speeds
+
+close all; clc;
+
+%% Reading the line-of-sight data of the SpinnerLidar
+
+spinnerlidar_data    = dlmread('SpinnerLidar_Data_1s.txt');
+spinnerlidar_spectra = dlmread('SpinnerLidar_Spectra_1s.txt');
+
+index       = spinnerlidar_data(:,1);  % Lidar measurement index
+vlos      	= spinnerlidar_data(:,3);  % Line-of-sight measurement
+sx          = spinnerlidar_data(:,7);  % Laser pointing unit vector x-component
+sy         	= spinnerlidar_data(:,8);  % Laser pointing unit vector y-component
+focus       = spinnerlidar_data(:,9);  % Focus distance of Lidar
+
+sz          = sqrt(1-sx.^2-sy.^2);
+x           =  sz.*focus;
+y           = -sy.*focus;
+z           =  sx.*focus;
+               
+%% Reading the spectrum data of the SpinnerLidar
+
+bins     = 256;             % amount of bins in each spectrum
+bandwith = 25e6;            % frequency bandwith of the spectra
+lambda  = 1560e-9;          % wavelength of the laser light
+
+%% Step 1: noise cancelling by discarding all bins below mean*1.1 per spectra
+for pos = 1:312
+    
+    spinner_noiseCancelled(pos,:) = spinnerlidar_spectra(pos,:)-1.5*mean(spinnerlidar_spectra(pos,:));
+    spinner_noiseCancelled(spinner_noiseCancelled < 0) = 0;
+%    figures created once in directory
+%    figure('visible','off')
+%    plot(spinner_noiseCancelled(pos,:));
+%    saveas(gcf,strcat('figures/spectra_noisecancels_normed_',num2str(pos) ,'.jpg'));
+end;
+
+%% Step 2
+% Calculate the frequency resolution of the spectra, the Doppler frequency of each
+% bin and from that the wind speed corresponding to each bin:
+c = 3*10^8;
+f_0 = c/lambda;
+lambda_0 = c/f_0;
+for bin=1:256
+    f_d(bin,1) = (bin-1)/bins*bandwith;
+    v(bin,1) = f_d(bin,1) *lambda_0; %divided by 2?
+end;
+
+%% Finding the spectra peaks and visualize
+%%Step 3: apply centroid method
+for pos = 1:312 
+    spinnerSum = sum(spinner_noiseCancelled(pos,:))
+    spinner_noiseCancelled_normed(pos,:) = spinner_noiseCancelled(pos,:)/spinnerSum;
+end;
+
+for pos = 1:312
+    f_peak(pos,1) = sum(spinner_noiseCancelled_normed(pos,:)*f_d(:))/sum(spinner_noiseCancelled_normed(pos,:));
+end;
+
+%detect centroid failures
+for pos = 1:312
+    maxIndex= find(spinner_noiseCancelled_normed(pos,:) == max(spinner_noiseCancelled_normed(pos,:))); 
+    centroidIndex= f_peak(pos)/bandwith*bins;
+    failures(pos,1) = abs(centroidIndex-maxIndex);
+end;
+figure();
+hold on;
+x_range = 1:length(failures)
+% failures_mean = nanmean(failures);
+% failures_corrected = failures - failures_mean;
+% failures(failures_corrected < 0) = 0;
+plot(x_range,failures);
+for k=1:length(failures)
+      if failures(k) > 5
+      text(x_range(k),failures(k),num2str(x_range(k)))
+      end
+end
+%[pks,locs] = findpeaks(failures);
+%text(locs+.02,pks,num2str((1:numel(pks))'));
+xlabel('Spectra number','fontsize',10)
+ylabel('Differences of bin indices for max and centroid functions','fontsize',10)
+saveas(gcf,strcat('figures/failures.png'));
+hold off;
+
+%%Step 4: Calc centroid velocity for correlation with lidar measured speeds
+vlos_centroid(:,1) = f_peak(:,1) *lambda_0; %divided by 2?
+
+%% Plotting
+figure();
+plot(spinnerlidar_spectra(1,:))
+xlabel('Frequency')
+ylabel('Collection efficiency')
+title('Spectrum without filter')
+saveas(gcf,strcat('figures/spectra_nofilter.png'));
+
+figure();
+plot(spinner_noiseCancelled(1,:))
+title('Spectrum with filter')
+xlabel('Frequency')
+ylabel('Collection efficiency')
+saveas(gcf,strcat('figures/spectra_noisecanceld.png'));
+
+check = vlos-vlos_centroid;
+Correlation(vlos,vlos_centroid);
+
+Rosette_Scan_Plot(y,z,vlos_centroid,...
+        'coloraxis',[5 10],...
+        'rosettebackground',y,z,...
+        'meshgridvector',(-1:0.1:1)*unique(focus)/2);
+
+Rosette_Scan_Plot(y,z,vlos,...
+        'coloraxis',[5 10],...
+        'rosettebackground',y,z,...
+        'meshgridvector',(-1:0.1:1)*unique(focus)/2);
+    
+  
+\end{lstlisting}
+\newpage
+\subsection{Vad\_analysis.m}
+\begin{lstlisting}
+%% Loading
+
+close all; clc;
+load('201401020600_WLS200S-17_data_.mat');
+
+ts_VAD = data.ts;
+az_c_VAD = data.az_c;
+az_c_VAD = az_c_VAD + 180;
+rs_VAD = data.rs;
+el_VAD = data.el;
+rg_VAD = data.rg;
+x_VAD = data.x;
+y_VAD = data.y;
+z_VAD = data.z;
+cnr_VAD = data.cnr;
+
+%% Step 1 
+% Write Data to one double struct
+data_VAD = [ts_VAD az_c_VAD rs_VAD cnr_VAD el_VAD rg_VAD x_VAD y_VAD z_VAD];
+
+% Filter data by CnR, by setting to NaN and later in Step 2 discarding NaN
+% values
+cnr_ind = find(cnr_VAD <= -20 | cnr_VAD >= -5);
+rs_VAD(cnr_ind) = NaN;
+az_c_VAD(cnr_ind) = NaN;
+
+
+% get all range gates
+count = 1;
+
+for q = 1:100
+    a = find(rg_VAD == q);
+    if length(a) ~= 0 
+        rg_ind(:,count) = a;
+        rangeGateSet(count)=q;
+        count = count + 1;
+    end    
+end
+
+% separate data by range gates
+for i = 1:14
+    rs_VAD_filter(:,i) = data_VAD(rg_ind(:,i),3);
+    az_c_VAD_filter(:,i) = data_VAD(rg_ind(:,i),2);
+    ts_VAD_filter(:,i) = data_VAD(rg_ind(:,i),1);
+end
+
+% how long does one full 360 scan take?
+time_per_scan = 360 / 25;
+intervalls_per_scan = time_per_scan / 0.4;
+
+%% Step 2
+VADCos = @(param,phi) param(1)*cosd(phi-param(2))+param(3);
+startvalues = [2, 10, 2];
+numberOfScans = floor(length(az_c_VAD_filter)/intervalls_per_scan-1)
+calc_times = zeros(numberOfScans,14);
+calc_vHor = zeros(numberOfScans,14);
+calc_vVer = zeros(numberOfScans,14);
+calc_D = zeros(numberOfScans,14);
+
+for j = 1:14 % number of Range Gates
+    for i = 1:numberOfScans
+        phi = az_c_VAD_filter((i-1)*intervalls_per_scan+18:(i-1)*intervalls_per_scan+53,j);
+        v_r = rs_VAD_filter((i-1)*intervalls_per_scan+18:(i-1)*intervalls_per_scan+53,j);
+        nanIndices = isnan(phi) | isnan(v_r); 
+        phi(nanIndices) = [];
+        v_r(nanIndices) = [];
+        if length(phi>0)
+            fitparam = lsqcurvefit(VADCos, startvalues, phi, v_r);
+            savedparam{i,j} = fitparam;
+            %calculate horiz and vertical speed
+            v_hor = fitparam(1) / cosd(60);
+            v_ver = -fitparam(3) / sind(60);
+            D=(fitparam(1)+180);
+            calc_times(i,j) = ts_VAD_filter((i-1)*intervalls_per_scan+18,j);
+            calc_vHor(i,j) =  v_hor;
+            calc_vVer(i,j) = v_ver;
+            calc_D(i,j) = D;
+        end
+    end 
+end
+
+
+%% Step 3: compare lidar and sonic data
+startTime = datenum('02-Jan-2014 06:00:00','dd-mmm-yyyy HH:MM:SS');
+endTime = datenum('02-Jan-2014 12:00:00','dd-mmm-yyyy HH:MM:SS');
+
+%10 minute averages of the lidar wind speed (horizontal) 
+for j=1:14
+    for interval = 1:36 %we have 36 ten minute intervals
+        tenMinAvg_horSpeed(interval,j) = nanmean(calc_vHor(calc_times(:,j) >= startTime +(interval-1)/(24*6) & ... 
+                                                    calc_times(:,j) < startTime +interval/(24*6),j));
+        tenMinAvg_direction(interval,j) = nanmean(calc_D(calc_times(:,j) >= startTime +(interval-1)/(24*6) & ... 
+                                                    calc_times(:,j) < startTime +interval/(24*6),j));
+    end;
+end;
+
+%load fino1 data
+fino_33 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_33m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_40 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_40m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_50 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_50m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_60 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_60m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_70 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_70m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_80 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_80m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_90 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_90m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_100 = readtable('fino-150504160459/FINO1_Windgeschwindigkeit_100m_20131220_20140121.dat','Delimiter','tab','HeaderLines',8);
+fino_speeds(:,1) = fino_33.Var2((datenum(fino_33.Var1(:)) >= startTime & datenum(fino_33.Var1(:)) < endTime));
+fino_speeds(:,2) = fino_40.Var2((datenum(fino_40.Var1(:)) >= startTime & datenum(fino_40.Var1(:)) < endTime));
+fino_speeds(:,3) = fino_50.Var2((datenum(fino_50.Var1(:)) >= startTime & datenum(fino_50.Var1(:)) < endTime));
+fino_speeds(:,4) = fino_60.Var2((datenum(fino_60.Var1(:)) >= startTime & datenum(fino_60.Var1(:)) < endTime));
+fino_speeds(:,5) = fino_70.Var2((datenum(fino_70.Var1(:)) >= startTime & datenum(fino_70.Var1(:)) < endTime));
+fino_speeds(:,6) = fino_80.Var2((datenum(fino_80.Var1(:)) >= startTime & datenum(fino_80.Var1(:)) < endTime));
+fino_speeds(:,7) = fino_90.Var2((datenum(fino_90.Var1(:)) >= startTime & datenum(fino_90.Var1(:)) < endTime));
+fino_speeds(:,8) = fino_100.Var2((datenum(fino_100.Var1(:)) >= startTime & datenum(fino_100.Var1(:)) < endTime));
+fino_speeds(fino_speeds==-999) = NaN;
+%overall mean speeds for lidar
+for j=1:14
+    avg_horSpeed_Lidar(j) = nanmean(tenMinAvg_horSpeed(:,j));
+end;
+%overall mean speeds for fino
+avg_horSpeed_Fino(1) = nanmean(fino_speeds(:,1));
+avg_horSpeed_Fino(2) = nanmean(fino_speeds(:,2));
+avg_horSpeed_Fino(3) = nanmean(fino_speeds(:,3));
+avg_horSpeed_Fino(4) = nanmean(fino_speeds(:,4));
+avg_horSpeed_Fino(5) = nanmean(fino_speeds(:,5));
+avg_horSpeed_Fino(6) = nanmean(fino_speeds(:,6));
+avg_horSpeed_Fino(7) = nanmean(fino_speeds(:,7));
+avg_horSpeed_Fino(8) = nanmean(fino_speeds(:,8));
+
+
+%perform power log fit for fino1
+logProfileModel = @(b,z) b(1)/0.4 *(log(z/b(2)));
+opts = statset('nlinfit');
+opts.RobustWgtFun = 'bisquare';
+logProfileCoeffsFino = real(nlinfit([33,40,50,60,70,80,90,100],avg_horSpeed_Fino,logProfileModel,[0.1,10^-5],opts));
+lidarHeights = rangeGateSet*sind(60);
+logProfileCoeffsLidar= real(nlinfit(lidarHeights,avg_horSpeed_Lidar,logProfileModel,[0.1,10^-5],opts));
+%%
+%plot both vertical wind speed profiles
+x_range = [33,40,50,60,70,80,90,100]
+figure();
+hold on;
+[xLogFino,yLogFino]=fplot(@(z) logProfileCoeffsFino(1)/0.4 *(log(z/logProfileCoeffsFino(2))),[0 100]);
+[xLogLidar,yLogLidar]=fplot(@(z) logProfileCoeffsLidar(1)/0.4 *(log(z/logProfileCoeffsLidar(2))),[0 100]);
+plot(yLogFino,xLogFino,'Color','b');
+plot(yLogLidar,xLogLidar,'Color','r');
+plot(avg_horSpeed_Lidar,lidarHeights,'or');
+plot(avg_horSpeed_Fino,x_range, 'ob');
+ylabel('Height in [m]');
+xlabel('windspeed in [m/s]');
+title('Vertical Profiles');
+legend('Fino1','LiDAR VAD','Location','northwest');
+saveas(gcf,'figures/verticalProfiles.png')
+hold off;
+
+%% Winddirections
+fino_90_dir = readtable('fino-150504160459/FINO1_Windrichtung_90m_20131220_20140121.dat','Delimiter','tab','HeaderLines',6);
+fino_90_dir_interval = fino_90_dir.Var2((datenum(fino_90_dir.Var1(:)) >= startTime & datenum(fino_90_dir.Var1(:)) < endTime));
+
+WindRose(fino_90_dir_interval,fino_speeds(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
+saveas(gcf,'figures/WindRose_Fino1.png')
+WindRose(tenMinAvg_direction(:,7), tenMinAvg_horSpeed(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
+saveas(gcf,'figures/WindRose_lidar.png')
+figure();
+hold on;
+plot(fino_90_dir_interval);
+plot(tenMinAvg_direction);
+hold off;
+
+
+%% Plots for report
+figure();
+hold on;
+plot(VADCos(savedparam{1,1},1:360));
+scatter(az_c_VAD_filter(18:53,1), rs_VAD_filter(18:53,1));
+hold off;
+xlabel('azimuth angle [degree]')
+ylabel('V_{los} [m/s]')
+saveas(gcf,'figures/fit.png')
+\end{lstlisting}
+\newpage
+\subsection{Multi\_lidar\_3D\_reconstruction}
+\begin{lstlisting}
+close all; clc;
+      
+% Measurement geometry [x, y, z] of the measurement point and the three
+% Lidars
+
+staring_point    =   [ 46.8,     0, 90]';
+lidar_positions  =   [-0.94,-34.59, 0.60;
+                      -1.01, 49.58, 2.09;
+                      78.69,  5.40, -0.74]';
+         
+lidar_range=sqrt((repmat(staring_point(1),1,3)-lidar_positions(1,:)).^2+...
+           (repmat(staring_point(2),1,3)-lidar_positions(2,:)).^2);
+       
+% Here you have to calculate the azimuth and elevation scanning angles of each of
+% the lidars:
+for i=1:3
+    distOnGround = sqrt((staring_point(1) - lidar_positions(1,i))^2+(staring_point(2) - lidar_positions(2,i))^2);
+    distDiagonal = sqrt(distOnGround^2 + (staring_point(3) - lidar_positions(3,i))^2);
+    ele(i) = acosd(distOnGround/distDiagonal);
+    azi(i) = atand((staring_point(2)-lidar_positions(2,i))/(staring_point(1)-lidar_positions(1,i)));
+end
+azi(3) = azi(3) + 180
+% Reading the line-of-sight velocity data
+
+vlos1 = csvread('R2D1.csv',1,0);
+vlos2 = csvread('R2D2.csv',1,0);
+vlos3 = csvread('R2D3.csv',1,0);
+
+vlos1(:,1)=vlos1(:,1)/1000;     % First column is time in milliseconds
+vlos2(:,1)=vlos2(:,1)/1000;     % First column is time in milliseconds
+vlos3(:,1)=vlos3(:,1)/1000;     % First column is time in milliseconds
+
+fs = 97.65625;  % Sampling frequency
+dt = 1/fs;      % Time step
+starttime = dt;
+endtime   = min([vlos1(end,1) vlos2(end,1) vlos3(end,1)]);
+timeline = (starttime:dt:endtime)';
+
+% The line-of-sights speeds are interpolated to the same timeline to be
+% perfectly synchronised. Continue working with these vectors:
+
+vlos1_interp = interp1(vlos1(:,1),vlos1(:,2),timeline);
+vlos2_interp = interp1(vlos2(:,1),vlos2(:,2),timeline);
+vlos3_interp = interp1(vlos3(:,1),vlos3(:,2),timeline);
+
+% Conversion of the three line-of-sight speeds to u and v
+
+% matrix = ...
+% u = ...
+% v = ...
+% w = ...
+
+vlos1_interp = (vlos1_interp);
+vlos2_interp = (vlos2_interp);
+vlos3_interp = (vlos3_interp);
+
+
+
+matrix = [cosd(ele(1))*cosd(azi(1)),cosd(ele(1))*sind(azi(1)),sind(ele(1));...
+            ,cosd(ele(2))*cosd(azi(2)),cosd(ele(2))*sind(azi(2)),sind(ele(2));...
+            ,cosd(ele(3))*cosd(azi(3)),cosd(ele(3))*sind(azi(3)),sind(ele(3))];
+        
+V = [vlos1_interp vlos2_interp vlos3_interp];
+for i = 1:length(vlos1_interp)
+    solution = mldivide(matrix, V(i,:)');
+    %solution = inv(matrix)*V(i,:)';
+    u(i,1) = -solution(1);
+    v(i,1) = -solution(2);
+    w(i,1) = -solution(3);
+end
+% In this part the calculated u, v and w components are aligned with the
+% 'main' wind direction, such that both v and w have a mean of 0 m/s:
+
+theta = atan(mean(v)/mean(u));
+delta = -atan(mean(w)/sqrt(mean(u)^2+mean(v)^2));
+alignmatrix1=Rotate_Matrix(delta*180/pi,'y');
+alignmatrix2=Rotate_Matrix(theta*180/pi,'z');
+V_aligned=alignmatrix2*alignmatrix1*V'; V_aligned=V_aligned';
+statistics = [ mean(V_aligned);
+                std(V_aligned)];
+            
+% Plotting of results
+
+colors='bgr';
+figure
+hold on
+ for i=1:3
+    scatter3(lidar_positions(1,i),...
+          lidar_positions(2,i),...
+          lidar_positions(3,i),'k','linewidth',3)
+      textstring=sprintf('%s%d','R2D',i);
+      text(lidar_positions(1,i),...
+          lidar_positions(2,i)-5,textstring,'fontsize',12);
+          formatstring=sprintf('%s%s',colors(i),'--');
+    plot3([lidar_positions(1,i),staring_point(1)*1.3-0.3*lidar_positions(1,i)],...
+          [lidar_positions(2,i),staring_point(2)*1.3-0.3*lidar_positions(2,i)],...
+          [lidar_positions(3,i),staring_point(3)*1.3-0.3*lidar_positions(3,i)],...
+          formatstring,'linewidth',2);
+ end
+ grid on
+ axis equal
+ xlabel('x [m]','fontsize',14)
+ ylabel('y [m]','fontsize',14)
+ zlabel('z [m]','fontsize',14)
+ set(gca,'fontsize',12)
+ xlim([-5 80]); ylim([-40 50]); zlim([-1 120]);
+ view([-35 20])
+ saveas(gcf,'lidar.png')
+\end{lstlisting}
 \end{document}
