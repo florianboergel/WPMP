@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  2 JUL 2016 22:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.21)  5 JUL 2016 19:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -710,176 +710,214 @@ been already used, duplicate ignored
                    \relax 
 l.61 \newpage
               [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 71.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 73.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <8> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 73.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 72.
 
-<../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png, id=65, 429.2838pt x 3
+<../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png, id=92, 429.2838pt x 3
 17.5062pt>
 File: ../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png Graphic file (typ
 e png)
  <use ../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/spectra_nofilter.pn
-g used on input line 82.
+g used on input line 80.
 (pdftex.def)             Requested size: 215.0023pt x 159.01915pt.
 
-<../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png, id=66, 429.2838
+<../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png, id=93, 429.2838
 pt x 317.5062pt>
 File: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png Graphic fil
 e (type png)
 
 <use ../Exercises_and_Tasks/ex1/figures/spectra_noisecancelled.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancel
-led.png used on input line 88.
+led.png used on input line 86.
 (pdftex.def)             Requested size: 215.0023pt x 159.01915pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 80--92
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 78--90
 []$[]$ $[]$ 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 98--102
+Underfull \hbox (badness 10000) in paragraph at lines 96--100
 
  []
 
 
-Overfull \hbox (1.27313pt too wide) in paragraph at lines 111--111
+Overfull \hbox (1.27313pt too wide) in paragraph at lines 109--109
 []\OT1/cmr/bx/n/12 For each spec-trum, de-fine the peak lo-ca-tion with the cen
 -troid method 
  []
 
 [3 <../Exercises_and_Tasks/ex1/figures/spectra_nofilter.png (PNG copy)> <../Exe
 rcises_and_Tasks/ex1/figures/spectra_noisecancelled.png (PNG copy)>]
-<../Exercises_and_Tasks/ex1/figures/failures.png, id=98, 429.2838pt x 317.5062p
-t>
+<../Exercises_and_Tasks/ex1/figures/failures.png, id=125, 429.2838pt x 317.5062
+pt>
 File: ../Exercises_and_Tasks/ex1/figures/failures.png Graphic file (type png)
  <use ../Exercises_and_Tasks/ex1/figures/failures.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/failures.png used o
-n input line 122.
+n input line 120.
 (pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
 
-<../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg, id=100,
+<../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg, id=127,
  878.28125pt x 658.46pt>
 File: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg Gra
 phic file (type jpg)
 
 <use ../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/spectra_noisecancel
-s_normed_72.jpg used on input line 131.
+s_normed_72.jpg used on input line 129.
 (pdftex.def)             Requested size: 430.00462pt x 322.387pt.
 
 [4 <../Exercises_and_Tasks/ex1/figures/failures.png (PNG copy)>]
-<../Exercises_and_Tasks/ex1/figures/correlation.png, id=108, 429.2838pt x 317.5
+<../Exercises_and_Tasks/ex1/figures/correlation.png, id=135, 429.2838pt x 317.5
 062pt>
 File: ../Exercises_and_Tasks/ex1/figures/correlation.png Graphic file (type png
 )
  <use ../Exercises_and_Tasks/ex1/figures/correlation.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex1/figures/correlation.png use
-d on input line 140.
+d on input line 138.
 (pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
  [5 <../Exercises_and_Tasks/ex1/figures/spectra_noisecancels_normed_72.jpg>] [6
  <../Exercises_and_Tasks/ex1/figures/correlation.png (PNG copy)>]
-Overfull \hbox (92.04965pt too wide) in paragraph at lines 160--162
-\OT1/cmr/m/n/10 ti-fied 14 dif-fer-ent range gates, mea-sur-ing at $61\OML/cmm/
-m/it/10 m; \OT1/cmr/m/n/10 64\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 67\OML/cmm/m/i
-t/10 m; \OT1/cmr/m/n/10 70\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 72\OML/cmm/m/it/1
-0 m; \OT1/cmr/m/n/10 75\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 78\OML/cmm/m/it/10 m
-; \OT1/cmr/m/n/10 81\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 84\OML/cmm/m/it/10 m; \
-OT1/cmr/m/n/10 87\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 90\OML/cmm/m/it/10 m; \OT1
-/cmr/m/n/10 93\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 96\OML/cmm/m/it/10 mand\OT1/c
-mr/m/n/10 98\OML/cmm/m/it/10 m$\OT1/cmr/m/n/10 .
+Overfull \hbox (32.3319pt too wide) in paragraph at lines 157--159
+\OT1/cmr/m/n/10 14 dif-fer-ent range gates, mea-sur-ing at $61\OML/cmm/m/it/10 
+m; \OT1/cmr/m/n/10 64\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 67\OML/cmm/m/it/10 m; 
+\OT1/cmr/m/n/10 70\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 72\OML/cmm/m/it/10 m; \OT
+1/cmr/m/n/10 75\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 78\OML/cmm/m/it/10 m; \OT1/c
+mr/m/n/10 81\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 84\OML/cmm/m/it/10 m; \OT1/cmr/
+m/n/10 87\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 90\OML/cmm/m/it/10 m; \OT1/cmr/m/n
+/10 93\OML/cmm/m/it/10 m; \OT1/cmr/m/n/10 96\OML/cmm/m/it/10 m$\OT1/cmr/m/n/10 
+,
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 167.
+(hyperref)                removing `math shift' on input line 164.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 167.
+(hyperref)                removing `superscript' on input line 164.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\circ' on input line 167.
+(hyperref)                removing `\circ' on input line 164.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 167.
+(hyperref)                removing `math shift' on input line 164.
 
 [7]
-<../Exercises_and_Tasks/ex2/figures/fit.png, id=136, 429.2838pt x 317.5062pt>
+<../Exercises_and_Tasks/ex2/figures/fit.png, id=164, 421.575pt x 316.0608pt>
 File: ../Exercises_and_Tasks/ex2/figures/fit.png Graphic file (type png)
 
 <use ../Exercises_and_Tasks/ex2/figures/fit.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex2/figures/fit.png used on inp
-ut line 206.
-(pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
+ut line 203.
+(pdftex.def)             Requested size: 430.00462pt x 322.38739pt.
  [8] [9 <../Exercises_and_Tasks/ex2/figures/fit.png (PNG copy)>]
-<../Exercises_and_Tasks/ex2/figures/verticalProfiles.png, id=167, 429.2838pt x 
+<../Exercises_and_Tasks/ex2/figures/verticalProfiles.png, id=193, 429.2838pt x 
 317.5062pt>
 File: ../Exercises_and_Tasks/ex2/figures/verticalProfiles.png Graphic file (typ
 e png)
  <use ../Exercises_and_Tasks/ex2/figures/verticalProfiles.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex2/figures/verticalProfiles.pn
-g used on input line 226.
+g used on input line 223.
 (pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+[10 <../Exercises_and_Tasks/ex2/figures/verticalProfiles.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
 
-[10 <../Exercises_and_Tasks/ex2/figures/verticalProfiles.png (PNG copy)>]
-<../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png, id=179, 542.025pt x 542
-.025pt>
+
+<../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png, id=206, 534.3162pt x 54
+0.5796pt>
 File: ../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png Graphic file (type 
 png)
  <use ../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png 
-used on input line 246.
-(pdftex.def)             Requested size: 215.0023pt x 215.00316pt.
+used on input line 243.
+(pdftex.def)             Requested size: 215.0023pt x 217.52303pt.
 
-<../Exercises_and_Tasks/ex2/figures/WindRose_lidar.png, id=180, 542.025pt x 542
+<../Exercises_and_Tasks/ex2/figures/WindRose_lidar.png, id=207, 542.025pt x 542
 .025pt>
 File: ../Exercises_and_Tasks/ex2/figures/WindRose_lidar.png Graphic file (type 
 png)
  <use ../Exercises_and_Tasks/ex2/figures/WindRose_lidar.png>
 Package pdftex.def Info: ../Exercises_and_Tasks/ex2/figures/WindRose_lidar.png 
-used on input line 251.
+used on input line 248.
 (pdftex.def)             Requested size: 215.0023pt x 215.00316pt.
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 244--254
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 241--251
 []$[]$ $[]$ 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 257.
 [11 <../Exercises_and_Tasks/ex2/figures/WindRose_Fino1.png (PNG copy)> <../Exer
 cises_and_Tasks/ex2/figures/WindRose_lidar.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 257.
+<../Exercises_and_Tasks/lidar.png, id=217, 429.2838pt x 317.5062pt>
+File: ../Exercises_and_Tasks/lidar.png Graphic file (type png)
+
+<use ../Exercises_and_Tasks/lidar.png>
+Package pdftex.def Info: ../Exercises_and_Tasks/lidar.png used on input line 26
+4.
+(pdftex.def)             Requested size: 430.00462pt x 318.03831pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--272
+
+ []
+
+[12 <../Exercises_and_Tasks/lidar.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 324.
+[14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 324.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 257.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 257.
-Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 04EA91B54AF0C2C49147CB26125A473A;947.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 257.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 324.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 324.
+
+
+Package rerunfilecheck Warning: File `report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `report.out':
+(rerunfilecheck)             Before: 27326475E2E2419517E84152B997641D;1430
+(rerunfilecheck)             After:  33D41D048B26CA3851C47DFC09BA61CB;1429.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 324.
  ) 
 Here is how much of TeX's memory you used:
- 10981 strings out of 493085
- 160829 string characters out of 6136917
- 364274 words of memory out of 5000000
- 14242 multiletter control sequences out of 15000+600000
+ 11032 strings out of 493085
+ 161593 string characters out of 6136917
+ 364328 words of memory out of 5000000
+ 14266 multiletter control sequences out of 15000+600000
  12224 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,10n,40p,496b,1912s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,40p,478b,1910s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -897,10 +935,10 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (12 pages, 637327 bytes).
+Output written on report.pdf (15 pages, 693127 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 118 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 329 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

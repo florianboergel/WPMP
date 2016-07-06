@@ -60,12 +60,11 @@
 \tableofcontents
 \newpage
 \section*{Introduction}
-The fourth and last exercise deals with Lidar measurements. The exercise itself was separated into three sub tasks. First we received 312 frequency spectra which span a vertical plane in front of the SpinnerLidar. For each spectra we calculated the peak and the corresponding line-of-sight velocity.
+The fourth exercise deals with Lidar measurements. The exercise itself was separated into three sub tasks. First we received 312 frequency spectra which span a vertical plane in front of the SpinnerLidar. For each spectrum we calculated the peak and the corresponding line-of-sight velocity.
  
 \section{Task 1: Spectral analysis: from backscatter spectrum to line-of-sight velocity}
 \subsection{Clean the spectra from their background noise}
-In order to clean the 312 different spectra from their individual background noise we calculated the mean values of each spectra. Keeping in mind that the goal of this exercise is to identify the peak location, we defined $1.5$ multiplied with the mean of the spectrum as noise. Therefore we subtracted $1.5 \cdot mean$ and discarded all values below zero.\\
-The following code-snippet shows this procedure in Matlab:
+In order to clean the 312 different spectra from their individual background noise we calculated the mean values of each spectra. Keeping in mind that the goal of this exercise is to identify the peak location, we defined $1.5$ multiplied with the mean of the spectrum as noise. Therefore we subtracted $1.5 \cdot mean$ and discarded all values below zero. The following code-snippet shows this procedure in Matlab:\\
 
 \begin{lstlisting}
 for pos = 1:312
@@ -73,7 +72,6 @@ for pos = 1:312
     spinner_noiseCancelled(spinner_noiseCancelled < 0) = 0;
 end;
 \end{lstlisting}
-
 The following figure shows on the left the raw spectrum and on the right the noise cleaned spectrum. As one can easily see we obtain different values for the collection efficiency, but since it is only important to find the corresponding frequency and subsequently the line-of-sight velocity of the peak, the peak value itself is not relevant for further calculations.
 
 \begin{figure}[H]
@@ -115,7 +113,7 @@ f_{peak} = \frac{\int f_d \cdot p(f) df}{\int p(f) df}
 \end{equation*}
 Before we calculated the peak values we normalized our data to get a PDF instead of absolute values.
 Since we are dealing with discrete values, we summed over all values in order to identify the peak value. 
-In order to check all 312 $f_{peak}$ values, we first calculated the index of the maximum collection efficiency for each spectra. The maximum should always represent the peak of the spectrum.
+In order to check all 312 $f_{peak}$ values, we first calculated the index of the maximum collection efficiency for each spectrum. The maximum should always represent the peak of the spectrum.
 Next we determined the corresponding index of $f_{peak}$. Now we were able to compare the distance of the calculated indices. The results are shown in figure \ref{fig:failures}.
 
 \begin{figure}[H]
@@ -124,7 +122,7 @@ Next we determined the corresponding index of $f_{peak}$. Now we were able to co
 \label{fig:failures}
 \end{figure}
 
-The figure shows that there are several errors. The reason why the centroid method fails for some spectra is due to a measurement error. As stated in the exercise sheet the lidar was placed on the nacelle of a wind turbine. Therefore for some measurements the lidar might be blocked by the rotating blades which would result in a second frequency peak. If the spectrum contains two peaks, the centroid method returns the middle of these two peaks and is not applicable for this case.
+The figure shows that there are several errors. The centroid method fails for some spectra due to a measurement error. As stated in the exercise sheet the lidar was placed on the nacelle of a wind turbine. Therefore for some measurements the lidar might be blocked by the rotating blades which would result in a second frequency peak. If the spectrum contains two peaks, the centroid method returns the middle of these two peaks and is not applicable for this case.
 One of those cases is shown in figure \ref{fig:measurement_error}.
 
 \begin{figure}[H]
@@ -133,7 +131,7 @@ One of those cases is shown in figure \ref{fig:measurement_error}.
 \label{fig:measurement_error}
 \end{figure}
 
-\subsection{Correlate your calculated line-of-sight speeds}
+\subsection{Correlate the calculated line-of-sight speeds}
 In step 4 we were asked to correlate the calculated line-of-sight speeds with the lidar data itself. The correlation method was already provided. Therefore we only needed to calculate the line-of-sight velocity by multiplying $f_{peak}$ with $\lambda_0$. The resulting plot is shown in figure \ref{fig:correlation}. 
 
 \begin{figure}[H]
@@ -156,8 +154,7 @@ cnr_ind = find(cnr_VAD <= -20 | cnr_VAD >= -5);
 rs_VAD(cnr_ind) = NaN;
 az_c_VAD(cnr_ind) = NaN;
 \end{lstlisting}
-
-After filtering the data we were asked to separate the data for the different range gates. We identified 14 different range gates, measuring at $61m, 64m, 67m, 70m, 72m, 75m, 78m, 81m, 84m, 87m, 90m, 93m, 96m and 98m$. 
+After filtering the data we were asked to separate the data for the different range gates. We identified 14 different range gates, measuring at $61m, 64m, 67m, 70m, 72m, 75m, 78m, 81m, 84m, 87m, 90m, 93m, 96m$, and $98m$. 
 The last task of 2.1 was to calculate the time for a full $360^\circ$ scan. The LiDAR has a scanner speed of $25^\circ/s$. Therefore one full scan takes:
 
 \begin{align*}
@@ -227,9 +224,9 @@ The results are shown in figure \ref{fig:verticalprofiles} :
 \caption{Vertical profile of FINO 1 and LiDAR measurement}
 \label{fig:verticalprofiles}
 \end{figure}
-The figures shows that the vertical profile of the LiDAR is shifted to the left. As discussed in the lecture, anemometers measure more accurately and therefore the FINO 1 curve should be more representative. 
+The figure shows that the vertical profile of the LiDAR is shifted to the left. As discussed in the lecture, anemometers measure more accurately and therefore the FINO 1 curve should be more representative. 
 
-Further we also evaluated the wind directions. Here we also used the already existing WindRose.m routine. The wind rose helps to evaluate and compare the wind directions.
+Further we evaluated the wind directions. For better comparison , we used measurements at similar heights. We used the already existing WindRose.m routine. The wind rose helps to evaluate and compare the wind directions.
 
 In order to obtain correct wind directions we used the following plot routine:\\
 \begin{lstlisting}
@@ -254,4 +251,74 @@ The comparison between the two wind roses are shown in figure~\ref{fig:Windroses
 \caption{Comparison of wind roses}
   \label{fig:WindrosesVal}
 \end{figure}
+
+We identify that there is noticeable shift in the wind directions from FINO 1 to the LiDAR VAD. If we only compare the 10-minute direction intervals the shift can be estimated to around 20$^\circ$. One reason for the shift might be that we assume a homogeneous wind field. In reality we deal with fluctuations that influence the measurements. 
+
+\section{Multi-Lidar 3D vector reconstruction: from three line-of-sight velocities to 3D wind vector}
+In this task we were provided a data set of about 90 minutes, measured by three short range WindScanners of the Technical University of Denmark. T
+\subsection{Data structure}
+he lidar data contains the 3D coordinates of each lidar system and the measured line-of-sight velocities. The three Lidars were focussed at the same measurement point at 90 meters height. The staring point was also give in 3D coordinates.
+ The measurement setup is shown in figure~\ref{fig:measurementsetup}.
+
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{../Exercises_and_Tasks/lidar.png}
+\caption{Measurement setup}
+\label{fig:measurementsetup}
+\end{figure}
+\subsection{Azimuth and elevation angle for each lidar}
+In order to calculate the the azimuth and the elevation we used the geometric set-up of the system.
+It should be noted that $0^\circ$ azimuth angle is defined to be aligned with the positive x-axis and is counted counter-clockwise for positive values. 
+To Matlab implementation is shown below:\\
+
+\begin{lstlisting}
+for i=1:3
+    distOnGround = sqrt((staring_point(1) - lidar_positions(1,i))^2+(staring_point(2) - lidar_positions(2,i))^2);
+    distDiagonal = sqrt(distOnGround^2 + (staring_point(3) - lidar_positions(3,i))^2);
+    ele(i) = acosd(distOnGround/distDiagonal);
+    azi(i) = atand((staring_point(2)-lidar_positions(2,i))/(staring_point(1)-lidar_positions(1,i)));
+end
+
+azi(3) = azi(3) + 180
+\end{lstlisting}
+
+The resulting angles are shown in the following table:\\
+
+\begin{tabular}{c||c|c|}
+& elevation angle in $^\circ$& azimuth angle in $^\circ$\\
+\hline
+Lidar 1 &56.6 & 35.93 \\
+Lidar 2 &51.92 & -46.04\\
+Lidar 3 & 70.38& 189.61\\
+\end{tabular}
+\subsection{Matrix system that converts the three line-of-sight velocities to the u,v and w components}
+To calculate the three components of the line-of-sight velocities we had to set up a linear equation system in the form of $[A] \cdot b = c$. 
+Each measured line of sight velocity is defined as:
+\begin{equation*}
+V_{rad} = [u, v ,w]\cdot[\cos(\beta)\sin(\alpha), \cos(\beta)\cos(\alpha), \sin(\beta)]
+\end{equation*}
+That leaves us with 3 equation for 3 unknown. 
+The trigonometric functions represent the coefficient matrix A and the three different line of sight velocities $V_{rad}$ represent c.
+To solve for $[u,v,w]$ we have to multiply $A^{-1}$ with the radial wind speed vector.
+In Matlab this can be done with $mldivide()$:
+
+\begin{lstlisting}
+    solution = mldivide(matrix, V(i,:)');
+    %solution = inv(matrix)*V(i,:)';
+    u(i,1) = solution(1);
+    v(i,1) = solution(2);
+    w(i,1) = solution(3);
+end
+\end{lstlisting}
+
+The calculated $\theta$ and $\delta$ are $0,089$ and $-0,022$.
+\subsection{Statistics}
+In the last section, the lidars are aligned with the main wind direction  such that both v and w have a mean of 0 m/s. After that the mean and the standard deviation for each of the 3 lidars are calculated. The results are shown in the following table.\\
+
+\begin{tabular}{c||c|c|}
+& $\mu$& $\sigma$\\
+\hline
+Lidar 1 &-4.83 & 0.76 \\
+Lidar 2 &-3.20 & 0.63\\
+Lidar 3 & 	3.38& 0.96\\
+\end{tabular}
 \end{document}

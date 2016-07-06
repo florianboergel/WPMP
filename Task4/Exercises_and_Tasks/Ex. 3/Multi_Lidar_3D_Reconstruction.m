@@ -17,10 +17,9 @@ for i=1:3
     distOnGround = sqrt((staring_point(1) - lidar_positions(1,i))^2+(staring_point(2) - lidar_positions(2,i))^2);
     distDiagonal = sqrt(distOnGround^2 + (staring_point(3) - lidar_positions(3,i))^2);
     ele(i) = acosd(distOnGround/distDiagonal);
-    azi(i) = atand((lidar_positions(2,i)-staring_point(2))/(lidar_positions(1,i)-staring_point(1)));
+    azi(i) = atand((staring_point(2)-lidar_positions(2,i))/(staring_point(1)-lidar_positions(1,i)));
 end
-
-
+azi(3) = azi(3) + 180
 % Reading the line-of-sight velocity data
 
 vlos1 = csvread('R2D1.csv',1,0);
@@ -51,20 +50,24 @@ vlos3_interp = interp1(vlos3(:,1),vlos3(:,2),timeline);
 % v = ...
 % w = ...
 
+vlos1_interp = (vlos1_interp);
+vlos2_interp = (vlos2_interp);
+vlos3_interp = (vlos3_interp);
 
-matrix = [cosd(ele(1))*sind(azi(1)),cosd(ele(1))*cosd(azi(1)),sind(ele(1));...
-            cosd(ele(2))*sind(azi(2)),cosd(ele(2))*cosd(azi(2)),sind(ele(2));...
-            cosd(ele(3))*sind(azi(3)),cosd(ele(3))*cosd(azi(3)),sind(ele(3))]
+
+
+matrix = [cosd(ele(1))*cosd(azi(1)),cosd(ele(1))*sind(azi(1)),sind(ele(1));...
+            ,cosd(ele(2))*cosd(azi(2)),cosd(ele(2))*sind(azi(2)),sind(ele(2));...
+            ,cosd(ele(3))*cosd(azi(3)),cosd(ele(3))*sind(azi(3)),sind(ele(3))];
+        
 V = [vlos1_interp vlos2_interp vlos3_interp];
 for i = 1:length(vlos1_interp)
-    solution = inv(matrix)*V(i,:)';
-    u(i) = solution(1);
-    v(i) = solution(2);
-    w(i) = solution(3);
+    solution = mldivide(matrix, V(i,:)');
+    %solution = inv(matrix)*V(i,:)';
+    u(i,1) = -solution(1);
+    v(i,1) = -solution(2);
+    w(i,1) = -solution(3);
 end
-u = u';
-v = v';
-w = w';
 % In this part the calculated u, v and w components are aligned with the
 % 'main' wind direction, such that both v and w have a mean of 0 m/s:
 
@@ -102,3 +105,4 @@ hold on
  set(gca,'fontsize',12)
  xlim([-5 80]); ylim([-40 50]); zlim([-1 120]);
  view([-35 20])
+ saveas(gcf,'lidar.png')

@@ -70,7 +70,7 @@ for j = 1:14 % number of Range Gates
             %calculate horiz and vertical speed
             v_hor = fitparam(1) / cosd(60);
             v_ver = -fitparam(3) / sind(60);
-            D=abs(fitparam(1)-180);
+            D=(fitparam(1)+180);
             calc_times(i,j) = ts_VAD_filter((i-1)*intervalls_per_scan+18,j);
             calc_vHor(i,j) =  v_hor;
             calc_vVer(i,j) = v_ver;
@@ -157,10 +157,14 @@ fino_90_dir = readtable('fino-150504160459/FINO1_Windrichtung_90m_20131220_20140
 fino_90_dir_interval = fino_90_dir.Var2((datenum(fino_90_dir.Var1(:)) >= startTime & datenum(fino_90_dir.Var1(:)) < endTime));
 
 WindRose(fino_90_dir_interval,fino_speeds(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
-saveas(gcf,'figures/WindRose_lidar.png')
-WindRose(tenMinAvg_direction(:,7), tenMinAvg_horSpeed(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
 saveas(gcf,'figures/WindRose_Fino1.png')
-
+WindRose(tenMinAvg_direction(:,7), tenMinAvg_horSpeed(:,7),'AngleNorth',0,'AngleEast',90,'freqlabelangle',45,'MaxFrequency',6);
+saveas(gcf,'figures/WindRose_lidar.png')
+figure();
+hold on;
+plot(fino_90_dir_interval);
+plot(tenMinAvg_direction);
+hold off;
 
 
 %% Plots for report
